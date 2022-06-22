@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;500&display=swap');
+.conatainer-Navbar
+{
+    border: 1px solid #CCCCCC;
+    padding: 5px;
+}
+.Navbar_heading
+{
+    font-family: 'Libre Franklin';
+    font-style: normal;
+    /* font-weight: 500; */
+    font-size: 26px;
+    line-height: 39px;
+    margin-left: 100px;
+ 
+    
+}
+.logo
+{
+    width: 164px;
+height: 60px; 
+margin-right: 100px;
+}

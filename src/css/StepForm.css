@@ -1,0 +1,525 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Libre+Franklin:wght@100;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Libre+Franklin:wght@100;500&family=Poppins&display=swap');
+.boxStepers
+{
+    margin-top: 60px;
+
+
+}
+
+/* active button*/
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+    color: #4CB9B4 !important;
+    height: 50px;
+    width: 50px;
+}
+
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+    color: #4CB9B4 !important;
+    height: 50px;
+    width: 50px;
+}
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root 
+{
+    font-size: 50px !important;
+}
+.css-ascpo7-MuiStepLabel-root.Mui-disabled {
+    cursor: default;
+    height: 50px;
+    width: 50px;
+    color: #CCCCCC;
+    
+}
+.css-z7uhs0-MuiStepConnector-line {
+    display: block;
+    border-color: #bdbdbd;
+    border-top-style: solid;
+    border-top-width: 2px;
+    height: 5px;
+    width: 100px;
+    height: 5px;
+    background: #CCCCCC;
+    border-radius: 100px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+
+.css-cuefkz-MuiContainer-root {
+    padding-left: 0% !important;
+    padding-right: 0% !important;
+}
+/* step one  */
+
+
+.stepOne_main
+{
+    margin-top: 50px !important;
+    border: 0px solid red;
+}
+.section_headers
+{
+    font-family: 'Inter', sans-serif;
+    font-family: 'Libre Franklin', sans-serif;
+font-style: normal;
+font-weight: 300;
+font-size: 14px;
+line-height: 17px;
+/* identical to box height */
+
+/* display: flex; */
+/* align-items: center; */
+text-align: center;
+/* margin-left: 40px ; */
+
+color: #AAAEB5;
+
+
+}
+.section_headers_2
+{
+    font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 29px;
+/* identical to box height */
+
+text-align: center;
+
+/* Blue - KidCab */
+
+color: #18374E;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.section_headers_button_group
+{
+    display: flex;
+    width: 100%;
+    /* justify-content: space-between; */
+    justify-content: center;
+    
+    margin-top: 32px;
+    flex-wrap: wrap;
+}
+.btnStepers
+
+{
+    box-sizing: border-box;
+
+    /* Auto layout */
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 10px;
+    
+    margin-left: 5px;
+    background: #F8FCFB;
+    border: 1px solid #DFEEEB;
+    border-radius: 10px;
+
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500 !important;
+font-size: 18px;
+
+display: flex;
+align-items: center;
+
+
+
+}
+
+/* next btnStepers */
+
+
+
+.boxStepers_btn
+{
+    display: flex !important;
+ 
+    justify-content: center;
+    margin-top: 60px;
+        margin-bottom: 60px;
+}
+
+.btn-next
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 15px 60px;
+    gap: 10px;
+outline: none !important;
+  border: none;  
+  
+    
+    /* width: 166px;
+    height: 54px; */
+    
+    /* Blue - KidCab */
+    
+    background: #18374E;
+    border-radius: 100px;
+    font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+display: flex;
+align-items: center;
+color: #FDFFFE;
+}
+
+
+.btn_caneel
+{
+    display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 15px 40px;
+gap: 10px;
+outline: none;
+margin-right: 20px;
+/* width: 146px;
+height: 54px; */
+
+/* Blue - KidCab */
+
+border: 1px solid #18374E;
+border-radius: 100px;
+
+font-family: 'Libre Franklin';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+display: flex;
+align-items: center;
+/* Blue - KidCab */
+
+color: #18374E !important;
+}
+
+.css-11qjisw {
+    -webkit-flex: 0 auto !important;
+    -ms-flex: 0 auto !important;
+    flex: 0 auto !important;
+}
+
+/* sep1PictureBox */
+.sep1PictureBox img 
+{
+    position: absolute;
+    width: 613px;
+/* height: 572px; */
+left:7px;
+top: 674px;
+z-index: -1;
+
+}
+
+.optonal_span
+{
+    color: #CCCCCC;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+}
+.change_color
+{
+    color: #CCCCCC;
+    font-weight: 900 !important;
+}
+
+/* 2nd form  */
+.sep1PictureBox2
+{
+    position: absolute;
+    width: 613px;
+/* height: 572px; */
+left: 835px;
+top: 734px;
+/* border: 2px solid red; */
+z-index: -1;
+}
+
+/* spte_3_btn-grroup */
+
+.spte_3_btn-grroup
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+
+/* custom style mui theme */
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+    padding-right: 32px !important; 
+
+    background: #F8FCFB !important;
+    
+    /* border: 1px solid; */
+    display: flex !important;
+    /* border: 1px solid #dfeeeb !important; */
+
+    border-radius: 10px !important;
+
+    flex-direction: row !important;
+    width: 273px !important;
+    /* height: 54px; */
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+}
+
+.btnstpers_3
+{
+    padding-right: 32px !important; 
+    margin-top: 20px;
+    /* border: 1px solid #DFEEEB !important;
+    background: #F8FCFB !important; */
+    /* border: 1px solid; */
+    display: flex !important;
+    flex-direction: row !important;
+    width: 333px !important;
+    /* height: 54px; */
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+    margin-right: 30PX;
+}
+.select-class
+{
+    outline: none !important    ;
+    border: none;
+}
+
+/* some changes for mui selector  */
+.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    fill: currentColor;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-size: 1.5rem;
+    position: absolute;
+    right: 119px !important;
+    top: calc(50% - 0.5em);
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.54);
+}
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root {
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4375em;
+    letter-spacing: 0.00938em;
+    color: #18374E;
+    box-sizing: border-box;
+    border: 1px solid #DFEEEB !important;
+    background: #F8FCFB !important;
+    border-radius: 10px !important;
+    position: relative;
+    cursor: text;
+    border-radius: 10px !important;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    border-radius: 4px;
+}
+/* mui button margin top */ 
+.css-q8hpuo-MuiFormControl-root
+{
+     margin-top: 20px !important;
+}
+
+/* some change specific  font */
+.hange-Fonts-Size
+{
+    font-size: 20px;
+}
+
+
+/* step 3 pictue  */
+.sep3PictureBox3 img 
+{
+    /* border: 1px solsid red; */
+    width: 495px;
+    /* height: 609px; */
+    position: absolute;
+    left: 8px;
+top: 583px;
+z-index: -1;
+}
+
+/*  typemessages btn style form 4  */
+
+.typemessages
+{
+    display: flex !important;
+flex-direction: row !important;
+justify-content: center !important;
+align-items: flex-start !important;
+padding: 15px 20px !important;
+gap: 10px !important;
+
+width: 700px !important;
+height: 54px !important;
+
+background: #F8FCFB;
+border: 1px solid #DFEEEB;
+border-radius: 10px;
+}
+
+.btn-flex-grop4
+{
+    display: flex !important;
+}
+.form4_agree-text
+{
+    width: 697px;
+height: 63px;
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 21px;
+
+/* Black - KidCab */
+
+color: #4D525B;
+
+opacity: 0.5
+}
+
+
+/* step 4 pictue */
+.sep4PictureBox4 img
+{
+    position: absolute;
+    width: 785px;
+    height: 523px;
+    opacity: 0.3;
+    left: -16px;
+top: 721px;
+z-index: -1;
+}
+
+/* time  */
+
+.TimePicker-ss
+{
+    padding-right: 32px !important; 
+    margin-top: 0px;
+    border: 1px solid #DFEEEB !important;
+    background: #F8FCFB !important; 
+    display: flex !important;
+    flex-direction: row !important;
+    width: 333px !important;
+    height: 54px;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+    border-radius: 10px;
+    margin-right: 30PX;
+
+}
+
+
+.react-time-picker__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: 0px solid gray;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input 
+{
+    padding: 0.5px 14px !important; 
+}
+
+
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    padding-right: 32px !important; 
+    margin-top: 20px !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    background: #F8FCFB !important;
+    border: 1px solid #DFEEEB !important;
+    flex-direction: row !important;
+ 
+    width: 333px !important;
+    height: 54px !important;
+ 
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+    margin-right: 30px !important; ;
+  
+}
+
+
+.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped {
+    background: #F8FCFB !important;
+    border: 1px solid #DFEEEB !important;
+    border-radius: 10px !important;
+    color: black !important;
+    /* width: 236px !important; */
+    margin-left: 20px !important;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* padding: 30px; */
+}
+.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected
+{
+background-color: #4db9b4 !important;
+color: white;
+}
+
+
+
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root
+{
+    height: 0px !important;
+    /* width: 100%;  */
+    margin-right: 60px ;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root
+{
+    top: -22px !important;
+    left: 18px !important;
+}
+

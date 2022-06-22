@@ -12,27 +12,34 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
+
+// css 
+import "../css/Navbar.css"
 const NavBar = () => {
   return (
     <AppBar
       position="static"
       sx={{ backgroundColor: "white", boxShadow: "none" }}
+      className="conatainer-Navbar"
+
     >
-      <Container maxWidth="xl">
+      <Container  maxWidth="xl" >
         <Toolbar disableGutters>
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               color: " #18374E",
+            
             }}
+            className="Navbar_heading"
           >
             Estimation de votre trajet
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
+          <Box   sx={{ flexGrow: 0 }}>
             <Tooltip title="KidCab">
               <IconButton sx={{ p: 0 }}>
-                <img alt="Remy Sharp" src={KidcabLogo} />
+                <img className="logo" alt="Remy Sharp" src={KidcabLogo} />
               </IconButton>
             </Tooltip>
           </Box>

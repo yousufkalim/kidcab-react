@@ -8,9 +8,13 @@ import NavBar from "../containers/RideForm";
 
 const index = () => {
   return (
+    <>
+    <NavBar/>
     <Switch>
-      <Route exact path="/" component={NavBar} />
+
+      <Route exact path="/" component={Home} />
     </Switch>
+    </>
   );
 };
 
