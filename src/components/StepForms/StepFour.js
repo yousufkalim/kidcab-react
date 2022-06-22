@@ -10,7 +10,6 @@ import Select from "@mui/material/Select";
 import Kidcab_service from "../../assets/Kidcab_service.png";
 import Checkbox from "@mui/material/Checkbox";
 import ReCAPTCHA from "react-google-recaptcha";
-
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
@@ -20,6 +19,8 @@ const StepFour = (props) => {
   const handleChange = (event) => {
     setAge(event.target.value);
   };
+
+ 
 
   function onChange(value) {
     console.log("Captcha value:", value);
