@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState, useEffect } from "react";
 
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
@@ -9,86 +9,117 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import VTCTaxiLoi from "../../assets/VTC-Taxi-Loi.png";
 import TimePicker from "react-time-picker";
+import AddressInput from "../AdressInput";
 const StepThree = (props) => {
   const [age, setAge] = React.useState(10);
   const [value, onChange] = useState("12:00");
   const [value2, onChange2] = useState("12:00");
+  let [startAddress, setStartAddress] = useState({});
+  let [endAddress, setEndAddress] = useState({});
+  let [returnAddress, setReturnAddress] = useState({});
+
+  console.log(startAddress, "startAddress");
+
   const handleChange = (event) => {
     setAge(event.target.value);
   };
-console.log(value)
+  console.log(value);
   const [item, setItem] = useState({
     step3: {
-      Aller: [],
-      Heurederamassage: [value],
-      Adresse: ["demo address"], // address
-      Adressede : [], // address
-      Retourle:[], 
-      Heure:[value2],
-      Adresseretour:[]
+      pickUp_date: "",
+      pickUp_time: "",
+      return_date: "",
+      return_time: "",
+      pickUp_address: "",
+      destination_address: "",
+      return_address: "",
     },
   });
 
-  const style1 = {
-    color: "white",
-    backgroundColor: "#4db9b4",
+  useEffect(() => {
+    setItem((prev) => {
+      prev.step3.pickUp_address = startAddress;
+      return { ...prev };
+    });
+  }, [startAddress]);
+
+  useEffect(() => {
+    setItem((prev) => {
+      prev.step3.pickUp_time = value;
+      return { ...prev };
+    });
+  }, [value]);
+
+  useEffect(() => {
+    setItem((prev) => {
+      prev.step3.return_time = value2;
+      return { ...prev };
+    });
+  }, [value2]);
+
+  useEffect(() => {
+    setItem((prev) => {
+      prev.step3.destination_address = endAddress;
+      return { ...prev };
+    });
+  }, [endAddress]);
+
+  useEffect(() => {
+    setItem((prev) => {
+      prev.step3.return_address = returnAddress;
+      return { ...prev };
+    });
+  }, [returnAddress]);
+
+  console.log(item, "my address");
+
+  // useEffect(() => {
+  //   setItem((prev) => {
+  //     prev.step3.pickUp_address = startAddress;
+  //     prev.step3.destination_address = endAddress;
+  //     prev.step3.return_address = returnAddress;
+  //     return { ...prev };
+  //   });
+  // }, [startAddress, endAddress, returnAddress]);
+
+  const disableDates = () => {
+    var today, dd, mm, yyyy;
+    today = new Date();
+    dd = today.getDate();
+    mm = today.getMonth() + 1;
+    yyyy = today.getFullYear();
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+    if (dd < 10) {
+      dd = "0";
+    }
+    return yyyy + "-" + mm + "-" + dd;
   };
-  const style2 = {
-
-
-    background: "#F8FCFB",
-    border: "1px solid #DFEEEB",
-
-
-  };
-
-  const  Aller =   [ 
-    "Une mairie"
-  ]
-
-  const  Retourle  = [
-    "Une mairie"
-  ]
-
 
   const handelBtn = (e) => {
-
-    if (item.step3.Aller.includes(e.target.innerHTML)) {
-      let index = item.step3.Aller.indexOf(e.target.innerHTML);
-
+    if (e.target.name == "pickUp_date") {
       setItem((prev) => {
-        prev.step3.Aller.splice(index, 1);
+        prev.step3.pickUp_date = e.target.value;
         return { ...prev };
       });
-    } else
+    }
+    if (e.target.name == "return_date") {
       setItem((prev) => {
-        prev.step3.Aller.push(e.target.innerHTML);
+        prev.step3.return_date = e.target.value;
         return { ...prev };
       });
-      props.passData3(item);
-     
+    }
+    props.passData3(item);
   };
-
 
   const handelBtn5 = (e) => {
-
-    if (item.step3.Retourle.includes(e.target.innerHTML)) {
-      let index = item.step3.Retourle.indexOf(e.target.innerHTML);
-
-      setItem((prev) => {
-        prev.step3.Retourle.splice(index, 1);
-        return { ...prev };
-      });
-    } else
-      setItem((prev) => {
-        prev.step3.Retourle.push(e.target.innerHTML);
-        return { ...prev };
-      });
-      props.passData3(item);
-     
+    setItem((prev) => {
+      prev.step3.Retourle = e.target.value;
+      return { ...prev };
+    });
+    props.passData3(item);
   };
-  
-  
 
   return (
     <div className="stepOne_main">
@@ -104,22 +135,17 @@ console.log(value)
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop">
             <h5 className="section_headers_2 hange-Fonts-Size">Aller le ?</h5>
-
-            {/* <button className="btnStepers btnstpers_3">Une mairie</button> */}
-            {Aller.map((obj,i) => {
-            return (
-              <button  className="btnStepers btnstpers_3"  onClick={(e) => handelBtn(e)}  
-              style={
-                item.step3.Aller.find((e) => {
-                  if (e === obj) return true;
-                })
-                  ? style1
-                  : style2
-              }
-              
-            >{obj}</button>
-            )
-          })}
+            <input
+              className="form-control-alternative"
+              id="input-date"
+              locale={"en-gb"}
+              placeholder={"Select Date"}
+              type="date"
+              min={disableDates()}
+              value={item?.step3.pickUp_date.split("T")[0]}
+              name="pickUp_date"
+              onChange={handelBtn}
+            />
           </div>
           <div className="btn-flex-grop">
             <h5 className="section_headers_2 hange-Fonts-Size">
@@ -127,18 +153,17 @@ console.log(value)
             </h5>
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
-              <div className="TimePicker-ss">
-
-               <TimePicker
-                 style={{ height: "calc(1.5em + 1.25rem + 2px)" }}
-                 name="time"
-                 disableClock={true}
-                 clockIcon={null}
-                 amPmAriaLabel={true}
-                 value={value}
-                 onChange={onChange}
-               />
-             </div>
+                <div className="TimePicker-ss">
+                  <TimePicker
+                    style={{ height: "calc(1.5em + 1.25rem + 2px)" }}
+                    name="time"
+                    disableClock={true}
+                    clockIcon={null}
+                    amPmAriaLabel={true}
+                    value={value}
+                    onChange={onChange}
+                  />
+                </div>
               </FormControl>
             </Box>
           </div>
@@ -158,8 +183,16 @@ console.log(value)
             <h5 className="section_headers_2 hange-Fonts-Size">
               Adresse de prise en charge
             </h5>
-
-            <button className="btnStepers btnstpers_3">Une mairie</button>
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label"></InputLabel>
+                <AddressInput
+                  label=" Adresse de prise en charge"
+                  address={startAddress}
+                  setAddress={setStartAddress}
+                />
+              </FormControl>
+            </Box>
           </div>
           <div className="btn-flex-grop">
             <h5 className="section_headers_2 hange-Fonts-Size">
@@ -169,17 +202,11 @@ console.log(value)
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label"></InputLabel>
-                <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={age}
-                  className="select-class"
-                  onChange={handleChange}
-                >
-                  <MenuItem value={10}>Write here</MenuItem>
-                  <MenuItem value={20}>Write here</MenuItem>
-                  <MenuItem value={30}>Write here</MenuItem>
-                </Select>
+                <AddressInput
+                  label="Adresse de destination"
+                  address={endAddress}
+                  setAddress={setEndAddress}
+                />
               </FormControl>
             </Box>
           </div>
@@ -199,22 +226,17 @@ console.log(value)
             <h5 className="section_headers_2 hange-Fonts-Size">
               Retour le <span className="optonal_span">optional</span>
             </h5>
-
-            {/* <button className="btnStepers btnstpers_3">Une mairie</button> */}
-            {Retourle.map((obj,i) => {
-            return (
-              <button   onClick={(e) => handelBtn5(e)}  
-              style={
-                item.step3.Retourle.find((e) => {
-                  if (e === obj) return true;
-                })
-                  ? style1
-                  : style2
-              }
-              
-              className="btnStepers btnstpers_3">{obj}</button>
-            )
-          })}
+            <input
+              className="form-control-alternative"
+              id="input-date"
+              locale={"en-gb"}
+              placeholder={"Select Date"}
+              type="date"
+              min={disableDates()}
+              value={item?.step3.return_date.split("T")[0]}
+              name="return_date"
+              onChange={handelBtn}
+            />
           </div>
           <div className="btn-flex-grop">
             <h5 className="section_headers_2 hange-Fonts-Size">
@@ -222,18 +244,17 @@ console.log(value)
             </h5>
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
-              <div className="TimePicker-ss">
-
-               <TimePicker
-                 style={{ height: "calc(1.5em + 1.25rem + 2px)" }}
-                 name="time"
-                 disableClock={true}
-                 clockIcon={null}
-                 amPmAriaLabel={true}
-                 value={value}
-                 onChange={onChange2}
-               />
-             </div>
+                <div className="TimePicker-ss">
+                  <TimePicker
+                    style={{ height: "calc(1.5em + 1.25rem + 2px)" }}
+                    name="time"
+                    disableClock={true}
+                    clockIcon={null}
+                    amPmAriaLabel={true}
+                    value={value2}
+                    onChange={onChange2}
+                  />
+                </div>
               </FormControl>
             </Box>
           </div>
@@ -254,7 +275,11 @@ console.log(value)
               <span className="optonal_span">optional</span>
             </h5>
 
-            <button className="btnStepers btnstpers_3">Write heree</button>
+            <AddressInput
+              label=" Adresse retour (si différente)"
+              address={returnAddress}
+              setAddress={setReturnAddress}
+            />
           </div>
         </div>
       </Box>

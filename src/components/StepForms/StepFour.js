@@ -20,8 +20,6 @@ const StepFour = (props) => {
     setAge(event.target.value);
   };
 
- 
-
   function onChange(value) {
     console.log("Captcha value:", value);
   }
@@ -29,16 +27,15 @@ const StepFour = (props) => {
   console.log(checked, "-checked");
 
   const [item, setItem] = useState({
-    Firstname: "", // First name
-    Organization: "", //Organization/company name optional
-    Email: "", //E-mail
-    Telephone: "", // Telephone
-    typemessage: "", //Organization/company name optional optional
+    first_name: "", // First name
+    company_name: "", //company_name/company name optional
+    email: "", //E-mail
+    phone: "", // phone
+    message: "", //company_name/company name optional optional
     agree: "",
   });
 
-  const { Firstname, Organization, Email, Telephone, typemessage, agree } =
-    item;
+  const { first_name, company_name, email, phone, message, agree } = item;
 
   const onChangeform = (e) =>
     setItem({ ...item, [e.target.name]: e.target.value });
@@ -75,8 +72,8 @@ const StepFour = (props) => {
               style={{ marginTop: "20px" }}
               placeholder="Prénom"
               onChange={onChangeform}
-              name="Firstname"
-              value={Firstname}
+              name="first_name"
+              value={first_name}
             />
             {/* <button className="btnStepers btnstpers_3">Write here </button> */}
           </div>
@@ -91,8 +88,8 @@ const StepFour = (props) => {
             <TextField
               style={{ marginTop: "20px" }}
               placeholder="  Nom de l'organisme/entreprise"
-              name="Organization"
-              value={Organization}
+              name="company_name"
+              value={company_name}
               onChange={onChangeform}
             />
           </div>
@@ -113,16 +110,16 @@ const StepFour = (props) => {
               style={{ marginTop: "20px" }}
               className="section_headers_2 hange-Fonts-Size"
             >
-              Email
+              email
             </h5>
 
             <TextField
               style={{ marginTop: "20px" }}
               type="email"
-              placeholder="Email"
+              placeholder="email"
               onChange={onChangeform}
-              name="Email"
-              value={Email}
+              name="email"
+              value={email}
             />
           </div>
           <div className="btn-flex-grop">
@@ -136,8 +133,8 @@ const StepFour = (props) => {
               style={{ marginTop: "20px" }}
               type="number"
               placeholder="Téléphone"
-              name="Telephone"
-              value={Telephone}
+              name="phone"
+              value={phone}
               onChange={onChangeform}
             />
           </div>
@@ -164,11 +161,11 @@ const StepFour = (props) => {
             <TextareaAutosize
               // aria-label="Tapez votre massage "
               placeholder="Tapez votre massage"
-              className="btnStepers btnstpers_3 typemessages"
-              name="typemessage"
+              className="btnStepers btnstpers_3 messages"
+              name="message"
               onChange={onChangeform}
               style={{ marginTop: "20px", marginLeft: "40px" }}
-              value={typemessage}
+              value={message}
               minRows={3}
             />
           </div>
@@ -222,4 +219,3 @@ const StepFour = (props) => {
 };
 
 export default StepFour;
-

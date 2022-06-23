@@ -9,10 +9,10 @@ import TextField from "@mui/material/TextField";
 const StepTwo = (props) => {
   const [item, setItem] = useState({
     step2: {
-      Besoin: "",
-      Nombre: "",
-      Nombred: "",
-      Bébé: "",
+      door_support: "",
+      total_children: "",
+      total_adults: "",
+      baby: "",
     },
   });
   const [alignment, setAlignment] = React.useState("left");
@@ -20,16 +20,15 @@ const StepTwo = (props) => {
   const [alignmentNombred, setAlignmentNombred] = React.useState("left");
   const [alignmentBébé, setAlignmentBébé] = React.useState("left");
 
-  const Besoin = ["Oui", "Non"];
+  const Besoin = [{ Oui: true }, { Non: false }];
   const Nombre = ["0", "1", "2", "3"];
   const Nombred = ["0", "1", "2", "3"];
   const Bébé = ["0", "1", "2", "3"];
 
   // Need door-to-door support?
   const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
     setItem((prev) => {
-      prev.step2.Besoin = newAlignment;
+      prev.step2.door_support = event.target.value;
       return { ...prev };
     });
     props.passData2(item);
@@ -39,83 +38,56 @@ const StepTwo = (props) => {
   const handleAlignmentNombre = (event, newAlignment) => {
     setAlignmentNombre(newAlignment);
     setItem((prev) => {
-      prev.step2.Nombre = newAlignment;
+      prev.step2.total_children = newAlignment;
+      return { ...prev };
+    });
+    props.passData2(item);
+  };
+  //  input
+  const ChildFun = (e) => {
+    setItem((prev) => {
+      prev.step2.total_children = e.target.value;
       return { ...prev };
     });
     props.passData2(item);
   };
 
-  const ChildFun = (e) => {
-
-    setItem((prev) => {
-      prev.step2.Nombre = e.target.value;
-      return { ...prev };
-    });
-    props.passData2(item);
-  }
-
-
-  // input 
+  // input
 
   // Number of adult(s) optional
   const handleAlignmentNombred = (event, newAlignment) => {
     setAlignmentNombred(newAlignment);
     setItem((prev) => {
-      prev.step2.Nombred = newAlignment;
+      prev.step2.total_adults = newAlignment;
       return { ...prev };
     });
     props.passData2(item);
   };
-  
 
   const AdultFun = (e) => {
-
     setItem((prev) => {
-      prev.step2.Nombred = e.target.value;
+      prev.step2.total_adults = e.target.value;
       return { ...prev };
     });
     props.passData2(item);
-  }
+  };
 
   // Infant(s) 3-4 years optional
   const handleAlignmentBébé = (event, newAlignment) => {
     setAlignmentBébé(newAlignment);
     setItem((prev) => {
-      prev.step2.Bébé = newAlignment;
+      prev.step2.baby = newAlignment;
       return { ...prev };
     });
     props.passData2(item);
   };
 
   const BébéFun = (e) => {
-
     setItem((prev) => {
-      prev.step2.Nombred = e.target.value;
+      prev.step2.baby = e.target.value;
       return { ...prev };
     });
     props.passData2(item);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  const style1 = {
-    color: "white",
-    backgroundColor: "#4db9b4",
-  };
-  const style2 = {
-    background: "#F8FCFB",
-    border: "1px solid #DFEEEB",
   };
 
   console.log(item, "-item");
@@ -143,16 +115,18 @@ const StepTwo = (props) => {
           >
             {Besoin.map((obj, i) => {
               return (
-                <ToggleButton className="btnStepers" value={obj}>
-                  {obj}
+                <ToggleButton
+                  className="btnStepers"
+                  name={Object.keys(obj)}
+                  value={Object.values(obj)}
+                >
+                  {Object.keys(obj)}
                 </ToggleButton>
               );
             })}
           </ToggleButtonGroup>
         </div>
       </Box>
-
-    
 
       <Box
         lg={{ width: "100%" }}
@@ -178,10 +152,11 @@ const StepTwo = (props) => {
               );
             })}
           </ToggleButtonGroup>
-          <TextField placeholder="Number of child(ren)  " type="number"
-    
-           onChange={(e) => ChildFun(e)}
-           />
+          <TextField
+            placeholder="Number of child(ren)  "
+            type="number"
+            onChange={(e) => ChildFun(e)}
+          />
         </div>
       </Box>
 
@@ -211,8 +186,10 @@ const StepTwo = (props) => {
               );
             })}
           </ToggleButtonGroup>
-          <TextField placeholder="Nombre d'adulte " type="number"
-           onChange={(e) => AdultFun(e)}
+          <TextField
+            placeholder="Nombre d'adulte "
+            type="number"
+            onChange={(e) => AdultFun(e)}
           />
         </div>
       </Box>
@@ -232,7 +209,6 @@ const StepTwo = (props) => {
             value={alignmentBébé}
             exclusive
             onChange={handleAlignmentBébé}
-
           >
             {Bébé.map((obj, i) => {
               return (
@@ -242,7 +218,11 @@ const StepTwo = (props) => {
               );
             })}
           </ToggleButtonGroup>
-          <TextField placeholder="Nombre d'adulte "    onChange={(e) => BébéFun(e)} type="number" />
+          <TextField
+            placeholder="Nombre d'adulte "
+            onChange={(e) => BébéFun(e)}
+            type="number"
+          />
         </div>
       </Box>
       <div className="sep1PictureBox2">

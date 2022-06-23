@@ -8,33 +8,47 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 const StepOne = (props) => {
   const [item, setItem] = useState({
     step1: {
-      Vous: [],
-      Type: [],
-      Fréquence: "",
-      Pour: [],
+      your_are: "",
+      journey_type: [],
+      journey_frequency: "",
+      days: [],
     },
   });
 
+  console.log(item);
 
   const [alignment, setAlignment] = React.useState("left");
+  const [alignmentvous, setAlignmentvous] = React.useState("left");
 
-  console.log(alignment, "-alignment");
-
-  const Vous = [
-    "Un particulier",
-    "Une mairie",
-    "Une Collectivite",
-    "Une ecole",
-    "Un club de sport",
-    "Une entrprise",
-    "Un comite",
+  const your_are = [
+    { "Un particulier": "A Particular" },
+    { "Une mairie": "A town hall" },
+    { "Une Collectivite": "A Community" },
+    { "Une ecole": "School" },
+    { "Un club de sport": "A sports club" },
+    { "Une entrprise": "A company" },
+    { "Un comite": "A committee" },
   ];
 
-  const Type = ["Aller Simple", "Aller - Retour", "Trajet avec etape(s)"];
+  const journey_type = [
+    { "Aller Simple": "One Way ticket" },
+    { "Aller - Retour": "Round trip" },
+    { "Trajet avec etape(s)": "Journey with stage(s)" },
+  ];
 
-  const Fréquence = ["Reguliere", "Occasionnelle"];
+  const journey_frequency = [
+    { Reguliere: "Regular" },
+    { Occasionnelle: "Occasional" },
+  ];
 
-  const Pour = ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"];
+  const days = [
+    { Lundi: "Monday" },
+    { Mardi: "Tuesday" },
+    { Mercredi: "Wednesday" },
+    { Jeudi: "Thursday" },
+    { Vendredi: "Friday" },
+    { Samedi: "Saturday" },
+  ];
 
   const style1 = {
     color: "white",
@@ -45,74 +59,54 @@ const StepOne = (props) => {
     border: "1px solid #DFEEEB",
   };
 
-  const handelBtn = (e) => {
-    if (item.step1.Vous.includes(e.target.innerHTML)) {
-      let index = item.step1.Vous.indexOf(e.target.innerHTML);
-
-      setItem((prev) => {
-        prev.step1.Vous.splice(index, 1);
-        return { ...prev };
-      });
-    } else
-      setItem((prev) => {
-        prev.step1.Vous.push(e.target.innerHTML);
-        return { ...prev };
-      });
-    props.passData(item);
-  };
-
   const handelBtn2 = (e) => {
-    if (item.step1.Type.includes(e.target.innerHTML)) {
-      let index = item.step1.Type.indexOf(e.target.innerHTML);
+    if (item.step1.journey_type.includes(e.target.value)) {
+      let index = item.step1.journey_type.indexOf(e.target.value);
 
       setItem((prev) => {
-        prev.step1.Type.splice(index, 1);
+        prev.step1.journey_type.splice(index, 1);
         return { ...prev };
       });
     } else
       setItem((prev) => {
-        prev.step1.Type.push(e.target.innerHTML);
+        prev.step1.journey_type.push(e.target.value);
         return { ...prev };
       });
     props.passData(item);
   };
 
   const handleAlignment = (event, newAlignment) => {
-    setAlignment(newAlignment);
+    console.log(event.target.value, "event.target.value");
+    setAlignment(event.target.value);
     setItem((prev) => {
-      prev.step1.Fréquence = newAlignment;
+      prev.step1.journey_frequency = event.target.value;
       return { ...prev };
     });
     props.passData(item);
   };
 
-  const handelBtn3 = (e) => {
-    if (item.step1.Fréquence.includes(e.target.innerHTML)) {
-      let index = item.step1.Fréquence.indexOf(e.target.innerHTML);
-
-      setItem((prev) => {
-        prev.step1.Fréquence.splice(index, 1);
-        return { ...prev };
-      });
-    } else
-      setItem((prev) => {
-        prev.step1.Fréquence.push(e.target.innerHTML);
-        return { ...prev };
-      });
+  const handleAlignmentvous = (event, newAlignment) => {
+    console.log(event.target.value, "e");
+    setAlignmentvous(event.target.value);
+    setItem((prev) => {
+      prev.step1.your_are = event.target.value;
+      return { ...prev };
+    });
     props.passData(item);
   };
 
   const handelBtn4 = (e) => {
-    if (item.step1.Pour.includes(e.target.innerHTML)) {
-      let index = item.step1.Pour.indexOf(e.target.innerHTML);
+    console.log("handelBtn4");
+    if (item.step1.days.includes(e.target.value)) {
+      let index = item.step1.days.indexOf(e.target.value);
 
       setItem((prev) => {
-        prev.step1.Pour.splice(index, 1);
+        prev.step1.days.splice(index, 1);
         return { ...prev };
       });
     } else
       setItem((prev) => {
-        prev.step1.Pour.push(e.target.innerHTML);
+        prev.step1.days.push(e.target.value);
         return { ...prev };
       });
 
@@ -124,7 +118,7 @@ const StepOne = (props) => {
   return (
     <div className="stepOne_main">
       <h5 className="section_headers">
-        *Choisissez-en un pour chaque question !
+        *Choisissez-en un days chaque question !
       </h5>
       <Box
         lg={{ width: "100%" }}
@@ -132,26 +126,26 @@ const StepOne = (props) => {
         sm={{ width: "100%" }}
         className="boxStepers"
       >
-        <h5 className="section_headers_2 hange-Fonts-Size">Vous êtes ?</h5>
+        <h5 className="section_headers_2 hange-Fonts-Size">your_are êtes ?</h5>
 
         <div className="section_headers_button_group">
-          {Vous.map((obj, i) => {
-            return (
-              <button
-                onClick={(e) => handelBtn(e)}
-                style={
-                  item.step1.Vous.find((e) => {
-                    if (e === obj) return true;
-                  })
-                    ? style1
-                    : style2
-                }
-                className="btnStepers"
-              >
-                {obj}
-              </button>
-            );
-          })}
+          <ToggleButtonGroup
+            value={alignmentvous}
+            exclusive
+            onChange={handleAlignmentvous}
+          >
+            {your_are.map((obj, i) => {
+              return (
+                <ToggleButton
+                  className="btnStepers"
+                  name={Object.keys(obj)}
+                  value={Object.values(obj)}
+                >
+                  {Object.keys(obj)}
+                </ToggleButton>
+              );
+            })}
+          </ToggleButtonGroup>
         </div>
       </Box>
 
@@ -163,23 +157,27 @@ const StepOne = (props) => {
         sm={{ width: "100%" }}
         className="boxStepers"
       >
-        <h5 className="section_headers_2 hange-Fonts-Size">Type de trajet?</h5>
+        <h5 className="section_headers_2 hange-Fonts-Size">
+          journey_type de trajet?
+        </h5>
 
         <div className="section_headers_button_group">
-          {Type.map((obj, i) => {
+          {journey_type.map((obj, i) => {
             return (
               <button
                 onClick={(e) => handelBtn2(e)}
                 style={
-                  item.step1.Type.find((e) => {
+                  item.step1.journey_type.find((e) => {
                     if (e === obj) return true;
                   })
                     ? style1
                     : style2
                 }
                 className="btnStepers"
+                name={Object.keys(obj)}
+                value={Object.values(obj)}
               >
-                {obj}
+                {Object.keys(obj)}
               </button>
             );
           })}
@@ -195,7 +193,7 @@ const StepOne = (props) => {
         className="boxStepers"
       >
         <h5 className="section_headers_2 hange-Fonts-Size">
-          Fréquence des trajets
+          journey_frequency des trajets
         </h5>
 
         <div className="section_headers_button_group">
@@ -204,10 +202,14 @@ const StepOne = (props) => {
             exclusive
             onChange={handleAlignment}
           >
-            {Fréquence.map((obj, i) => {
+            {journey_frequency.map((obj, i) => {
               return (
-                <ToggleButton className="btnStepers" value={obj}>
-                  {obj}
+                <ToggleButton
+                  className="btnStepers"
+                  name={Object.keys(obj)}
+                  value={Object.values(obj)}
+                >
+                  {Object.keys(obj)}
                 </ToggleButton>
               );
             })}
@@ -222,24 +224,26 @@ const StepOne = (props) => {
         className="boxStepers"
       >
         <h5 className="section_headers_2 hange-Fonts-Size">
-          Pour un besoin réguliers, jours des trajets
+          days un besoin réguliers, jours des trajets
         </h5>
 
         <div className="section_headers_button_group">
-          {Pour.map((obj, index) => {
+          {days.map((obj, index) => {
             return (
               <button
                 className="btnStepers"
                 onClick={(e) => handelBtn4(e)}
                 style={
-                  item.step1.Pour.find((e) => {
+                  item.step1.days.find((e) => {
                     if (e === obj) return true;
                   })
                     ? style1
                     : style2
                 }
+                name={Object.keys(obj)}
+                value={Object.values(obj)}
               >
-                {obj}
+                {Object.keys(obj)}
               </button>
             );
           })}
