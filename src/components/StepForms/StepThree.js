@@ -103,7 +103,7 @@ console.log(value)
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size">Aller le ?</h5>
+            <h5 className="section_headers_2 hange-Fonts-Size ">Aller le ?</h5>
 
             {/* <button className="btnStepers btnstpers_3">Une mairie</button> */}
             {Aller.map((obj,i) => {
@@ -122,7 +122,7 @@ console.log(value)
           })}
           </div>
           <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size">
+            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile4">
               Heure de ramassage{" "}
             </h5>
             <Box sx={{ minWidth: 120 }}>
@@ -155,14 +155,14 @@ console.log(value)
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size">
+            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile5">
               Adresse de prise en charge
             </h5>
 
             <button className="btnStepers btnstpers_3">Une mairie</button>
           </div>
           <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size">
+            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile6">
               Adresse de destination{" "}
               <span className="optonal_span">optional</span>
             </h5>
@@ -196,7 +196,7 @@ console.log(value)
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size">
+            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile3">
               Retour le <span className="optonal_span">optional</span>
             </h5>
 
@@ -217,7 +217,7 @@ console.log(value)
           })}
           </div>
           <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size">
+            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile3">
               Heure de ramassage <span className="optonal_span">optional</span>
             </h5>
             <Box sx={{ minWidth: 120 }}>
@@ -259,9 +259,9 @@ console.log(value)
         </div>
       </Box>
 
-      <div className="sep3PictureBox3">
+      {/* <div className="sep3PictureBox3">
         <img src={VTCTaxiLoi} />
-      </div>
+      </div> */}
     </div>
   );
 };

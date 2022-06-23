@@ -523,3 +523,183 @@ color: white;
     left: 18px !important;
 }
 
+
+.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped 
+{
+    text-transform: capitalize !important;   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 18px;
+    padding: 5px 22px;
+
+}
+
+.css-ueukts-MuiButtonBase-root-MuiToggleButton-root.Mui-selected
+{
+    color: white !important;
+}
+
+/*  mobile devices */
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    /* steps bar line  */
+    .css-z7uhs0-MuiStepConnector-line 
+    {
+        width: 26px !important;
+    }
+
+
+    /* logo  */
+    .logo {
+        width: 142px;
+    height: 55px;
+    margin-right: 100px;
+     
+    }
+    /* steps ball */
+    .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+        color: #4CB9B4 !important;
+        height: 45px;
+        width: 45px;
+    }
+    .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
+        font-size: 45px !important;
+    }
+    .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
+        color: #4CB9B4 !important;
+        height: 45px;
+        width: 45px;
+    }
+    /* text section  */
+    .section_headers_2
+    {
+        font-size: 16px !important;
+        margin-top: -22px;
+    }
+
+    /* btn section */
+    .btnStepers 
+    {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-top: 10px
+    }
+
+
+    .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped 
+{
+    text-transform: capitalize !important;   
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    padding: 5px 22px !important;
+
+}
+.section_headers_button_group {
+    display: flex;
+    width: 100%;
+    /* justify-content: space-between; */
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.btn_caneel
+{
+    padding: 5px 18px !important;
+    font-size:13px;
+}
+.btn-next
+{
+    padding: 5px 27px !important;
+    font-size:13px;
+}
+.boxStepers_btn
+{
+    margin-top: 30px !important;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root
+{
+    width: 280px !important;
+    height: 39px !important;
+    padding: 5px 27px !important;
+    margin-top: 38px !important;
+    margin-left: 3px !important;
+}
+/* .border_section2_style
+{
+    border: 2px solid red !important;
+} */
+.section_headers_2 {
+    font-size: 16px !important;
+    margin-top: -25px !important;
+}
+.section_headers_3 {
+    font-size: 16px !important;
+    margin-top: 25px !important;
+}
+.boxStepers
+{
+    margin-top: 55px !important;
+}
+.custom-css-mobile
+{
+    display: block;
+    margin-top: 70px !important;
+
+}
+.custom-css-mobile3
+{
+    display: block;
+    margin-top: 70px !important;
+    
+
+}
+.custom-css-mobile_b
+{
+
+   height: 100% !important;
+}
+/* op  */
+
+.css-1gjgmky-MuiToggleButtonGroup-root
+{
+    margin-left: -12px;
+}
+
+.optonal_span 
+{
+    font-size: 12px !important;
+}
+.btnstpers_3
+{
+    width: 280px !important;
+    margin-right: 16px !important;
+}
+
+.TimePicker-ss
+{width: 280px !important;
+    margin-right: 20px !important;
+    height: 46.5px !important;
+    padding: 9px 32px !important;
+    margin-left: 10px;
+    /* position: absolute; */
+}
+.custom-css-mobile4
+{
+    display: block;
+    margin-top: 32px !important;
+}
+.custom-css-mobile5
+{
+    display: block;
+    margin-top: -17px !important;
+}
+.custom-css-mobile6
+{
+    display: block;
+    margin-top: 22px !important;
+}
+
+}

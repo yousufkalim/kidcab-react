@@ -34,7 +34,7 @@ const StepFour = (props) => {
     Email: "", //E-mail
     Telephone: "", // Telephone
     typemessage: "", //Organization/company name optional optional
-    agree: "",
+    agree: "", // check box 
   });
 
   const { Firstname, Organization, Email, Telephone, typemessage, agree } =

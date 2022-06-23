@@ -158,7 +158,7 @@ const StepTwo = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers border_section2_style"
       >
         <h5 className="section_headers_2 hange-Fonts-Size">
           Nombre d'enfant(s)
@@ -191,9 +191,9 @@ const StepTwo = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers section_headers_3"
       >
-        <h5 className="section_headers_2 hange-Fonts-Size">
+        <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile">
           Nombre d'adulte(s) <span className="optonal_span">optional</span>
         </h5>
 
@@ -223,7 +223,7 @@ const StepTwo = (props) => {
         sm={{ width: "100%" }}
         className="boxStepers"
       >
-        <h5 className="section_headers_2 hange-Fonts-Size">
+        <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile  ">
           Bébé(s) 3-4 ans <span className="optonal_span">optional</span>
         </h5>
 
@@ -242,12 +242,12 @@ const StepTwo = (props) => {
               );
             })}
           </ToggleButtonGroup>
-          <TextField placeholder="Nombre d'adulte "    onChange={(e) => BébéFun(e)} type="number" />
+          <TextField placeholder="Nombre d'adulte "  className="custom-css-mobile_b"   onChange={(e) => BébéFun(e)} type="number" />
         </div>
       </Box>
-      <div className="sep1PictureBox2">
+      {/* <div className="sep1PictureBox2">
         <img src={Demanderpng} />
-      </div>
+      </div> */}
     </div>
   );
 };

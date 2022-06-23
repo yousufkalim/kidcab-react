@@ -245,9 +245,9 @@ const StepOne = (props) => {
           })}
         </div>
       </Box>
-      <div className="sep1PictureBox">
+      {/* <div className="sep1PictureBox">
         <img src={KidcabChauffeu} />
-      </div>
+      </div> */}
     </div>
   );
 };
