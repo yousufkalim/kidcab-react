@@ -193,7 +193,7 @@ const StepThree = (props) => {
             <h5 className="section_headers_2 hange-Fonts-Size">
               Adresse de prise en charge
             </h5>
-            <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 120 }} className="input_add_custom">
               <FormControl fullWidth className="form_cm" > 
                 {/* <InputLabel id="demo-simple-select-label" ></InputLabel> */}
                 <AddressInput  style={{ maxWidth: "100%" }}
@@ -213,7 +213,7 @@ const StepThree = (props) => {
               Adresse de destination{" "}
               <span className="optonal_span">optional</span>
             </h5>
-            <Box sx={{ minWidth: 120 }} className="box-leftmove">
+            <Box sx={{ minWidth: 120 }} className="box-leftmove input_add_custom2  ">
 
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label"></InputLabel>
