@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import api from "../api/index";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
@@ -26,21 +27,92 @@ export default function HorizontalLinearStepper() {
   const [form2, setform2] = useState();
   const [form3, setform3] = useState();
   const [form4, setform4] = useState();
+  const [apiData, setApiData] = useState({
+    you_are: "",
+
+    first_name: "", // First name
+    company_name: "", //company_name/company name optional
+    email: "", //E-mail
+    phone: "", // phone
+    message: "", //company_name/company name optional optional
+    agree: "",
+
+    journey_type: [],
+    days: [],
+    journey_frequency: "",
+
+    total_children: "",
+
+    total_children: "",
+    door_support: "",
+    total_children: "",
+    total_adults: "",
+    baby: "",
+
+    pickUp_date: "",
+    pickUp_time: "",
+    return_date: "",
+    return_time: "",
+    pickUp_address: "",
+    destination_address: "",
+    return_address: "",
+  });
 
   const passData = (data) => {
     setform(data);
+
+    setApiData((prev) => {
+      prev.you_are = data?.step1?.your_are;
+      prev.journey_type = data?.step1?.journey_type;
+      prev.journey_frequency = data?.step1?.journey_frequency;
+      prev.days = data?.step1?.days;
+
+      return { ...prev };
+    });
   };
 
   const passData2 = (data) => {
-    setform2(data, "step2");
+    setform2(data);
+
+    setApiData((prev) => {
+      prev.door_support = data?.step2?.door_support;
+      prev.total_children = data?.step2?.total_children;
+      prev.total_adults = data?.step2?.total_adults;
+      prev.baby = data?.step2?.baby;
+
+      return { ...prev };
+    });
   };
 
   const passData3 = (data) => {
-    setform3(data, "step2");
+    setform3(data);
+    setApiData((prev) => {
+      prev.pickUp_date = data?.step3?.pickUp_date;
+      prev.pickUp_time = data?.step3?.pickUp_time;
+      prev.return_date = data?.step3?.return_date;
+      prev.return_time = data?.step3?.return_time;
+      prev.pickUp_address = data?.step3?.pickUp_address;
+      prev.destination_address = data?.step3?.destination_address;
+      prev.return_address = data?.step3?.return_address;
+
+      return { ...prev };
+    });
   };
+
   const passData4 = (data) => {
     setform4(data, "step2");
   };
+
+  useEffect(() => {
+    setApiData({
+      ...apiData,
+      first_name: form4?.first_name,
+      email: form4?.email,
+      company_name: form4?.company_name,
+      phone: form4?.phone,
+      message: form4?.message,
+    });
+  }, [form4]);
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -51,34 +123,49 @@ export default function HorizontalLinearStepper() {
   };
 
   const handleNext = () => {
-    if (
-      form1?.step1?.Vous.length > 0 &&
-      form1?.step1?.Fréquence.length > 0 &&
-      form1?.step1?.Type.length > 0 &&
-      form1?.step1?.Pour.length > 0
-    ) {
-      setActiveStep(1);
+    if (activeStep === 0) {
+      if (
+        form1?.step1?.your_are &&
+        form1?.step1?.journey_frequency &&
+        form1?.step1?.journey_type.length > 0 &&
+        form1?.step1?.days.length > 0
+      ) {
+        setActiveStep(1);
+      } else {
+        toast.error("fill all mandatory fields");
+      }
     }
 
-    if (
-      form2?.step2?.Besoin.length > 0 &&
-      form2?.step2?.Nombre.length > 0 &&
-      form2?.step2?.Nombred.length >= 0 &&
-      form2?.step2?.Bébé.length >= 0
-    ) {
-      setActiveStep(2);
+    if (activeStep === 1) {
+      if (form2?.step2?.door_support && form2?.step2?.total_children) {
+        setActiveStep(2);
+      } else {
+        toast.error("fill all mandatory fields");
+      }
     }
 
-    if (
-      form3.step3.Aller.length > 0 &&
-      form3.step3.Retourle.length >= 0 &&
-      form3.step3.Adresse.length > 0
-    ) {
-      setActiveStep(3);
+    if (activeStep === 2) {
+      if (
+        form3?.step3?.pickUp_date &&
+        form3?.step3?.pickUp_time &&
+        form3?.step3?.pickUp_address.city
+      ) {
+        setActiveStep(3);
+      } else {
+        toast.error("fill all mandatory fields");
+      }
     }
 
-    if (form4.Firstname && form4.Email && form4.Telephone && form4.agree) {
-      setActiveStep(4);
+    if (activeStep === 3) {
+      if (form4?.first_name && form4?.email && form4?.phone && form4?.agree) {
+        setActiveStep(4);
+
+        api("post", "/request/", apiData).then((res) => {
+          toast.success("Successfully ");
+        });
+
+        setApiData({ you_are: form1?.Vous });
+      }
     }
   };
 
@@ -103,11 +190,6 @@ export default function HorizontalLinearStepper() {
     setActiveStep(0);
   };
 
-  console.log(activeStep, "-activeStep");
-  console.log(form1, "-form1");
-  console.log(form2, "-forM2");
-  console.log(form3, "-forM3");
-  console.log(form4, "-forM4");
   return (
     <Container maxWidth="lg">
       <Box
@@ -184,7 +266,7 @@ export default function HorizontalLinearStepper() {
           </React.Fragment>
         )}
       </Box>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </Container>
   );
 }
