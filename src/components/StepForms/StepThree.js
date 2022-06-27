@@ -10,6 +10,7 @@ import Select from "@mui/material/Select";
 import VTCTaxiLoi from "../../assets/VTC-Taxi-Loi.png";
 import TimePicker from "react-time-picker";
 import AddressInput from "../AdressInput";
+import TextField from "@mui/material/TextField";
 const StepThree = (props) => {
   const [age, setAge] = React.useState(10);
   const [value, onChange] = useState("12:00");
@@ -97,16 +98,22 @@ const StepThree = (props) => {
     return yyyy + "-" + mm + "-" + dd;
   };
 
+  let init_pickUp_date;
+  let init_pickUp_date2;
   const handelBtn = (e) => {
     if (e.target.name == "pickUp_date") {
+      init_pickUp_date = e.target.value
       setItem((prev) => {
-        prev.step3.pickUp_date = e.target.value;
+       
+        prev.step3.pickUp_date = init_pickUp_date
         return { ...prev };
       });
     }
     if (e.target.name == "return_date") {
+      init_pickUp_date2 = e.target.value
+
       setItem((prev) => {
-        prev.step3.return_date = e.target.value;
+        prev.step3.return_date = init_pickUp_date2
         return { ...prev };
       });
     }
@@ -133,22 +140,24 @@ const StepThree = (props) => {
         className="boxStepers"
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size">Aller le ?</h5>
-            <input
-              className="form-control-alternative"
+          <div className="btn-flex-grop cm-view-btn-group">
+            <h5 className="section_headers_2 hange-Fonts-Siz ">Aller le ?</h5>
+
+            <TextField
+              // className="form-control-alternative"
               id="input-date"
               locale={"en-gb"}
               placeholder={"Select Date"}
               type="date"
               min={disableDates()}
-              value={item?.step3.pickUp_date.split("T")[0]}
+              value={item?.step3.pickUp_date?.split("T")[0]}
               name="pickUp_date"
               onChange={handelBtn}
+              className="btnStepers btnsteper_special"
             />
           </div>
-          <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile4">
+          <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
+            <h5 className="section_headers_2 hange-Fonts-Size">
               Heure de ramassage{" "}
             </h5>
             <Box sx={{ minWidth: 120 }}>
@@ -162,6 +171,7 @@ const StepThree = (props) => {
                     amPmAriaLabel={true}
                     value={value}
                     onChange={onChange}
+                    
                   />
                 </div>
               </FormControl>
@@ -172,38 +182,43 @@ const StepThree = (props) => {
 
       {/* second  */}
 
-      <Box
+      <Box 
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers box-top3"
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile5">
+          <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
+            <h5 className="section_headers_2 hange-Fonts-Size">
               Adresse de prise en charge
             </h5>
             <Box sx={{ minWidth: 120 }}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label"></InputLabel>
-                <AddressInput
-                  label=" Adresse de prise en charge"
+              <FormControl fullWidth className="form_cm" > 
+                {/* <InputLabel id="demo-simple-select-label" ></InputLabel> */}
+                <AddressInput  style={{ maxWidth: "100%" }}
+                    id="boxStepers_input_sm"
+            
+                
+                  label=" " 
                   address={startAddress}
+               
                   setAddress={setStartAddress}
                 />
               </FormControl>
             </Box>
           </div>
-          <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile6">
+          <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
+            <h5 className="section_headers_2 hange-Fonts-Size">
               Adresse de destination{" "}
               <span className="optonal_span">optional</span>
             </h5>
-            <Box sx={{ minWidth: 120 }}>
+            <Box sx={{ minWidth: 120 }} className="box-leftmove">
+
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label"></InputLabel>
                 <AddressInput
-                  label="Adresse de destination"
+                  label=""
                   address={endAddress}
                   setAddress={setEndAddress}
                 />
@@ -219,27 +234,29 @@ const StepThree = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers box-top3"
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile3">
+          <div className="btn-flex-grop cm-view-btn-group">
+            <h5 className="section_headers_2 hange-Fonts-Size">
               Retour le <span className="optonal_span">optional</span>
             </h5>
-            <input
-              className="form-control-alternative"
+            <TextField
+              // className="form-control-alternative"
               id="input-date"
               locale={"en-gb"}
               placeholder={"Select Date"}
               type="date"
               min={disableDates()}
-              value={item?.step3.return_date.split("T")[0]}
+              value={item?.step3.return_date?.split("T")[0]}
               name="return_date"
               onChange={handelBtn}
+              className="btnStepers btnsteper_special"
+
             />
           </div>
-          <div className="btn-flex-grop">
-            <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile3">
+          <div className="btn-flex-grop cm-view-btn-group">
+            <h5 className="section_headers_2 hange-Fonts-Size">
               Heure de ramassage <span className="optonal_span">optional</span>
             </h5>
             <Box sx={{ minWidth: 120 }}>
@@ -266,27 +283,43 @@ const StepThree = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers box-top3"
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop">
+          <div className="btn-flex-grop cm-view-btn-group">
             <h5 className="section_headers_2 hange-Fonts-Size">
               Adresse retour (si différente){" "}
               <span className="optonal_span">optional</span>
             </h5>
-
+            <Box sx={{ minWidth: 120 }}>
+              <FormControl fullWidth className="form_cm" > 
+                {/* <InputLabel id="demo-simple-select-label" ></InputLabel> */}
+                <AddressInput  style={{ maxWidth: "100%" }}
+                    id="boxStepers_input_sm"
+            
+                
+                  label=" " 
+                  address={returnAddress}
+               
+                  setAddress={setReturnAddress}
+                />
+              </FormControl>
+            </Box>
+            {/* <FormControl fullWidth>
             <AddressInput
               label=" Adresse retour (si différente)"
               address={returnAddress}
               setAddress={setReturnAddress}
+              
             />
+                        </FormControl> */}
           </div>
         </div>
       </Box>
 
-      {/* <div className="sep3PictureBox3">
+      <div className="sep3PictureBox3">
         <img src={VTCTaxiLoi} />
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -7,6 +7,8 @@
 
 }
 
+
+
 /* active button*/
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
     color: #4CB9B4 !important;
@@ -141,7 +143,38 @@ align-items: center;
 
 
 }
+.three_step_text
+{
+    border: 3px solid red !important;
+    margin-left: -100px !important;
+}
+.btnStepersinput
+{
+    box-sizing: border-box;
 
+    /* Auto layout */
+    
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px 20px !important;
+    gap: 10px !important;
+    
+    margin-left: 5px;
+    background: #F8FCFB;
+    border: 1px solid #DFEEEB !important;
+    border-radius: 10px !important;
+
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500 !important;
+font-size: 18px;
+
+display: flex;
+align-items: center;
+
+}
 /* next btnStepers */
 
 
@@ -251,7 +284,7 @@ z-index: -1;
     width: 613px;
 /* height: 572px; */
 left: 835px;
-top: 734px;
+top: 800px;
 /* border: 2px solid red; */
 z-index: -1;
 }
@@ -384,7 +417,14 @@ z-index: -1;
 }
 
 /*  typemessages btn style form 4  */
-
+.messages
+{
+    margin-top: 20px !important;
+    margin-left: 40px !important;
+    height: 54px !important;
+    width: 699px !important;
+    margin-left: 225px !important;
+}
 .typemessages
 {
     display: flex !important;
@@ -398,8 +438,9 @@ width: 700px !important;
 height: 54px !important;
 
 background: #F8FCFB;
-border: 1px solid #DFEEEB;
+border: 1px solid  red;
 border-radius: 10px;
+
 }
 
 .btn-flex-grop4
@@ -490,8 +531,14 @@ z-index: -1;
     margin-right: 30px !important; ;
   
 }
-
-
+.css-1gjgmky-MuiToggleButtonGroup-root{
+    display: flex  !important;
+    flex-wrap: wrap !important;
+    justify-content: center;
+}
+.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped {
+    margin-top: 20px !important;
+}
 .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped {
     background: #F8FCFB !important;
     border: 1px solid #DFEEEB !important;
@@ -519,11 +566,106 @@ color: white;
 }
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root
 {
-    top: -22px !important;
-    left: 18px !important;
+    top: -7px !important;
+    left: 18px !important
+}
+
+.btnsteper_special
+{
+    top: 43px !important;
+    /* width: 333px !important; */
+
+}
+.form-control form-control-alternative
+{
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+}
+.MuiBox-root> .css-ece9u5
+{
+    width: 333px !important;
+    height: 54px !important;
+}
+#input-address- 
+
+{
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;border-radius: 10px !important;
+    display: flex !important;
+    background: #F8FCFB !important;
+    border: 1px solid #DFEEEB !important;
+    flex-direction: row !important;
+    width: 333px !important;
+    height: 54px !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+    margin-left: 12px
+}
+.btnstpers_33
+{
+  
+    width: 699px !important;
+    margin-right: 209px;
+}
+/* #input-address-Adresseretour */
+#input-address-Adresseretour-sidifférente
+{
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;border-radius: 10px !important;
+    display: flex !important;
+    background: #F8FCFB !important;
+    border: 1px solid #DFEEEB !important;
+    flex-direction: row !important;
+    width: 333px !important;
+    height: 54px !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+    margin-left: 12px
 }
 
 
+.form-control-label
+{
+    display: none;
+}
+#input-address-Adressededestination
+{max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;border-radius: 10px !important;
+    display: flex !important;
+    background: #F8FCFB !important;
+    border: 1px solid #DFEEEB !important;
+    flex-direction: row !important;
+    width: 333px !important;
+    height: 54px !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+    margin-right: 30px !important;}
+/* #boxStepers_input_sm{
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+} */
+
+.form_cm
+{
+   
+    margin-left: -30px !important;
+
+}
+.form_cm > input
+{
+    width: 100% !important;
+}
 .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped 
 {
     text-transform: capitalize !important;   
@@ -575,17 +717,29 @@ color: white;
     .section_headers_2
     {
         font-size: 16px !important;
-        margin-top: -22px;
+   
     }
 
+    .btnsteper_special{
+        margin-top: 0% !important;
+    }
     /* btn section */
     .btnStepers 
     {
         padding: 8px 12px;
         font-size: 12px;
-        margin-top: 10px
+        margin-top: 10px;
+
+        margin-right: 7px;
+    margin-left: 13px;
+    width: 100% !important;
+
     }
 
+    .btnStepers-s
+    {
+        border: 3px solid blue !important;
+    }
 
     .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped 
 {
@@ -621,7 +775,7 @@ color: white;
 }
 .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root
 {
-    width: 280px !important;
+    width: 100% !important;
     height: 39px !important;
     padding: 5px 27px !important;
     margin-top: 38px !important;
@@ -633,7 +787,7 @@ color: white;
 } */
 .section_headers_2 {
     font-size: 16px !important;
-    margin-top: -25px !important;
+    /* margin-top: -25px !important; */
 }
 .section_headers_3 {
     font-size: 16px !important;
@@ -646,7 +800,7 @@ color: white;
 .custom-css-mobile
 {
     display: block;
-    margin-top: 70px !important;
+    margin-top: 85px !important;
 
 }
 .custom-css-mobile3
@@ -666,6 +820,7 @@ color: white;
 .css-1gjgmky-MuiToggleButtonGroup-root
 {
     margin-left: -12px;
+    
 }
 
 .optonal_span 
@@ -679,12 +834,16 @@ color: white;
 }
 
 .TimePicker-ss
-{width: 280px !important;
+{
+    width: 288px !important;
     margin-right: 20px !important;
-    height: 46.5px !important;
-    padding: 9px 32px !important;
-    margin-left: 10px;
+    height: 40.5px !important;
+    padding: 5px 32px !important;
+    margin-left: 28px;
     /* position: absolute; */
+    /* margin-top: 53px !important; */
+    
+    margin: 0% auto !important;
 }
 .custom-css-mobile4
 {
@@ -701,5 +860,161 @@ color: white;
     display: block;
     margin-top: 22px !important;
 }
+.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped 
+{
+    width: 154px !important;
+}
+.cm-view-btn-group {
+    border: 0px solid red !important;
+    height: 112px !important;
+    width: 80% !important;
+}
+.cm-view-btn-group2
+{
+margin-left: -30px !important;
+margin-left: -30px !important;
+}
+.css-2royc9
+{
+    padding-top: 52px !important;
+}
+#input-address- {
+    border: 0px solid red !important;
+    width: 100% !important;
+    margin-left: 30px;
+    height: 40px !important;
+    border: 1px solid #DFEEEB !important;
+    background: #F8FCFB !important;
+}
 
+.demo-simple-select-label1{
+    margin-left: 0px !important;
+
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+    top: -27px !important;
+    left: 14px !important;
+}
+.box-leftmove
+{
+    margin-left: -30px !important;
+    width: 282px !important;
+}
+.box-top3
+{
+    margin-top: -10px !important;
+}
+.messages
+{
+margin-left: 0px !important;
+}
+
+/* .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+
+    left: 1px !important;
+} */
+
+.cm-input-name
+{
+    left: 0px !important;
+    top: 0px !important;
+}
+
+.box-top4
+{
+    margin-top: 30px !important;
+}
+.cm-view-btn-group4
+{
+    margin-top: 103px !important;
+}
+
+.form4_agree-text {
+    /* width: 691px; */
+    /* height: 49px; */
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    color: #4D525B;
+    opacity: 0.5;
+}
+.cm-view-btn-group5
+{
+    margin-top: 80px !important;
+}   
+.text-align-text
+{   
+    position: relative;
+    text-align: start !important;
+    left: 30px;
+    top:20px !important
+}
+.cm-view-btn-group22
+{
+    margin-top: -20px; 
+}
+
+.check_flex
+{
+    display: flex !important;
+}
+.sep1PictureBox img {
+    position: absolute;
+    width: 215px;
+    /* height: 572px; */
+    left: 7px;
+    top: 149%;
+    z-index: -1;
+}
+.sep1PictureBox2
+{
+
+    height: 150px;
+    width: 300px;
+    position: absolute;
+    left: 90px;
+    top: 1069px;
+
+}
+.sep1PictureBox2 img {
+
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    /* width: 215px;
+    left: -131%;
+    top: 284px; */
+    /* height: 572px; */
+    /* left: 5px; */
+    /* left: -100px; */
+    /* top: 734px; */
+    /* border: 2px solid red; */
+    z-index: -1;
+    /* display: none;]] */
+}
+.custom_input_children
+{
+    margin-right: 10px
+
+}
+.sep3PictureBox3 img {
+    width: 147px;
+    height: 166px;
+    position: absolute;
+    left: 0px;
+    top: 1093px;
+    z-index: -1;
+}
+.sep4PictureBox4 img {
+    position: absolute;
+    width: 360px;
+    height: 225px;
+    opacity: 0.3;
+    left: 20px;
+    top: 1077px;
+    z-index: -1;
+}
 }

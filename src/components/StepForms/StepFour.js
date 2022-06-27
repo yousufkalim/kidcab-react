@@ -57,13 +57,13 @@ const StepFour = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers "
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop">
+          <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22 ">
             <h5
               style={{ marginTop: "20px" }}
-              className="section_headers_2 hange-Fonts-Size"
+              className="section_headers_2 hange-Fonts-Size text-align-text"
             >
               Prénom?
             </h5>
@@ -74,13 +74,14 @@ const StepFour = (props) => {
               onChange={onChangeform}
               name="first_name"
               value={first_name}
+              className="cm-input-name"
             />
             {/* <button className="btnStepers btnstpers_3">Write here </button> */}
           </div>
-          <div className="btn-flex-grop">
+          <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22" >
             <h5
               style={{ marginTop: "20px" }}
-              className="section_headers_2 hange-Fonts-Size"
+              className="section_headers_2 hange-Fonts-Size text-align-text"
             >
               Nom de l'organisme/entreprise{" "}
               <span className="optonal_span">optional</span>{" "}
@@ -102,13 +103,13 @@ const StepFour = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers box-top3"
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop">
+          <div className="btn-flex-grop  cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
             <h5
               style={{ marginTop: "20px" }}
-              className="section_headers_2 hange-Fonts-Size"
+              className="section_headers_2 hange-Fonts-Size text-align-text"
             >
               email
             </h5>
@@ -122,10 +123,10 @@ const StepFour = (props) => {
               value={email}
             />
           </div>
-          <div className="btn-flex-grop">
+          <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
             <h5
               style={{ marginTop: "20px" }}
-              className="section_headers_2 hange-Fonts-Size"
+              className="section_headers_2 hange-Fonts-Size text-align-text"
             >
               Téléphone{" "}
             </h5>
@@ -147,13 +148,13 @@ const StepFour = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers box-top3"
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop">
+          <div className="btn-flex-grop cm-view-btn-group">
             <h5
-              style={{ marginTop: "20px" }}
-              className="section_headers_2 hange-Fonts-Size"
+              style={{ marginTop: "50px" }}
+              className="section_headers_2 hange-Fonts-Size "
             >
               Nom de l'organisme/entreprise optional{" "}
               <span className="optonal_span">optional</span>
@@ -161,7 +162,7 @@ const StepFour = (props) => {
             <TextareaAutosize
               // aria-label="Tapez votre massage "
               placeholder="Tapez votre massage"
-              className="btnStepers btnstpers_3 messages"
+              className="btnStepers btnstpers_33 messages"
               name="message"
               onChange={onChangeform}
               style={{ marginTop: "20px", marginLeft: "40px" }}
@@ -176,18 +177,18 @@ const StepFour = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers box-top3"
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop4">
-            <h5 className="section_headers_2 hange-Fonts-Size">
+          <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group4">
+            {/* < className="section_headers_2 hange-Fonts-Size text-align-text"> */}
               {" "}
               <Checkbox
                 {...label}
                 onChange={(e) => onChangeformcheck(e)}
                 name="agree"
               />{" "}
-            </h5>
+            {/* </h5> */}
             <p className="form4_agree-text">
               En soumettant ce formulaire, j'accepte que les informations
               saisies soient exploitées dans le cadre <br /> de la demande d'une
@@ -202,10 +203,11 @@ const StepFour = (props) => {
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
-        className="boxStepers"
+        className="boxStepers box-top3"
+
       >
-        <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop4">
+        <div className="section_headers_button_group spte_3_btn-grroup check_flex">
+          <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group5">
             <ReCAPTCHA sitekey="Kidcab" onChange={onChange} />
           </div>
         </div>

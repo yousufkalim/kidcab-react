@@ -9,16 +9,29 @@ const StepOne = (props) => {
   const [item, setItem] = useState({
     step1: {
       your_are: "",
-      journey_type: [],
-      journey_frequency: "",
+      journey_type: [], // E
+      journey_typef: [], // F
+      journey_frequency: "", 
       days: [],
+      daysf: [], // F
     },
   });
+  const [itemf, setItemf] = useState({
+    step1f: {
+
+      journey_typef: [],
+     
+    },
+  });
+
+
+  console.log(itemf);
+
 
   console.log(item);
 
   const [alignment, setAlignment] = React.useState("left");
-  const [alignmentvous, setAlignmentvous] = React.useState("left");
+  const [alignmentvous, setAlignmentvous] = React.useState("Un particulier");
 
   const your_are = [
     { "Un particulier": "A Particular" },
@@ -27,7 +40,7 @@ const StepOne = (props) => {
     { "Une ecole": "School" },
     { "Un club de sport": "A sports club" },
     { "Une entrprise": "A company" },
-    { "Un comite": "A committee" },
+    { "Un comite": "A committee" }, 
   ];
 
   const journey_type = [
@@ -59,54 +72,90 @@ const StepOne = (props) => {
     border: "1px solid #DFEEEB",
   };
 
+  let init_journey_type ;
+  let init_journey_typef ;
+  let init_journey_typename ;
+  let init_journey_typenamef ;
+ 
   const handelBtn2 = (e) => {
-    if (item.step1.journey_type.includes(e.target.value)) {
-      let index = item.step1.journey_type.indexOf(e.target.value);
+
+  init_journey_type  = e.target.name // E 
+  init_journey_typef  = e.target.value  // F 
+  console.log(e.target.value,"name")
+
+
+
+    if (item.step1.journey_type.includes(init_journey_type) && item.step1.journey_typef.includes(init_journey_typef) ) {
+      let index = item.step1.journey_type.indexOf(init_journey_type) 
+      let index2 = item.step1.journey_typef.indexOf(init_journey_typef) 
 
       setItem((prev) => {
         prev.step1.journey_type.splice(index, 1);
+        prev.step1.journey_typef.splice(index2, 1);
         return { ...prev };
       });
-    } else
+
+
+
+
+      
+    } 
+    else
+    
       setItem((prev) => {
-        prev.step1.journey_type.push(e.target.value);
+        prev.step1.journey_type.push(init_journey_type)
+        prev.step1.journey_typef.push(init_journey_typef)
         return { ...prev };
       });
+
     props.passData(item);
   };
 
+  let init_journey_frequency;
   const handleAlignment = (event, newAlignment) => {
-    console.log(event.target.value, "event.target.value");
-    setAlignment(event.target.value);
+    // console.log()
+    init_journey_frequency = event.target.name
+    setAlignment(newAlignment);
     setItem((prev) => {
-      prev.step1.journey_frequency = event.target.value;
+      prev.step1.journey_frequency = init_journey_frequency
       return { ...prev };
     });
     props.passData(item);
   };
 
+let init_your_are ;   
   const handleAlignmentvous = (event, newAlignment) => {
-    console.log(event.target.value, "e");
-    setAlignmentvous(event.target.value);
+   
+    console.log(event.target.name,"-handleAlignmentvous")
+    init_your_are = event.target.name
+    setAlignmentvous(newAlignment);
+  
     setItem((prev) => {
-      prev.step1.your_are = event.target.value;
+      prev.step1.your_are = init_your_are
       return { ...prev };
     });
     props.passData(item);
   };
 
+  let init_days ;
+  let init_daysf ;
   const handelBtn4 = (e) => {
     console.log("handelBtn4");
-    if (item.step1.days.includes(e.target.value)) {
-      let index = item.step1.days.indexOf(e.target.value);
+    init_days = e.target.name // e
+    init_daysf = e.target.value // f 
+    if (item.step1.days.includes(init_days) && item.step1.daysf.includes(init_daysf))  {
+      let index = item.step1.days.indexOf(init_days);
+      let index2 = item.step1.daysf.indexOf(init_daysf);
 
       setItem((prev) => {
         prev.step1.days.splice(index, 1);
+        prev.step1.daysf.splice(index2, 1);
         return { ...prev };
       });
     } else
       setItem((prev) => {
-        prev.step1.days.push(e.target.value);
+        prev.step1.days.push(init_days);
+        prev.step1.daysf.push(init_daysf);
         return { ...prev };
       });
 
@@ -129,23 +178,32 @@ const StepOne = (props) => {
         <h5 className="section_headers_2 hange-Fonts-Size">your_are êtes ?</h5>
 
         <div className="section_headers_button_group">
-          <ToggleButtonGroup
-            value={alignmentvous}
-            exclusive
-            onChange={handleAlignmentvous}
-          >
-            {your_are.map((obj, i) => {
+        <ToggleButtonGroup
+      value={alignmentvous}
+      exclusive
+      onChange={handleAlignmentvous}
+      aria-label="text alignment"
+    >
+
+{your_are.map((obj, i) => {
+
+
+
               return (
-                <ToggleButton
-                  className="btnStepers"
-                  name={Object.keys(obj)}
-                  value={Object.values(obj)}
+                <ToggleButton  className="btnStepers"
+              
+
+                value={JSON.stringify(Object.keys(obj))}
+                name={Object.values(obj)}
                 >
-                  {Object.keys(obj)}
+    {Object.keys(obj)}
                 </ToggleButton>
               );
             })}
-          </ToggleButtonGroup>
+
+
+    </ToggleButtonGroup>
+         
         </div>
       </Box>
 
@@ -166,16 +224,27 @@ const StepOne = (props) => {
             return (
               <button
                 onClick={(e) => handelBtn2(e)}
+                
+       
+
                 style={
-                  item.step1.journey_type.find((e) => {
-                    if (e === obj) return true;
+                  item.step1.journey_typef.find((e) => {
+
+                    
+                    // init_journey_typenamef = JSON.stringify(Object.keys(obj))
+             
+                    if (e ===  JSON.stringify(Object.keys(obj))) return true;
+                    
                   })
+
                     ? style1
                     : style2
                 }
                 className="btnStepers"
-                name={Object.keys(obj)}
-                value={Object.values(obj)}
+                value={JSON.stringify(Object.keys(obj))}
+                name={(Object.values(obj))}
+                // name={Object.keys(obj)}
+                // value={Object.values(obj)}
               >
                 {Object.keys(obj)}
               </button>
@@ -206,8 +275,10 @@ const StepOne = (props) => {
               return (
                 <ToggleButton
                   className="btnStepers"
-                  name={Object.keys(obj)}
-                  value={Object.values(obj)}
+                  // name={Object.keys(obj)}
+                  // value={Object.values(obj)}
+                  value={JSON.stringify(Object.keys(obj))}
+                name={Object.values(obj)}
                 >
                   {Object.keys(obj)}
                 </ToggleButton>
@@ -234,14 +305,15 @@ const StepOne = (props) => {
                 className="btnStepers"
                 onClick={(e) => handelBtn4(e)}
                 style={
-                  item.step1.days.find((e) => {
-                    if (e === obj) return true;
+                  item.step1.daysf.find((e) => {
+                    if (e === JSON.stringify(Object.keys(obj))) return true;
                   })
                     ? style1
                     : style2
                 }
-                name={Object.keys(obj)}
-                value={Object.values(obj)}
+                value={JSON.stringify(Object.keys(obj))}
+                name={(Object.values(obj))}
+              
               >
                 {Object.keys(obj)}
               </button>
@@ -249,9 +321,9 @@ const StepOne = (props) => {
           })}
         </div>
       </Box>
-      {/* <div className="sep1PictureBox">
+      <div className="sep1PictureBox">
         <img src={KidcabChauffeu} />
-      </div> */}
+      </div>
     </div>
   );
 };
