@@ -1,10 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Autocomplete from "react-autocomplete";
+import { Store, UpdateStore } from "../StoreContext";
+
 // import { SetAuthToken } from "variables/auth";
 
 function AddressInput({ label, address, setAddress, optional }) {
   let [addresses, setAddresses] = useState([]);
+  const updateStore = UpdateStore();
+  const store = Store();
+
+  // useEffect(() => {
+  //   if (label == "pickUp_address") {
+  //     updateStore({
+  //       pickUp_address: address,
+  //     });
+  //   }
+  // }, [address]);
+  const pickAdrress = (AddressObj) => {
+    console.log("fun address", AddressObj);
+    if (label == "pickUp_address") {
+      updateStore({
+        pickUp_address: AddressObj,
+      });
+    }
+    if (label == "destination_address") {
+      updateStore({
+        destination_address: AddressObj,
+      });
+    }
+    if (label == "return_address") {
+      updateStore({
+        return_address: AddressObj,
+      });
+    }
+  };
 
   // Get All Address in drop down List from API
   const getAllAddress = async (e) => {
@@ -39,6 +69,11 @@ function AddressInput({ label, address, setAddress, optional }) {
       });
     }
     if (addressToSet.length === res?.data?.features.length) {
+      // if (label == "pickUp_address") {
+      //   updateStore({
+      //     pickUp_address: addressToSet,
+      //   });
+      // }
       setAddresses(addressToSet);
     }
   };
@@ -52,6 +87,14 @@ function AddressInput({ label, address, setAddress, optional }) {
           var lat = addresses[i].lat;
           var lng = addresses[i].lng;
           const city = addresses[i].city;
+          const AddressObj = {
+            label: addresses[i].label,
+            label2: addresses[i].label2,
+            postal_code,
+            lat,
+            lng,
+            city,
+          };
           setAddress({
             ...address,
             label: addresses[i].label,
@@ -61,6 +104,19 @@ function AddressInput({ label, address, setAddress, optional }) {
             lng,
             city,
           });
+          pickAdrress(AddressObj);
+          // if (label == "pickUp_address") {
+          //   console.log(label, "label");
+          //   updateStore({
+          //     ...store.pickUp_address,
+          //     label: addresses[i].label,
+          //     label2: addresses[i].label2,
+          //     postal_code,
+          //     lat,
+          //     lng,
+          //     city,
+          //   });
+          // }
         }
       }
     } else {
@@ -72,6 +128,14 @@ function AddressInput({ label, address, setAddress, optional }) {
         long: "",
         city: "",
       });
+      // updateStore({
+      //   ...store.pickUp_address,
+      //   address: "",
+      //   zip_code: "",
+      //   lat: "",
+      //   long: "",
+      //   city: "",
+      // });
     }
   };
 

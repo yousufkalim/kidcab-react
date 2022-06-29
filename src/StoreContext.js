@@ -17,9 +17,58 @@ export function UpdateStore() {
 // Initializing Store Provider
 export function StoreProvider({ children }) {
   // Initializing State
-  let [store, setStore] = useState({
+  const [store, setStore] = useState({
     loggedIn: false,
     user: {},
+    your_are: "",
+    your_areE: "",
+    journey_type: [],
+    journey_typeE: [],
+    journey_frequency: "",
+    journey_frequencyE: "",
+    days: [],
+    daysE: [],
+    door_support: "",
+    door_supportS: "",
+    total_children: "",
+    total_children_tb: "",
+    total_adults: "",
+    total_adults_tb: "",
+    baby: "",
+    babyTb: "",
+    pickUp_date: "",
+    pickUp_time: "",
+    return_date: "",
+    return_time: "",
+    pickUp_address: {
+      label: "",
+      label2: "",
+      postal_code: "",
+      lat: "",
+      lng: "",
+      city: "",
+    },
+    destination_address: {
+      label: "",
+      label2: "",
+      postal_code: "",
+      lat: "",
+      lng: "",
+      city: "",
+    },
+    return_address: {
+      label: "",
+      label2: "",
+      postal_code: "",
+      lat: "",
+      lng: "",
+      city: "",
+    },
+    first_name: "", // First name
+    company_name: "", //company_name/company name optional
+    email: "", //E-mail
+    phone: "", // phone
+    message: "", //company_name/company name optional optional
   });
 
   const updateStore = (data) => {

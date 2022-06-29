@@ -11,19 +11,21 @@ import VTCTaxiLoi from "../../assets/VTC-Taxi-Loi.png";
 import TimePicker from "react-time-picker";
 import AddressInput from "../AdressInput";
 import TextField from "@mui/material/TextField";
+import { Store, UpdateStore } from "../../StoreContext";
 const StepThree = (props) => {
-  const [age, setAge] = React.useState(10);
-  const [value, onChange] = useState("12:00");
-  const [value2, onChange2] = useState("12:00");
+  const updateStore = UpdateStore();
+  const store = Store();
+  const [value, onChange] = useState(
+    store?.pickUp_time ? store?.pickUp_time : "12:00"
+  );
+  const [value2, onChange2] = useState(
+    store?.return_time ? store?.return_time : "12:00"
+  );
   let [startAddress, setStartAddress] = useState({});
   let [endAddress, setEndAddress] = useState({});
   let [returnAddress, setReturnAddress] = useState({});
 
   console.log(startAddress, "startAddress");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
   console.log(value);
   const [item, setItem] = useState({
     step3: {
@@ -37,17 +39,24 @@ const StepThree = (props) => {
     },
   });
 
-  useEffect(() => {
+  const handleTime = (e) => {
+    console.log(e);
     setItem((prev) => {
-      prev.step3.pickUp_address = startAddress;
+      prev.step3.pickUp_time = e;
       return { ...prev };
     });
-  }, [startAddress]);
+    updateStore({
+      pickUp_time: e,
+    });
+  };
 
   useEffect(() => {
     setItem((prev) => {
       prev.step3.pickUp_time = value;
       return { ...prev };
+    });
+    updateStore({
+      pickUp_time: value,
     });
   }, [value]);
 
@@ -56,32 +65,10 @@ const StepThree = (props) => {
       prev.step3.return_time = value2;
       return { ...prev };
     });
+    updateStore({
+      return_time: value2,
+    });
   }, [value2]);
-
-  useEffect(() => {
-    setItem((prev) => {
-      prev.step3.destination_address = endAddress;
-      return { ...prev };
-    });
-  }, [endAddress]);
-
-  useEffect(() => {
-    setItem((prev) => {
-      prev.step3.return_address = returnAddress;
-      return { ...prev };
-    });
-  }, [returnAddress]);
-
-  console.log(item, "my address");
-
-  // useEffect(() => {
-  //   setItem((prev) => {
-  //     prev.step3.pickUp_address = startAddress;
-  //     prev.step3.destination_address = endAddress;
-  //     prev.step3.return_address = returnAddress;
-  //     return { ...prev };
-  //   });
-  // }, [startAddress, endAddress, returnAddress]);
 
   const disableDates = () => {
     var today, dd, mm, yyyy;
@@ -102,19 +89,24 @@ const StepThree = (props) => {
   let init_pickUp_date2;
   const handelBtn = (e) => {
     if (e.target.name == "pickUp_date") {
-      init_pickUp_date = e.target.value
+      init_pickUp_date = e.target.value;
       setItem((prev) => {
-       
-        prev.step3.pickUp_date = init_pickUp_date
+        prev.step3.pickUp_date = init_pickUp_date;
         return { ...prev };
+      });
+      updateStore({
+        pickUp_date: init_pickUp_date,
       });
     }
     if (e.target.name == "return_date") {
-      init_pickUp_date2 = e.target.value
+      init_pickUp_date2 = e.target.value;
 
       setItem((prev) => {
-        prev.step3.return_date = init_pickUp_date2
+        prev.step3.return_date = init_pickUp_date2;
         return { ...prev };
+      });
+      updateStore({
+        return_date: init_pickUp_date2,
       });
     }
     props.passData3(item);
@@ -127,6 +119,14 @@ const StepThree = (props) => {
     });
     props.passData3(item);
   };
+  //return_time
+  console.log(store.pickUp_address, "store.pickUp_address");
+  console.log(store.pickUp_time, "store.pickUp_time");
+  console.log(store.return_time, "store.return_time");
+  console.log(store.destination_address, "store.destination_address");
+  console.log(store.return_address, "store.return_address");
+  console.log(store.pickUp_date, "store.pickUp_date");
+  console.log(store.return_date, "store.return_date");
 
   return (
     <div className="stepOne_main">
@@ -150,7 +150,7 @@ const StepThree = (props) => {
               placeholder={"Select Date"}
               type="date"
               min={disableDates()}
-              value={item?.step3.pickUp_date?.split("T")[0]}
+              value={store?.pickUp_date?.split("T")[0]}
               name="pickUp_date"
               onChange={handelBtn}
               className="btnStepers btnsteper_special"
@@ -169,9 +169,12 @@ const StepThree = (props) => {
                     disableClock={true}
                     clockIcon={null}
                     amPmAriaLabel={true}
-                    value={value}
-                    onChange={onChange}
-                    
+                    value={store.pickUp_time}
+                    onChange={(e) => {
+                      updateStore({
+                        pickUp_time: e,
+                      });
+                    }}
                   />
                 </div>
               </FormControl>
@@ -182,7 +185,7 @@ const StepThree = (props) => {
 
       {/* second  */}
 
-      <Box 
+      <Box
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
@@ -194,15 +197,17 @@ const StepThree = (props) => {
               Adresse de prise en charge
             </h5>
             <Box sx={{ minWidth: 120 }} className="input_add_custom">
-              <FormControl fullWidth className="form_cm" > 
+              <FormControl fullWidth className="form_cm">
                 {/* <InputLabel id="demo-simple-select-label" ></InputLabel> */}
-                <AddressInput  style={{ maxWidth: "100%" }}
-                    id="boxStepers_input_sm"
-            
-                
-                  label=" " 
-                  address={startAddress}
-               
+                <AddressInput
+                  style={{ maxWidth: "100%" }}
+                  id="boxStepers_input_sm"
+                  label="pickUp_address"
+                  address={
+                    Object.values(startAddress).length > 1
+                      ? startAddress
+                      : store.pickUp_address
+                  }
                   setAddress={setStartAddress}
                 />
               </FormControl>
@@ -211,15 +216,20 @@ const StepThree = (props) => {
           <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
             <h5 className="section_headers_2 hange-Fonts-Size">
               Adresse de destination{" "}
-              <span className="optonal_span">optional</span>
             </h5>
-            <Box sx={{ minWidth: 120 }} className="box-leftmove input_add_custom2  ">
-
+            <Box
+              sx={{ minWidth: 120 }}
+              className="box-leftmove input_add_custom2  "
+            >
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label"></InputLabel>
                 <AddressInput
-                  label=""
-                  address={endAddress}
+                  label="destination_address"
+                  address={
+                    Object.values(endAddress).length > 1
+                      ? endAddress
+                      : store.destination_address
+                  }
                   setAddress={setEndAddress}
                 />
               </FormControl>
@@ -248,11 +258,10 @@ const StepThree = (props) => {
               placeholder={"Select Date"}
               type="date"
               min={disableDates()}
-              value={item?.step3.return_date?.split("T")[0]}
+              value={store?.return_date?.split("T")[0]}
               name="return_date"
               onChange={handelBtn}
               className="btnStepers btnsteper_special"
-
             />
           </div>
           <div className="btn-flex-grop cm-view-btn-group">
@@ -268,8 +277,12 @@ const StepThree = (props) => {
                     disableClock={true}
                     clockIcon={null}
                     amPmAriaLabel={true}
-                    value={value2}
-                    onChange={onChange2}
+                    value={store?.return_time}
+                    onChange={(e) => {
+                      updateStore({
+                        return_time: e,
+                      });
+                    }}
                   />
                 </div>
               </FormControl>
@@ -292,15 +305,17 @@ const StepThree = (props) => {
               <span className="optonal_span">optional</span>
             </h5>
             <Box sx={{ minWidth: 120 }}>
-              <FormControl fullWidth className="form_cm" > 
+              <FormControl fullWidth className="form_cm">
                 {/* <InputLabel id="demo-simple-select-label" ></InputLabel> */}
-                <AddressInput  style={{ maxWidth: "100%" }}
-                    id="boxStepers_input_sm"
-            
-                
-                  label=" " 
-                  address={returnAddress}
-               
+                <AddressInput
+                  style={{ maxWidth: "100%" }}
+                  id="boxStepers_input_sm"
+                  label="return_address"
+                  address={
+                    Object.values(returnAddress).length > 1
+                      ? returnAddress
+                      : store.return_address
+                  }
                   setAddress={setReturnAddress}
                 />
               </FormControl>

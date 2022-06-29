@@ -11,10 +11,13 @@ import Kidcab_service from "../../assets/Kidcab_service.png";
 import Checkbox from "@mui/material/Checkbox";
 import ReCAPTCHA from "react-google-recaptcha";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import { Store, UpdateStore } from "../../StoreContext";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const StepFour = (props) => {
   const [age, setAge] = React.useState(10);
+  const updateStore = UpdateStore();
+  const store = Store();
   const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -37,10 +40,36 @@ const StepFour = (props) => {
 
   const { first_name, company_name, email, phone, message, agree } = item;
 
-  const onChangeform = (e) =>
+  const onChangeform = (e) => {
+    if (e.target.name == "first_name") {
+      updateStore({
+        first_name: e.target.value,
+      });
+    }
+    if (e.target.name == "company_name") {
+      updateStore({
+        company_name: e.target.value,
+      });
+    }
+    if (e.target.name == "phone") {
+      updateStore({
+        phone: e.target.value,
+      });
+    }
+    if (e.target.name == "message") {
+      updateStore({
+        message: e.target.value,
+      });
+    }
+    if (e.target.name == "email") {
+      updateStore({
+        email: e.target.value,
+      });
+    }
     setItem({ ...item, [e.target.name]: e.target.value });
-  props.passData4(item);
-  console.log(item, "-item");
+    props.passData4(item);
+    console.log(item, "-item");
+  };
 
   const onChangeformcheck = (e) => {
     setChecked(!checked);
@@ -48,8 +77,8 @@ const StepFour = (props) => {
       prev.agree = !checked;
       return { ...prev };
     });
+    props.passData4(item);
   };
-
   return (
     <div className="stepOne_main">
       {/* one  */}
@@ -73,12 +102,12 @@ const StepFour = (props) => {
               placeholder="Prénom"
               onChange={onChangeform}
               name="first_name"
-              value={first_name}
+              value={store.first_name}
               className="cm-input-name"
             />
             {/* <button className="btnStepers btnstpers_3">Write here </button> */}
           </div>
-          <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22" >
+          <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
             <h5
               style={{ marginTop: "20px" }}
               className="section_headers_2 hange-Fonts-Size text-align-text"
@@ -90,7 +119,7 @@ const StepFour = (props) => {
               style={{ marginTop: "20px" }}
               placeholder="  Nom de l'organisme/entreprise"
               name="company_name"
-              value={company_name}
+              value={store.company_name}
               onChange={onChangeform}
             />
           </div>
@@ -120,7 +149,7 @@ const StepFour = (props) => {
               placeholder="email"
               onChange={onChangeform}
               name="email"
-              value={email}
+              value={store.email}
             />
           </div>
           <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
@@ -135,7 +164,7 @@ const StepFour = (props) => {
               type="number"
               placeholder="Téléphone"
               name="phone"
-              value={phone}
+              value={store.phone}
               onChange={onChangeform}
             />
           </div>
@@ -166,7 +195,7 @@ const StepFour = (props) => {
               name="message"
               onChange={onChangeform}
               style={{ marginTop: "20px", marginLeft: "40px" }}
-              value={message}
+              value={store.message}
               minRows={3}
             />
           </div>
@@ -181,13 +210,12 @@ const StepFour = (props) => {
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group4">
-            {/* < className="section_headers_2 hange-Fonts-Size text-align-text"> */}
-              {" "}
-              <Checkbox
-                {...label}
-                onChange={(e) => onChangeformcheck(e)}
-                name="agree"
-              />{" "}
+            {/* < className="section_headers_2 hange-Fonts-Size text-align-text"> */}{" "}
+            <Checkbox
+              {...label}
+              onChange={(e) => onChangeformcheck(e)}
+              name="agree"
+            />{" "}
             {/* </h5> */}
             <p className="form4_agree-text">
               En soumettant ce formulaire, j'accepte que les informations
@@ -199,19 +227,18 @@ const StepFour = (props) => {
         </div>
       </Box>
 
-      <Box
+      {/* <Box
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
         className="boxStepers box-top3"
-
       >
         <div className="section_headers_button_group spte_3_btn-grroup check_flex">
           <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group5">
             <ReCAPTCHA sitekey="Kidcab" onChange={onChange} />
           </div>
         </div>
-      </Box>
+      </Box> */}
 
       <div className="sep4PictureBox4">
         <img src={Kidcab_service} />
