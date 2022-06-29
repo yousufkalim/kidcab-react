@@ -163,12 +163,6 @@ const StepOne = (props) => {
     props.passData(item);
   };
 
-  console.log(item, "-item");
-  console.log(store.your_are, "store.your_are");
-  //alignmentvous
-  console.log(alignmentvous, "alignmentvous");
-  console.log(store.journey_type, "store.journey_type");
-  console.log(store.journey_frequency, "store.journey_frequency");
   return (
     <div className="stepOne_main">
       <h5 className="section_headers">

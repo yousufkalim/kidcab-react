@@ -351,7 +351,7 @@ export default function HorizontalLinearStepper() {
               <Box sx={{ flex: "1 1 auto" }} />
 
               <button onClick={handleNext} className="btn-next">
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                {activeStep === steps.length - 1 ? "Finir" : "Prochaine"}
               </button>
             </Box>
           </React.Fragment>
