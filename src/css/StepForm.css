@@ -115,6 +115,27 @@ order: 0;
 flex-grow: 0;
 }
 
+
+#input-address-pickUp_address , #input-address-destination_address,#input-address-return_address
+{
+    border: 3px solid red !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+    display: flex !important;
+    background: #F8FCFB !important;
+    border: 1px solid #DFEEEB !important;
+    flex-direction: row !important;
+    width: 333px !important;
+    height: 54px !important;
+    font-size: medium;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    padding: 15px 32px !important;
+    gap: 10px !important;
+    margin-left: 12px;
+}
 .section_headers_button_group
 {
     display: flex;

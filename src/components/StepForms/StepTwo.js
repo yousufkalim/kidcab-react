@@ -6,13 +6,16 @@ import Demanderpng from "../../assets/Demanderpng.png";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import TextField from "@mui/material/TextField";
+import { Store, UpdateStore } from "../../StoreContext";
 const StepTwo = (props) => {
+  const updateStore = UpdateStore();
+  const store = Store();
   const [item, setItem] = useState({
     step2: {
       door_support: "",
-      total_children: "",
-      total_adults: "",
-      baby: "",
+      total_children: 0,
+      total_adults: 0,
+      baby: 0,
     },
   });
   const [alignment, setAlignment] = React.useState("left");
@@ -21,28 +24,36 @@ const StepTwo = (props) => {
   const [alignmentBébé, setAlignmentBébé] = React.useState("left");
 
   const Besoin = [{ Oui: true }, { Non: false }];
-  const Nombre = ["0", "1", "2", "3"];
-  const Nombred = ["0", "1", "2", "3"];
-  const Bébé = ["0", "1", "2", "3"];
+  const Nombre = [1, 2, 3];
+  const Nombred = [1, 2, 3];
+  const Bébé = [1, 2, 3];
 
   // Need door-to-door support?
-   let init_door_support ; 
+  let init_door_support;
   const handleAlignment = (event, newAlignment) => {
-    init_door_support = event.target.name
+    console.log(event.target.name, "event.target.name dOOR sUPPORT");
+    init_door_support = event.target.name;
     setAlignment(newAlignment);
     setItem((prev) => {
-      prev.step2.door_support = init_door_support
+      prev.step2.door_support = init_door_support;
       return { ...prev };
+    });
+    updateStore({
+      door_support: event.target.name,
+      door_supportS: newAlignment,
     });
     props.passData2(item);
   };
-
+  console.log(store.door_support, "door_supportstore");
   // Number of childres
   const handleAlignmentNombre = (event, newAlignment) => {
     setAlignmentNombre(newAlignment);
     setItem((prev) => {
       prev.step2.total_children = newAlignment;
       return { ...prev };
+    });
+    updateStore({
+      total_children: newAlignment,
     });
     props.passData2(item);
   };
@@ -51,8 +62,11 @@ const StepTwo = (props) => {
   const ChildFun = (e) => {
     init_total_children = e.target.value;
     setItem((prev) => {
-      prev.step2.total_children = init_total_children
+      prev.step2.total_children = init_total_children;
       return { ...prev };
+    });
+    updateStore({
+      total_children_tb: e.target.value,
     });
     props.passData2(item);
   };
@@ -66,17 +80,21 @@ const StepTwo = (props) => {
       prev.step2.total_adults = newAlignment;
       return { ...prev };
     });
+    updateStore({
+      total_adults: newAlignment,
+    });
     props.passData2(item);
   };
 
-  let init_adults ;
+  let init_adults;
   const AdultFun = (e) => {
-
-    init_adults = e.target.value
+    init_adults = e.target.value;
     setItem((prev) => {
-      
       prev.step2.total_adults = init_adults;
       return { ...prev };
+    });
+    updateStore({
+      total_adults_tb: e.target.value,
     });
     props.passData2(item);
   };
@@ -88,17 +106,27 @@ const StepTwo = (props) => {
       prev.step2.baby = newAlignment;
       return { ...prev };
     });
-    props.passData2(item);
-  };
-
-  const BébéFun = (e) => {
-    setItem((prev) => {
-      prev.step2.baby = e.target.value;
-      return { ...prev };
+    updateStore({
+      baby: newAlignment,
     });
     props.passData2(item);
   };
 
+  const BébéFun = (e) => {
+    console.log(e.target.value, "e.target.value Bbay");
+    setItem((prev) => {
+      prev.step2.baby = e.target.value;
+      return { ...prev };
+    });
+    updateStore({
+      babyTb: e.target.value,
+    });
+    props.passData2(item);
+  };
+  console.log(item.step2.door_support, "item.step2.door_support");
+  console.log(item.step2.total_children, "item.step2.total_children");
+  console.log(item.step2.total_adults, "item.step2.adults");
+  console.log(item.step2.baby, "item.step2.baby");
 
   return (
     <div className="stepOne_main">
@@ -117,7 +145,7 @@ const StepTwo = (props) => {
 
         <div className="section_headers_button_group">
           <ToggleButtonGroup
-            value={alignment}
+            value={store.door_supportS}
             exclusive
             onChange={handleAlignment}
           >
@@ -125,8 +153,8 @@ const StepTwo = (props) => {
               return (
                 <ToggleButton
                   className="btnStepers"
-                  value={JSON.stringify(Object.keys(obj))}
-                name={Object.values(obj)}
+                  value={JSON.stringify(Object.values(obj))}
+                  name={Object.keys(obj)}
                 >
                   {Object.keys(obj)}
                 </ToggleButton>
@@ -146,30 +174,33 @@ const StepTwo = (props) => {
           Nombre d'enfant(s)
         </h5>
 
-        <div className="section_headers_button_group " >
-          <ToggleButtonGroup
-            value={alignmentNombre}
-            exclusive
-            onChange={handleAlignmentNombre}
-          >
-            {Nombre.map((obj, i) => {
-              return (
-                <ToggleButton className="btnStepers"  value={obj}>
-                  {obj}
-                </ToggleButton>
-              );
-            })}
-          </ToggleButtonGroup>
-          <div  className="custom_input_children">
-          <TextField
-            placeholder="Number of child(ren)  "
-            type="number"
-            onChange={(e) => ChildFun(e)}
-
-          />
-          </div>
+        <div className="section_headers_button_group ">
+          {store.total_children_tb === "" && (
+            <ToggleButtonGroup
+              value={store.total_children}
+              exclusive
+              onChange={handleAlignmentNombre}
+            >
+              {Nombre.map((obj, i) => {
+                return (
+                  <ToggleButton className="btnStepers" value={obj} name={obj}>
+                    {obj}
+                  </ToggleButton>
+                );
+              })}
+            </ToggleButtonGroup>
+          )}
+          {!store.total_children && (
+            <div className="custom_input_children">
+              <TextField
+                placeholder="Number of child(ren)  "
+                type="number"
+                value={store.total_children_tb}
+                onChange={(e) => ChildFun(e)}
+              />
+            </div>
+          )}
         </div>
-
       </Box>
 
       {/* third  */}
@@ -185,26 +216,31 @@ const StepTwo = (props) => {
         </h5>
 
         <div className="section_headers_button_group">
-          <ToggleButtonGroup
-            value={alignmentNombred}
-            exclusive
-            onChange={handleAlignmentNombred}
-          >
-            {Nombred.map((obj, i) => {
-              return (
-                <ToggleButton className="btnStepers" value={obj}>
-                  {obj}
-                </ToggleButton>
-              );
-            })}
-          </ToggleButtonGroup>
-          <div  className="custom_input_children">
-          <TextField
-            placeholder="Nombre d'adulte "
-            type="number"
-            onChange={(e) => AdultFun(e)}
-          />
-          </div>
+          {store.total_adults_tb === "" && (
+            <ToggleButtonGroup
+              value={store.total_adults}
+              exclusive
+              onChange={handleAlignmentNombred}
+            >
+              {Nombred.map((obj, i) => {
+                return (
+                  <ToggleButton className="btnStepers" value={obj}>
+                    {obj}
+                  </ToggleButton>
+                );
+              })}
+            </ToggleButtonGroup>
+          )}
+          {!store.total_adults && (
+            <div className="custom_input_children">
+              <TextField
+                placeholder="Nombre d'adulte "
+                type="number"
+                value={store.total_adults_tb}
+                onChange={(e) => AdultFun(e)}
+              />
+            </div>
+          )}
         </div>
       </Box>
 
@@ -219,28 +255,34 @@ const StepTwo = (props) => {
         </h5>
 
         <div className="section_headers_button_group ">
-          <ToggleButtonGroup
-            value={alignmentBébé}
-            exclusive
-            onChange={handleAlignmentBébé}
-          >
-            {Bébé.map((obj, i) => {
-              return (
-                <ToggleButton className="btnStepers btnStepers-s " value={obj}>
-                  {obj}
-                </ToggleButton>
-              );
-            })}
-          </ToggleButtonGroup>
-          <div  className="custom_input_children">
-          
-          <TextField
-            placeholder="Nombre d'adulte "
-            onChange={(e) => BébéFun(e)}
-            type="number"
-          />
-
-        </div>
+          {store.babyTb == "" && (
+            <ToggleButtonGroup
+              value={store.baby}
+              exclusive
+              onChange={handleAlignmentBébé}
+            >
+              {Bébé.map((obj, i) => {
+                return (
+                  <ToggleButton
+                    className="btnStepers btnStepers-s "
+                    value={obj}
+                  >
+                    {obj}
+                  </ToggleButton>
+                );
+              })}
+            </ToggleButtonGroup>
+          )}
+          {!store.baby && (
+            <div className="custom_input_children">
+              <TextField
+                placeholder="Nombre d'adulte "
+                onChange={(e) => BébéFun(e)}
+                value={store.babyTb}
+                type="number"
+              />
+            </div>
+          )}
         </div>
       </Box>
       <div className="sep1PictureBox2">
