@@ -22,6 +22,11 @@
     height: 50px;
     width: 50px;
 }
+.css-4ff9q7.Mui-completed{
+    color: #4CB9B4 !important;
+    height: 50px;
+    width: 50px;
+}
 
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root 
 {
@@ -568,7 +573,7 @@ z-index: -1;
     align-items: flex-start !important;
     padding: 15px 32px !important;
     gap: 10px !important;
-    margin-right: 30px !important; ;
+    margin-right: 30px !important; 
   
 }
 .css-1gjgmky-MuiToggleButtonGroup-root{
@@ -744,6 +749,16 @@ color: white;
         color: #4CB9B4 !important;
         height: 45px;
         width: 45px;
+    }
+    /* live  step active*/
+    .css-4ff9q7.Mui-active{
+        color: #4CB9B4 !important;
+        height: 45px !important;
+        width: 45px !important;
+    }
+    /* live  step  */
+    .css-4ff9q7{
+        font-size: 45px !important;
     }
     .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
         font-size: 45px !important;
