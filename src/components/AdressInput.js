@@ -19,17 +19,17 @@ function AddressInput({ label, address, setAddress, optional }) {
   // }, [address]);
   const pickAdrress = (AddressObj) => {
     console.log("fun address", AddressObj);
-    if (label == "pickUp_address") {
+    if (label == "adresse de ramassage") {
       updateStore({
         pickUp_address: AddressObj,
       });
     }
-    if (label == "destination_address") {
+    if (label == "adresse de destination") {
       updateStore({
         destination_address: AddressObj,
       });
     }
-    if (label == "return_address") {
+    if (label == "adresse de retour") {
       updateStore({
         return_address: AddressObj,
       });
