@@ -290,21 +290,16 @@ export default function HorizontalLinearStepper() {
         className="boxStepers"
       >
         <Container maxWidth="sm">
-          <Stepper activeStep={activeStep}>
+          <Stepper className="boxStepers_main" activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
-              if (isStepOptional(index)) {
-                labelProps.optional = (
-                  <Typography variant="caption"></Typography>
-                );
-              }
-              if (isStepSkipped(index)) {
-                stepProps.completed = false;
-              }
+
               return (
-                <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
+                <Step className="step_main" key={label} {...stepProps}>
+                  <StepLabel className="step-label_custom" {...labelProps}>
+                    {label}
+                  </StepLabel>
                 </Step>
               );
             })}
@@ -346,12 +341,12 @@ export default function HorizontalLinearStepper() {
                 sx={{ mr: 1 }}
                 className="btn_caneel"
               >
-                {activeStep === 0 ? "Cancel" : "Previous"}
+                {activeStep === 0 ? "annuler" : "précédente"}
               </button>
-              <Box sx={{ flex: "1 1 auto" }} />
+              <Box sx={{ flex: "0 1 auto" }} />
 
               <button onClick={handleNext} className="btn-next">
-                {activeStep === steps.length - 1 ? "Finir" : "Prochaine"}
+                {activeStep === steps.length - 1 ? "terminer" : "suivante"}
               </button>
             </Box>
           </React.Fragment>

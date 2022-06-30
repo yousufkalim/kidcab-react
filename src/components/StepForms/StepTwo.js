@@ -145,6 +145,7 @@ const StepTwo = (props) => {
 
         <div className="section_headers_button_group">
           <ToggleButtonGroup
+          className="ButtonGroup-root"
             value={store.door_supportS}
             exclusive
             onChange={handleAlignment}
@@ -152,7 +153,7 @@ const StepTwo = (props) => {
             {Besoin.map((obj, i) => {
               return (
                 <ToggleButton
-                  className="btnStepers"
+                className="boxStepers_btn_custom boxStepers_btn_customform2"
                   value={JSON.stringify(Object.values(obj))}
                   name={Object.keys(obj)}
                 >
@@ -177,13 +178,15 @@ const StepTwo = (props) => {
         <div className="section_headers_button_group ">
           {store.total_children_tb === "" && (
             <ToggleButtonGroup
+            className="ButtonGroup-root"
+       
               value={store.total_children}
               exclusive
               onChange={handleAlignmentNombre}
             >
               {Nombre.map((obj, i) => {
                 return (
-                  <ToggleButton className="btnStepers" value={obj} name={obj}>
+                  <ToggleButton  className="boxStepers_btn_custom boxStepers_btn_custom2 boxStepers_btn_customform2" value={obj} name={obj}>
                     {obj}
                   </ToggleButton>
                 );
@@ -192,7 +195,8 @@ const StepTwo = (props) => {
           )}
           {!store.total_children && (
             <div className="custom_input_children">
-              <TextField
+              <TextField 
+              className="custom_input_children_inner"
                 placeholder="Number of child(ren)  "
                 type="number"
                 value={store.total_children_tb}
@@ -218,13 +222,15 @@ const StepTwo = (props) => {
         <div className="section_headers_button_group">
           {store.total_adults_tb === "" && (
             <ToggleButtonGroup
+            className="ButtonGroup-root"
+
               value={store.total_adults}
               exclusive
               onChange={handleAlignmentNombred}
             >
               {Nombred.map((obj, i) => {
                 return (
-                  <ToggleButton className="btnStepers" value={obj}>
+                  <ToggleButton className="boxStepers_btn_custom boxStepers_btn_custom2 boxStepers_btn_customform2" value={obj}>
                     {obj}
                   </ToggleButton>
                 );
@@ -234,6 +240,7 @@ const StepTwo = (props) => {
           {!store.total_adults && (
             <div className="custom_input_children">
               <TextField
+               className="custom_input_children_inner"
                 placeholder="Nombre d'adulte "
                 type="number"
                 value={store.total_adults_tb}
@@ -257,6 +264,7 @@ const StepTwo = (props) => {
         <div className="section_headers_button_group ">
           {store.babyTb == "" && (
             <ToggleButtonGroup
+            className="ButtonGroup-root"
               value={store.baby}
               exclusive
               onChange={handleAlignmentBébé}
@@ -264,7 +272,9 @@ const StepTwo = (props) => {
               {Bébé.map((obj, i) => {
                 return (
                   <ToggleButton
-                    className="btnStepers btnStepers-s "
+
+                    // className="btnStepers btnStepers-s "
+                    className="boxStepers_btn_custom boxStepers_btn_custom2  boxStepers_btn_customform2" 
                     value={obj}
                   >
                     {obj}
@@ -276,7 +286,8 @@ const StepTwo = (props) => {
           {!store.baby && (
             <div className="custom_input_children">
               <TextField
-                placeholder="Nombre d'adulte "
+               className="custom_input_children_inner"
+                placeholder="Nombre of 'Bébé "
                 onChange={(e) => BébéFun(e)}
                 value={store.babyTb}
                 type="number"
