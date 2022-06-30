@@ -89,7 +89,7 @@ const StepFour = (props) => {
         className="boxStepers "
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
-          <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22 ">
+          <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2  ">
             <h5
               style={{ marginTop: "20px" }}
               className="section_headers_2 hange-Fonts-Size text-align-text"
@@ -98,12 +98,13 @@ const StepFour = (props) => {
             </h5>
 
             <TextField
+             className="custom_input_children_inner2 custom_input_children_inner2_name"
               style={{ marginTop: "20px" }}
               placeholder="Prénom"
               onChange={onChangeform}
               name="first_name"
               value={store.first_name}
-              className="cm-input-name"
+              // className="cm-input-name"
             />
             {/* <button className="btnStepers btnstpers_3">Write here </button> */}
           </div>
@@ -116,6 +117,7 @@ const StepFour = (props) => {
               <span className="optonal_span">optional</span>{" "}
             </h5>
             <TextField
+             className="custom_input_children_inner2_cam"
               style={{ marginTop: "20px" }}
               placeholder="  Nom de l'organisme/entreprise"
               name="company_name"
@@ -144,6 +146,7 @@ const StepFour = (props) => {
             </h5>
 
             <TextField
+             className="custom_input_children_inner2 custom_input_children_inner2_email"
               style={{ marginTop: "20px" }}
               type="email"
               placeholder="email"
@@ -160,6 +163,7 @@ const StepFour = (props) => {
               Téléphone{" "}
             </h5>
             <TextField
+             className="custom_input_children_inner2 custom_input_children_inner2_tele"
               style={{ marginTop: "20px" }}
               type="number"
               placeholder="Téléphone"
@@ -191,7 +195,7 @@ const StepFour = (props) => {
             <TextareaAutosize
               // aria-label="Tapez votre massage "
               placeholder="Tapez votre massage"
-              className="btnStepers btnstpers_33 messages"
+              className="custom_input_children_inner2_message"
               name="message"
               onChange={onChangeform}
               style={{ marginTop: "20px", marginLeft: "40px" }}
@@ -227,7 +231,7 @@ const StepFour = (props) => {
         </div>
       </Box>
 
-      {/* <Box
+      <Box
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
         sm={{ width: "100%" }}
@@ -238,7 +242,7 @@ const StepFour = (props) => {
             <ReCAPTCHA sitekey="Kidcab" onChange={onChange} />
           </div>
         </div>
-      </Box> */}
+      </Box>
 
       <div className="sep4PictureBox4">
         <img src={Kidcab_service} />

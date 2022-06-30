@@ -144,7 +144,7 @@ const StepThree = (props) => {
             <h5 className="section_headers_2 hange-Fonts-Siz ">Aller le ?</h5>
 
             <TextField
-              // className="form-control-alternative"
+              className="custom_input_children_inner2 custom_input_children_inner2_mobile"
               id="input-date"
               locale={"en-gb"}
               placeholder={"Select Date"}
@@ -153,7 +153,7 @@ const StepThree = (props) => {
               value={store?.pickUp_date?.split("T")[0]}
               name="pickUp_date"
               onChange={handelBtn}
-              className="btnStepers btnsteper_special"
+              // className="btnStepers btnsteper_special"
             />
           </div>
           <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
@@ -161,11 +161,12 @@ const StepThree = (props) => {
               Heure de ramassage{" "}
             </h5>
             <Box sx={{ minWidth: 120 }}>
-              <FormControl fullWidth>
+              <FormControl fullWidth >
                 <div className="TimePicker-ss">
                   <TimePicker
                     style={{ height: "calc(1.5em + 1.25rem + 2px)" }}
                     name="time"
+                    // className="custom_input_children_inner"
                     disableClock={true}
                     clockIcon={null}
                     amPmAriaLabel={true}
@@ -197,9 +198,11 @@ const StepThree = (props) => {
               Adresse de prise en charge
             </h5>
             <Box sx={{ minWidth: 120 }} className="input_add_custom">
-              <FormControl fullWidth className="form_cm">
-                {/* <InputLabel id="demo-simple-select-label" ></InputLabel> */}
+              <FormControl fullWidth className="custom_input_children_inner2_input">
+                {/* <utInputLabel id="demo-simple-select-label" ></utInputLabel> */}
+
                 <AddressInput
+             
                   style={{ maxWidth: "100%" }}
                   id="boxStepers_input_sm"
                   label="pickUp_address"
@@ -221,7 +224,7 @@ const StepThree = (props) => {
               sx={{ minWidth: 120 }}
               className="box-leftmove input_add_custom2  "
             >
-              <FormControl fullWidth>
+              <FormControl fullWidth className="custom_input_children_inner2_input custom_input_children_inner2_input22 ">
                 <InputLabel id="demo-simple-select-label"></InputLabel>
                 <AddressInput
                   label="destination_address"
@@ -253,6 +256,7 @@ const StepThree = (props) => {
             </h5>
             <TextField
               // className="form-control-alternative"
+              className="custom_input_children_inner2 custom_input_children_inner2_mobile"
               id="input-date"
               locale={"en-gb"}
               placeholder={"Select Date"}
@@ -261,7 +265,7 @@ const StepThree = (props) => {
               value={store?.return_date?.split("T")[0]}
               name="return_date"
               onChange={handelBtn}
-              className="btnStepers btnsteper_special"
+              // className="btnStepers btnsteper_special"
             />
           </div>
           <div className="btn-flex-grop cm-view-btn-group">
@@ -305,7 +309,7 @@ const StepThree = (props) => {
               <span className="optonal_span">optional</span>
             </h5>
             <Box sx={{ minWidth: 120 }}>
-              <FormControl fullWidth className="form_cm">
+              <FormControl fullWidth className="custom_input_children_inner2_input">
                 {/* <InputLabel id="demo-simple-select-label" ></InputLabel> */}
                 <AddressInput
                   style={{ maxWidth: "100%" }}

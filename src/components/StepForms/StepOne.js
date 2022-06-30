@@ -164,6 +164,9 @@ const StepOne = (props) => {
   };
 
   return (
+
+
+    
     <div className="stepOne_main">
       <h5 className="section_headers">
         *Choisissez-en un days chaque question !
@@ -178,15 +181,21 @@ const StepOne = (props) => {
 
         <div className="section_headers_button_group">
           <ToggleButtonGroup
+     
             value={store.your_are}
+            className="ButtonGroup-root"
             exclusive
             onChange={handleAlignmentvous}
             // aria-label="text alignment"
           >
             {your_are.map((obj, i) => {
               return (
-                <ToggleButton
-                  className="btnStepers"
+                <ToggleButton     
+                
+         
+                
+                 className="boxStepers_btn_custom"
+                  // className="btnStepers"
                   value={JSON.stringify(Object.keys(obj))}
                   name={Object.values(obj)}
                 >
@@ -248,6 +257,7 @@ const StepOne = (props) => {
 
         <div className="section_headers_button_group">
           <ToggleButtonGroup
+            className="ButtonGroup-root"
             value={store.journey_frequency}
             exclusive
             onChange={handleAlignment}
@@ -255,7 +265,8 @@ const StepOne = (props) => {
             {journey_frequency.map((obj, i) => {
               return (
                 <ToggleButton
-                  className="btnStepers"
+                className="boxStepers_btn_custom "
+         
                   value={JSON.stringify(Object.keys(obj))}
                   name={Object.values(obj)}
                 >

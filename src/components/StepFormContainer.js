@@ -18,7 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "../css/StepForm.css";
 import { Store, UpdateStore } from "../StoreContext";
 
-const steps = ["", "", "", ""];
+const steps = ["", "", "", "" , ];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -290,21 +290,15 @@ export default function HorizontalLinearStepper() {
         className="boxStepers"
       >
         <Container maxWidth="sm">
-          <Stepper activeStep={activeStep}>
+
+          <Stepper className="boxStepers_main" activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
               const labelProps = {};
-              if (isStepOptional(index)) {
-                labelProps.optional = (
-                  <Typography variant="caption"></Typography>
-                );
-              }
-              if (isStepSkipped(index)) {
-                stepProps.completed = false;
-              }
+          
               return (
-                <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
+                <Step className="step_main" key={label} {...stepProps}>
+                  <StepLabel className="step-label_custom" {...labelProps}>{label}</StepLabel>
                 </Step>
               );
             })}
@@ -348,7 +342,7 @@ export default function HorizontalLinearStepper() {
               >
                 {activeStep === 0 ? "Cancel" : "Previous"}
               </button>
-              <Box sx={{ flex: "1 1 auto" }} />
+              <Box sx={{ flex: "0 1 auto" }} />
 
               <button onClick={handleNext} className="btn-next">
                 {activeStep === steps.length - 1 ? "Finir" : "Prochaine"}
