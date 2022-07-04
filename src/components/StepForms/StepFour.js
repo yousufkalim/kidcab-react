@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -15,17 +15,16 @@ import { Store, UpdateStore } from "../../StoreContext";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 const StepFour = (props) => {
+  const recaptchaRef = useRef(null);
   const [age, setAge] = React.useState(10);
   const updateStore = UpdateStore();
   const store = Store();
   const [checked, setChecked] = useState(false);
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleSubmit = async () => {
+    const captchaToken = await recaptchaRef.current.executeAsync();
+    recaptchaRef.current.reset();
+    console.log("captchaToken", captchaToken);
   };
-
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
 
   console.log(checked, "-checked");
 
@@ -36,6 +35,7 @@ const StepFour = (props) => {
     phone: "", // phone
     message: "", //company_name/company name optional optional
     agree: "",
+    captchaToken: "",
   });
 
   const { first_name, company_name, email, phone, message, agree } = item;
@@ -71,7 +71,7 @@ const StepFour = (props) => {
     console.log(item, "-item");
   };
 
-  const onChangeformcheck = (e) => {
+  const onChangeformcheck = async (e) => {
     setChecked(!checked);
     setItem((prev) => {
       prev.agree = !checked;
@@ -79,9 +79,19 @@ const StepFour = (props) => {
     });
     props.passData4(item);
   };
+
+  const onChange = async (value) => {
+    setItem({ ...item, captchaToken: value });
+    updateStore({
+      captchaToken: value,
+    });
+    props.passData4(item);
+  };
+
   return (
     <div className="stepOne_main">
       {/* one  */}
+
       <Box
         lg={{ width: "100%" }}
         md={{ width: "100%" }}
@@ -98,7 +108,7 @@ const StepFour = (props) => {
             </h5>
 
             <TextField
-             className="custom_input_children_inner2 custom_input_children_inner2_name"
+              className="custom_input_children_inner2 custom_input_children_inner2_name"
               style={{ marginTop: "20px" }}
               placeholder="Prénom"
               onChange={onChangeform}
@@ -117,7 +127,7 @@ const StepFour = (props) => {
               <span className="optonal_span">optional</span>{" "}
             </h5>
             <TextField
-             className="custom_input_children_inner2_cam"
+              className="custom_input_children_inner2_cam"
               style={{ marginTop: "20px" }}
               placeholder="  Nom de l'organisme/entreprise"
               name="company_name"
@@ -146,7 +156,7 @@ const StepFour = (props) => {
             </h5>
 
             <TextField
-             className="custom_input_children_inner2 custom_input_children_inner2_email"
+              className="custom_input_children_inner2 custom_input_children_inner2_email"
               style={{ marginTop: "20px" }}
               type="email"
               placeholder="email"
@@ -163,7 +173,7 @@ const StepFour = (props) => {
               Téléphone{" "}
             </h5>
             <TextField
-             className="custom_input_children_inner2 custom_input_children_inner2_tele"
+              className="custom_input_children_inner2 custom_input_children_inner2_tele"
               style={{ marginTop: "20px" }}
               type="number"
               placeholder="Téléphone"
@@ -239,7 +249,10 @@ const StepFour = (props) => {
       >
         <div className="section_headers_button_group spte_3_btn-grroup check_flex">
           <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group5">
-            <ReCAPTCHA sitekey="Kidcab" onChange={onChange} />
+            <ReCAPTCHA
+              sitekey="6LdQNMAgAAAAAEM7_lQp7AffR2NiAPq_ZUVtVA6x"
+              onChange={onChange}
+            />
           </div>
         </div>
       </Box>

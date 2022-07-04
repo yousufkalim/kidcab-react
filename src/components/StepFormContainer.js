@@ -38,7 +38,7 @@ export default function HorizontalLinearStepper() {
     phone: "", // phone
     message: "", //company_name/company name optional optional
     agree: "",
-
+    captchaToken: "",
     journey_type: [],
     days: [],
     journey_frequency: "",
@@ -98,6 +98,7 @@ export default function HorizontalLinearStepper() {
       company_name: store?.company_name,
       phone: store?.phone,
       message: store?.message,
+      captchaToken: store?.captchaToken,
       door_support: store?.door_support,
     });
   }, [form4]);
@@ -199,6 +200,10 @@ export default function HorizontalLinearStepper() {
         if (!form4.agree) {
           return toast.error("Veuillez marquer l'accord");
         }
+        if (form4.captchaToken == "") {
+          return toast.error("veuillez vérifier que vous n'êtes pas redémarré");
+        }
+
         api("post", "/requests/", apiData).then((res) => {
           toast.success("Demande de trajet envoyée avec succès ");
           updateStore({
@@ -251,6 +256,7 @@ export default function HorizontalLinearStepper() {
             email: "", //E-mail
             phone: "", // phone
             message: "", //company_name/company name optional optional
+            captchaToken: "",
           });
         });
       } else {
