@@ -69,6 +69,7 @@ export function StoreProvider({ children }) {
     email: "", //E-mail
     phone: "", // phone
     message: "", //company_name/company name optional optional
+    captchaToken: "",
   });
 
   const updateStore = (data) => {
