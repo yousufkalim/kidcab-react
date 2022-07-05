@@ -3,13 +3,13 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import Kidcab_service from '../../assets/Kidcab_service.png';
+// import InputLabel from '@mui/material/InputLabel';
+// import MenuItem from '@mui/material/MenuItem';
+// import FormControl from '@mui/material/FormControl';
+// import Select from '@mui/material/Select';
+import kidcabService from '../../assets/Kidcab_service.png';
 import Checkbox from '@mui/material/Checkbox';
-import ReCAPTCHA from 'react-google-recaptcha';
+// import ReCAPTCHA from 'react-google-recaptcha';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { Store, UpdateStore } from '../../StoreContext';
 
@@ -68,7 +68,6 @@ const StepFour = (props) => {
     }
     setItem({ ...item, [e.target.name]: e.target.value });
     props.passData4(item);
-    console.log(item, '-item');
   };
 
   const onChangeformcheck = async (e) => {
@@ -80,13 +79,13 @@ const StepFour = (props) => {
     props.passData4(item);
   };
 
-  const onChange = async (value) => {
-    setItem({ ...item, captchaToken: value });
-    updateStore({
-      captchaToken: value,
-    });
-    props.passData4(item);
-  };
+  // const onChange = async (value) => {
+  //   setItem({ ...item, captchaToken: value });
+  //   updateStore({
+  //     captchaToken: value,
+  //   });
+  //   props.passData4(item);
+  // };
 
   return (
     <div className="stepOne_main">
@@ -210,7 +209,7 @@ const StepFour = (props) => {
       </Box>
 
       <div className="sep4PictureBox4">
-        <img src={Kidcab_service} />
+        <img src={kidcabService} />
       </div>
     </div>
   );
