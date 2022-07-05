@@ -13,7 +13,7 @@ import { Store, UpdateStore } from '../../StoreContext';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const StepFour = (props) => {
-  const recaptchaRef = useRef(null);
+  // const recaptchaRef = useRef(null);
   const updateStore = UpdateStore();
   const store = Store();
   const [checked, setChecked] = useState(false);
@@ -68,8 +68,11 @@ const StepFour = (props) => {
   const onChangeformcheck = async () => {
     setChecked(!checked);
     setItem((prev) => {
-      prev.agree = !checked;
-      return { ...prev };
+      const obj = {
+        agree: !checked,
+        ...prev,
+      };
+      return { ...obj };
     });
     props.passData4(item);
   };

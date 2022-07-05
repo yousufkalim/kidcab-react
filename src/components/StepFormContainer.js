@@ -123,11 +123,11 @@ export default function HorizontalLinearStepper() {
     setApiData({
       ...apiData,
       door_support: store?.door_support,
-      total_children: store?.total_children ? store?.total_children : parseInt(store.total_children_tb),
+      total_children: store?.total_children ? store?.total_children : Number(store.total_children_tb),
 
-      total_adults: store?.total_adults ? store.total_adults : parseInt(store.total_adults_tb),
+      total_adults: store?.total_adults ? store.total_adults : Number(store.total_adults_tb),
 
-      baby: store?.baby ? store.baby : parseInt(store?.babyTb),
+      baby: store?.baby ? store.baby : Number(store?.babyTb),
     });
   }, [form2]);
 
@@ -150,22 +150,22 @@ export default function HorizontalLinearStepper() {
       if (store.your_are && store?.journey_frequency && store.journey_type.length > 0 && store?.days.length > 0) {
         setActiveStep(1);
       } else {
-        toast.error('remplir tous les champs obligatoires');
+        return toast.error('remplir tous les champs obligatoires');
       }
     }
 
     if (activeStep === 1) {
       if (store?.door_support) {
         if (store?.total_children || store?.total_children_tb !== '') {
-          if (parseInt(store?.babyTb) > 4) {
+          if (Number(store?.babyTb) > 4) {
             return toast.error('Le nombre total de bébés devrait être inférieur à 4');
           }
           setActiveStep(2);
         } else {
-          toast.error('remplir tous les champs obligatoires');
+          return toast.error('remplir tous les champs obligatoires');
         }
       } else {
-        toast.error('remplir tous les champs obligatoires');
+        return toast.error('remplir tous les champs obligatoires');
       }
     }
 
@@ -173,7 +173,7 @@ export default function HorizontalLinearStepper() {
       if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address && store?.destination_address) {
         setActiveStep(3);
       } else {
-        toast.error('remplir tous les champs obligatoires');
+        return toast.error('remplir tous les champs obligatoires');
       }
     }
 
@@ -286,39 +286,23 @@ export default function HorizontalLinearStepper() {
         </Container>
 
         {activeStep === steps.length ? null : (
-          <React.Fragment>
-            {activeStep + 1 === 1 ? (
-              <>
-                <StepOne passData={passData} />
-              </>
-            ) : null}
-            {activeStep + 1 === 2 ? (
-              <>
-                <StepTwo passData2={passData2} />
-              </>
-            ) : null}
-            {activeStep + 1 === 3 ? (
-              <>
-                <StepThree passData3={passData3} />
-              </>
-            ) : null}
-            {activeStep + 1 === 4 ? (
-              <>
-                <StepFour passData4={passData4} />
-              </>
-            ) : null}
+          <>
+            {activeStep + 1 === 1 ? <StepOne passData={passData} /> : <></>}
+            {activeStep + 1 === 2 ? <StepTwo passData2={passData2} /> : <></>}
+            {activeStep + 1 === 3 ? <StepThree passData3={passData3} /> : <></>}
+            {activeStep + 1 === 4 ? <StepFour passData4={passData4} /> : <></>}
 
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }} className="boxStepers_btn">
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }} className="boxStepers_btn" type="button">
               <button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }} className="btn_caneel">
                 {activeStep === 0 ? 'Annuler' : 'Précédente'}
               </button>
               <Box sx={{ flex: '0 1 auto' }} />
 
-              <button onClick={handleNext} className="btn-next">
+              <button onClick={handleNext} className="btn-next" type="button">
                 {activeStep === steps.length - 1 ? 'Terminer' : 'Suivante'}
               </button>
             </Box>
-          </React.Fragment>
+          </>
         )}
       </Box>
       {/* <ToastContainer /> */}
