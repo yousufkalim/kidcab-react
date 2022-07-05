@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import api from "../api/index";
-import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import React, { useState, useEffect } from 'react';
+import api from '../api/index';
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 // import components
-import StepOne from "./StepForms/StepOne";
-import StepTwo from "./StepForms/StepTwo";
-import StepThree from "./StepForms/StepThree";
-import StepFour from "./StepForms/StepFour";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import StepOne from './StepForms/StepOne';
+import StepTwo from './StepForms/StepTwo';
+import StepThree from './StepForms/StepThree';
+import StepFour from './StepForms/StepFour';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import css
-import "../css/StepForm.css";
-import { Store, UpdateStore } from "../StoreContext";
+import '../css/StepForm.css';
+import { Store, UpdateStore } from '../StoreContext';
 
-const steps = ["", "", "", ""];
+const steps = ['', '', '', ''];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -30,29 +30,29 @@ export default function HorizontalLinearStepper() {
   const [form3, setform3] = useState();
   const [form4, setform4] = useState();
   const [apiData, setApiData] = useState({
-    you_are: "",
+    you_are: '',
 
-    first_name: "", // First name
-    company_name: "", //company_name/company name optional
-    email: "", //E-mail
-    phone: "", // phone
-    message: "", //company_name/company name optional optional
-    agree: "",
-    captchaToken: "",
+    first_name: '', // First name
+    company_name: '', //company_name/company name optional
+    email: '', //E-mail
+    phone: '', // phone
+    message: '', //company_name/company name optional optional
+    agree: '',
+    captchaToken: '',
     journey_type: [],
     days: [],
-    journey_frequency: "",
-    door_support: "",
+    journey_frequency: '',
+    door_support: '',
     total_children: 0,
     total_adults: 0,
     baby: 0,
-    pickUp_date: "",
-    pickUp_time: "",
-    return_date: "",
-    return_time: "",
-    pickUp_address: "",
-    destination_address: "",
-    return_address: "",
+    pickUp_date: '',
+    pickUp_time: '',
+    return_date: '',
+    return_time: '',
+    pickUp_address: '',
+    destination_address: '',
+    return_address: '',
   });
 
   const passData = (data) => {
@@ -120,13 +120,9 @@ export default function HorizontalLinearStepper() {
     setApiData({
       ...apiData,
       door_support: store?.door_support,
-      total_children: store?.total_children
-        ? store?.total_children
-        : parseInt(store.total_children_tb),
+      total_children: store?.total_children ? store?.total_children : parseInt(store.total_children_tb),
 
-      total_adults: store?.total_adults
-        ? store.total_adults
-        : parseInt(store.total_adults_tb),
+      total_adults: store?.total_adults ? store.total_adults : parseInt(store.total_adults_tb),
 
       baby: store?.baby ? store.baby : parseInt(store?.babyTb),
     });
@@ -141,7 +137,7 @@ export default function HorizontalLinearStepper() {
       days: store?.daysE,
     });
   }, [form1]);
-  console.log("form1G", form1);
+  console.log('form1G', form1);
   const isStepOptional = (step) => {
     return step === 1;
   };
@@ -152,46 +148,34 @@ export default function HorizontalLinearStepper() {
 
   const handleNext = () => {
     if (activeStep === 0) {
-      if (
-        store.your_are &&
-        store?.journey_frequency &&
-        store.journey_type.length > 0 &&
-        store?.days.length > 0
-      ) {
+      if (store.your_are && store?.journey_frequency && store.journey_type.length > 0 && store?.days.length > 0) {
         setActiveStep(1);
       } else {
-        toast.error("remplir tous les champs obligatoires");
+        toast.error('remplir tous les champs obligatoires');
       }
     }
 
     if (activeStep === 1) {
       if (store?.door_support) {
-        if (store?.total_children || store?.total_children_tb != "") {
+        if (store?.total_children || store?.total_children_tb != '') {
           if (parseInt(store?.babyTb) > 4) {
-            return toast.error(
-              "Le nombre total de bébés devrait être inférieur à 4"
-            );
+            return toast.error('Le nombre total de bébés devrait être inférieur à 4');
           }
           setActiveStep(2);
         } else {
-          toast.error("remplir tous les champs obligatoires");
+          toast.error('remplir tous les champs obligatoires');
         }
       } else {
-        toast.error("remplir tous les champs obligatoires");
+        toast.error('remplir tous les champs obligatoires');
       }
     }
 
     if (activeStep === 2) {
-      console.log(form3, "form3");
-      if (
-        store?.pickUp_date &&
-        store?.pickUp_time &&
-        store?.pickUp_address &&
-        store?.destination_address
-      ) {
+      console.log(form3, 'form3');
+      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address && store?.destination_address) {
         setActiveStep(3);
       } else {
-        toast.error("remplir tous les champs obligatoires");
+        toast.error('remplir tous les champs obligatoires');
       }
     }
 
@@ -200,67 +184,67 @@ export default function HorizontalLinearStepper() {
         if (!form4.agree) {
           return toast.error("Veuillez marquer l'accord");
         }
-        if (form4.captchaToken == "") {
-          return toast.error("veuillez vérifier que vous n'êtes pas redémarré");
-        }
+        // if (form4.captchaToken == "") {
+        //   return toast.error("veuillez vérifier que vous n'êtes pas redémarré");
+        // }
 
-        api("post", "/requests/", apiData).then((res) => {
-          toast.success("Demande de trajet envoyée avec succès ");
+        api('post', '/requests/', apiData).then((res) => {
+          toast.success('Demande de trajet envoyée avec succès ');
           updateStore({
-            your_are: "",
-            your_areE: "",
+            your_are: '',
+            your_areE: '',
             journey_type: [],
             journey_typeE: [],
-            journey_frequency: "",
-            journey_frequencyE: "",
+            journey_frequency: '',
+            journey_frequencyE: '',
             days: [],
             daysE: [],
-            door_support: "",
-            door_supportS: "",
-            total_children: "",
-            total_children_tb: "",
-            total_adults: "",
-            total_adults_tb: "",
-            baby: "",
-            babyTb: "",
-            pickUp_date: "",
-            pickUp_time: "",
-            return_date: "",
-            return_time: "",
+            door_support: '',
+            door_supportS: '',
+            total_children: '',
+            total_children_tb: '',
+            total_adults: '',
+            total_adults_tb: '',
+            baby: '',
+            babyTb: '',
+            pickUp_date: '',
+            pickUp_time: '',
+            return_date: '',
+            return_time: '',
             pickUp_address: {
-              label: "",
-              label2: "",
-              postal_code: "",
-              lat: "",
-              lng: "",
-              city: "",
+              label: '',
+              label2: '',
+              postal_code: '',
+              lat: '',
+              lng: '',
+              city: '',
             },
             destination_address: {
-              label: "",
-              label2: "",
-              postal_code: "",
-              lat: "",
-              lng: "",
-              city: "",
+              label: '',
+              label2: '',
+              postal_code: '',
+              lat: '',
+              lng: '',
+              city: '',
             },
             return_address: {
-              label: "",
-              label2: "",
-              postal_code: "",
-              lat: "",
-              lng: "",
-              city: "",
+              label: '',
+              label2: '',
+              postal_code: '',
+              lat: '',
+              lng: '',
+              city: '',
             },
-            first_name: "", // First name
-            company_name: "", //company_name/company name optional
-            email: "", //E-mail
-            phone: "", // phone
-            message: "", //company_name/company name optional optional
-            captchaToken: "",
+            first_name: '', // First name
+            company_name: '', //company_name/company name optional
+            email: '', //E-mail
+            phone: '', // phone
+            message: '', //company_name/company name optional optional
+            captchaToken: '',
           });
         });
       } else {
-        toast.error("remplir tous les champs obligatoires");
+        toast.error('remplir tous les champs obligatoires');
       }
     }
   };
@@ -282,19 +266,14 @@ export default function HorizontalLinearStepper() {
     });
   };
 
-  console.log(form4, "f");
+  console.log(form4, 'f');
   const handleReset = () => {
     setActiveStep(0);
   };
 
   return (
     <Container maxWidth="lg">
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
         <Container maxWidth="sm">
           <Stepper className="boxStepers_main" activeStep={activeStep}>
             {steps.map((label, index) => {
@@ -336,23 +315,14 @@ export default function HorizontalLinearStepper() {
               </>
             ) : null}
 
-            <Box
-              sx={{ display: "flex", flexDirection: "row", pt: 2 }}
-              className="boxStepers_btn"
-            >
-              <button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-                className="btn_caneel"
-              >
-                {activeStep === 0 ? "annuler" : "précédente"}
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }} className="boxStepers_btn">
+              <button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }} className="btn_caneel">
+                {activeStep === 0 ? 'Annuler' : 'Précédente'}
               </button>
-              <Box sx={{ flex: "0 1 auto" }} />
+              <Box sx={{ flex: '0 1 auto' }} />
 
               <button onClick={handleNext} className="btn-next">
-                {activeStep === steps.length - 1 ? "terminer" : "suivante"}
+                {activeStep === steps.length - 1 ? 'Terminer' : 'Suivante'}
               </button>
             </Box>
           </React.Fragment>
