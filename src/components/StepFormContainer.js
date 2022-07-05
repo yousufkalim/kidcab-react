@@ -4,15 +4,14 @@ import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+
 import Container from '@mui/material/Container';
 // import components
 import StepOne from './StepForms/StepOne';
 import StepTwo from './StepForms/StepTwo';
 import StepThree from './StepForms/StepThree';
 import StepFour from './StepForms/StepFour';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import css
 import '../css/StepForm.css';
@@ -137,13 +136,9 @@ export default function HorizontalLinearStepper() {
       days: store?.daysE,
     });
   }, [form1]);
-  console.log('form1G', form1);
+
   const isStepOptional = (step) => {
     return step === 1;
-  };
-
-  const isStepSkipped = (step) => {
-    return skipped.has(step);
   };
 
   const handleNext = () => {
@@ -157,7 +152,7 @@ export default function HorizontalLinearStepper() {
 
     if (activeStep === 1) {
       if (store?.door_support) {
-        if (store?.total_children || store?.total_children_tb != '') {
+        if (store?.total_children || store?.total_children_tb !== '') {
           if (parseInt(store?.babyTb) > 4) {
             return toast.error('Le nombre total de bébés devrait être inférieur à 4');
           }
@@ -171,7 +166,6 @@ export default function HorizontalLinearStepper() {
     }
 
     if (activeStep === 2) {
-      console.log(form3, 'form3');
       if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address && store?.destination_address) {
         setActiveStep(3);
       } else {
@@ -188,7 +182,7 @@ export default function HorizontalLinearStepper() {
         //   return toast.error("veuillez vérifier que vous n'êtes pas redémarré");
         // }
 
-        api('post', '/requests/', apiData).then((res) => {
+        api('post', '/requests/', apiData).then(() => {
           toast.success('Demande de trajet envoyée avec succès ');
           updateStore({
             your_are: '',
