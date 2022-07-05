@@ -21,7 +21,7 @@ const steps = ['', '', '', ''];
 
 export default function HorizontalLinearStepper() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [skipped, setSkipped] = React.useState(new Set());
+  // const [skipped, setSkipped] = React.useState(new Set());
   const updateStore = UpdateStore();
   const store = Store();
   const [form1, setform] = useState();
@@ -30,7 +30,6 @@ export default function HorizontalLinearStepper() {
   const [form4, setform4] = useState();
   const [apiData, setApiData] = useState({
     you_are: '',
-
     first_name: '', // First name
     company_name: '', //company_name/company name optional
     email: '', //E-mail
@@ -58,12 +57,14 @@ export default function HorizontalLinearStepper() {
     setform(data);
 
     setApiData((prev) => {
-      prev.you_are = store.your_areE;
-      prev.journey_type = store.journey_typeE;
-      prev.journey_frequency = store.journey_frequencyE;
-      prev.days = store.daysE;
-
-      return { ...prev };
+      const obj = {
+        you_are: store.your_areE,
+        journey_type: store.journey_typeE,
+        journey_frequency: store.journey_frequencyE,
+        days: store.daysE,
+        ...prev,
+      };
+      return { ...obj };
     });
   };
 
@@ -74,14 +75,17 @@ export default function HorizontalLinearStepper() {
   const passData3 = (data) => {
     setform3(data);
     setApiData((prev) => {
-      prev.pickUp_date = data?.step3?.pickUp_date;
-      prev.pickUp_time = store?.pickUp_time;
-      prev.return_date = data?.step3?.return_date;
-      prev.return_time = store?.return_time;
-      prev.pickUp_address = data?.step3?.pickUp_address;
-      prev.destination_address = data?.step3?.destination_address;
-      prev.return_address = data?.step3?.return_address;
-      return { ...prev };
+      const obj = {
+        pickUp_date: data?.step3?.pickUp_date,
+        pickUp_time: store?.pickUp_time,
+        return_date: data?.step3?.return_date,
+        return_time: store?.return_time,
+        pickUp_address: data?.step3?.pickUp_address,
+        destination_address: data?.step3?.destination_address,
+        return_address: data?.step3?.return_address,
+        ...prev,
+      };
+      return { ...obj };
     });
   };
 
@@ -137,9 +141,9 @@ export default function HorizontalLinearStepper() {
     });
   }, [form1]);
 
-  const isStepOptional = (step) => {
-    return step === 1;
-  };
+  // const isStepOptional = (step) => {
+  //   return step === 1;
+  // };
 
   const handleNext = () => {
     if (activeStep === 0) {

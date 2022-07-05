@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 // import InputLabel from '@mui/material/InputLabel';
@@ -16,21 +14,20 @@ import { Store, UpdateStore } from '../../StoreContext';
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const StepFour = (props) => {
   const recaptchaRef = useRef(null);
-  const [age, setAge] = React.useState(10);
   const updateStore = UpdateStore();
   const store = Store();
   const [checked, setChecked] = useState(false);
-  const handleSubmit = async () => {
-    const captchaToken = await recaptchaRef.current.executeAsync();
-    recaptchaRef.current.reset();
-    console.log('captchaToken', captchaToken);
-  };
+  // const handleSubmit = async () => {
+  //   const captchaToken = await recaptchaRef.current.executeAsync();
+  //   recaptchaRef.current.reset();
+  //   console.log('captchaToken', captchaToken);
+  // };
 
   console.log(checked, '-checked');
 
   const [item, setItem] = useState({
-    first_name: '', // First name
-    company_name: '', //company_name/company name optional
+    firstName: '', // First name
+    companyName: '', //company_name/company name optional
     email: '', //E-mail
     phone: '', // phone
     message: '', //company_name/company name optional optional
@@ -38,30 +35,28 @@ const StepFour = (props) => {
     captchaToken: '',
   });
 
-  const { first_name, company_name, email, phone, message, agree } = item;
-
   const onChangeform = (e) => {
-    if (e.target.name == 'first_name') {
+    if (e.target.name === 'firstName') {
       updateStore({
         first_name: e.target.value,
       });
     }
-    if (e.target.name == 'company_name') {
+    if (e.target.name === 'companyName') {
       updateStore({
         company_name: e.target.value,
       });
     }
-    if (e.target.name == 'phone') {
+    if (e.target.name === 'phone') {
       updateStore({
         phone: e.target.value,
       });
     }
-    if (e.target.name == 'message') {
+    if (e.target.name === 'message') {
       updateStore({
         message: e.target.value,
       });
     }
-    if (e.target.name == 'email') {
+    if (e.target.name === 'email') {
       updateStore({
         email: e.target.value,
       });
@@ -70,7 +65,7 @@ const StepFour = (props) => {
     props.passData4(item);
   };
 
-  const onChangeformcheck = async (e) => {
+  const onChangeformcheck = async () => {
     setChecked(!checked);
     setItem((prev) => {
       prev.agree = !checked;
@@ -209,7 +204,7 @@ const StepFour = (props) => {
       </Box>
 
       <div className="sep4PictureBox4">
-        <img src={kidcabService} />
+        <img src={kidcabService} alt="kidCab" />
       </div>
     </div>
   );
