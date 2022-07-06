@@ -74,73 +74,74 @@ export default function HorizontalLinearStepper() {
 
   const passData3 = (data) => {
     setform3(data);
-    setApiData((prev) => {
-      const obj = {
-        pickUp_date: data?.step3?.pickUp_date,
-        pickUp_time: store?.pickUp_time,
-        return_date: data?.step3?.return_date,
-        return_time: store?.return_time,
-        pickUp_address: data?.step3?.pickUp_address,
-        destination_address: data?.step3?.destination_address,
-        return_address: data?.step3?.return_address,
-        ...prev,
-      };
-      return { ...obj };
-    });
   };
 
   const passData4 = (data) => {
     setform4(data);
   };
-
+  console.log(form4, 'f4');
   useEffect(() => {
-    setApiData({
-      ...apiData,
-      first_name: store?.first_name,
-      email: store?.email,
-      company_name: store?.company_name,
-      phone: store?.phone,
-      message: store?.message,
-      captchaToken: store?.captchaToken,
-      door_support: store?.door_support,
-    });
+    if (form4) {
+      setApiData((prev) => {
+        return {
+          ...prev,
+          first_name: store?.first_name,
+          email: store?.email,
+          company_name: store?.company_name,
+          phone: store?.phone,
+          message: store?.message,
+          captchaToken: store?.captchaToken,
+          door_support: store?.door_support,
+        };
+      });
+    }
   }, [form4]);
 
   useEffect(() => {
-    setApiData({
-      ...apiData,
-      pickUp_date: store?.pickUp_date,
-      pickUp_time: store?.pickUp_time,
-      return_date: store?.return_date,
-      return_time: store?.return_time,
-      pickUp_address: store?.pickUp_address,
-      destination_address: store?.destination_address,
-      return_address: store?.return_address,
-    });
+    if (form3) {
+      setApiData((prev) => {
+        return {
+          ...prev,
+          pickUp_date: store?.pickUp_date,
+          pickUp_time: store?.pickUp_time,
+          return_date: store?.return_date,
+          return_time: store?.return_time,
+          pickUp_address: store?.pickUp_address,
+          destination_address: store?.destination_address,
+          return_address: store?.return_address,
+        };
+      });
+    }
   }, [form3]);
 
   useEffect(() => {
-    setApiData({
-      ...apiData,
-      door_support: store?.door_support,
-      total_children: store?.total_children ? store?.total_children : Number(store.total_children_tb),
-
-      total_adults: store?.total_adults ? store.total_adults : Number(store.total_adults_tb),
-
-      baby: store?.baby ? store.baby : Number(store?.babyTb),
-    });
+    if (form2) {
+      setApiData((prev) => {
+        return {
+          ...prev,
+          door_support: store?.door_support,
+          total_children: store?.total_children ? store?.total_children : Number(store.total_children_tb),
+          total_adults: store?.total_adults ? store.total_adults : Number(store.total_adults_tb),
+          baby: store?.baby ? store.baby : Number(store?.babyTb),
+        };
+      });
+    }
   }, [form2]);
 
   useEffect(() => {
-    setApiData({
-      ...apiData,
-      you_are: store?.your_areE,
-      journey_type: store?.journey_typeE,
-      journey_frequency: store?.journey_frequencyE,
-      days: store?.daysE,
-    });
+    if (form1) {
+      setApiData((prev) => {
+        return {
+          ...prev,
+          you_are: store?.your_areE,
+          journey_type: store?.journey_typeE,
+          journey_frequency: store?.journey_frequencyE,
+          days: store?.daysE,
+        };
+      });
+    }
   }, [form1]);
-
+  console.log(apiData, 'apiData');
   // const isStepOptional = (step) => {
   //   return step === 1;
   // };
@@ -153,7 +154,6 @@ export default function HorizontalLinearStepper() {
         return toast.error('remplir tous les champs obligatoires');
       }
     }
-
     if (activeStep === 1) {
       if (store?.door_support) {
         if (store?.total_children || store?.total_children_tb !== '') {
@@ -182,12 +182,7 @@ export default function HorizontalLinearStepper() {
         if (!form4.agree) {
           return toast.error("Veuillez marquer l'accord");
         }
-        // if (form4.captchaToken == "") {
-        //   return toast.error("veuillez vérifier que vous n'êtes pas redémarré");
-        // }
-
         api('post', '/requests/', apiData).then(() => {
-          toast.success('Demande de trajet envoyée avec succès ');
           updateStore({
             your_are: '',
             your_areE: '',
@@ -241,6 +236,7 @@ export default function HorizontalLinearStepper() {
             captchaToken: '',
           });
         });
+        return toast.success('Demande de trajet envoyée avec succès ');
       } else {
         toast.error('remplir tous les champs obligatoires');
       }
@@ -285,15 +281,23 @@ export default function HorizontalLinearStepper() {
           {/* </Box> */}
         </Container>
 
-        {activeStep === steps.length ? null : (
+        {activeStep === steps.length ? (
+          <></>
+        ) : (
           <>
-            {activeStep + 1 === 1 ? <StepOne passData={passData} /> : <></>}
-            {activeStep + 1 === 2 ? <StepTwo passData2={passData2} /> : <></>}
-            {activeStep + 1 === 3 ? <StepThree passData3={passData3} /> : <></>}
-            {activeStep + 1 === 4 ? <StepFour passData4={passData4} /> : <></>}
-
-            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }} className="boxStepers_btn" type="button">
-              <button color="inherit" disabled={activeStep === 0} onClick={handleBack} sx={{ mr: 1 }} className="btn_caneel">
+            {activeStep + 1 === 1 ? <StepOne passData={passData} /> : null}
+            {activeStep + 1 === 2 ? <StepTwo passData2={passData2} /> : null}
+            {activeStep + 1 === 3 ? <StepThree passData3={passData3} /> : null}
+            {activeStep + 1 === 4 ? <StepFour passData4={passData4} /> : null}
+            <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }} className="boxStepers_btn">
+              <button
+                color="inherit"
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                sx={{ mr: 1 }}
+                className="btn_caneel"
+                type="button"
+              >
                 {activeStep === 0 ? 'Annuler' : 'Précédente'}
               </button>
               <Box sx={{ flex: '0 1 auto' }} />

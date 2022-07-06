@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+//import React, { useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 // import InputLabel from '@mui/material/InputLabel';
@@ -23,8 +24,6 @@ const StepFour = (props) => {
   //   console.log('captchaToken', captchaToken);
   // };
 
-  console.log(checked, '-checked');
-
   const [item, setItem] = useState({
     firstName: '', // First name
     companyName: '', //company_name/company name optional
@@ -34,7 +33,6 @@ const StepFour = (props) => {
     agree: '',
     captchaToken: '',
   });
-
   const onChangeform = (e) => {
     if (e.target.name === 'firstName') {
       updateStore({
@@ -62,21 +60,15 @@ const StepFour = (props) => {
       });
     }
     setItem({ ...item, [e.target.name]: e.target.value });
-    props.passData4(item);
   };
 
   const onChangeformcheck = async () => {
     setChecked(!checked);
-    setItem((prev) => {
-      const obj = {
-        agree: !checked,
-        ...prev,
-      };
-      return { ...obj };
-    });
-    props.passData4(item);
+    setItem({ ...item, agree: !checked });
   };
-
+  useEffect(() => {
+    props.passData4(item);
+  }, [item]);
   // const onChange = async (value) => {
   //   setItem({ ...item, captchaToken: value });
   //   updateStore({
@@ -101,7 +93,7 @@ const StepFour = (props) => {
               style={{ marginTop: '20px' }}
               placeholder="Prénom"
               onChange={onChangeform}
-              name="first_name"
+              name="firstName"
               value={store.first_name}
               // className="cm-input-name"
             />
@@ -115,7 +107,7 @@ const StepFour = (props) => {
               className="custom_input_children_inner2_cam"
               style={{ marginTop: '20px' }}
               placeholder="  Nom de l'organisme/entreprise"
-              name="company_name"
+              name="companyName"
               value={store.company_name}
               onChange={onChangeform}
             />
