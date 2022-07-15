@@ -39,28 +39,35 @@ const StepFour = (props) => {
       updateStore({
         first_name: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
     if (e.target.name === 'companyName') {
       updateStore({
         company_name: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
     if (e.target.name === 'phone') {
-      updateStore({
-        phone: e.target.value,
-      });
+      const re = /^[0-9\b]+$/;
+      if (e.target.value === '' || re.test(e.target.value)) {
+        updateStore({
+          phone: e.target.value,
+        });
+        setItem({ ...item, [e.target.name]: e.target.value });
+      }
     }
     if (e.target.name === 'message') {
       updateStore({
         message: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
     if (e.target.name === 'email') {
       updateStore({
         email: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
-    setItem({ ...item, [e.target.name]: e.target.value });
   };
 
   const onChangeformcheck = async () => {
@@ -70,13 +77,6 @@ const StepFour = (props) => {
   useEffect(() => {
     props.passData4(item);
   }, [item]);
-  // const onChange = async (value) => {
-  //   setItem({ ...item, captchaToken: value });
-  //   updateStore({
-  //     captchaToken: value,
-  //   });
-  //   props.passData4(item);
-  // };
 
   return (
     <div className="stepOne_main">
@@ -142,7 +142,7 @@ const StepFour = (props) => {
             <TextField
               className="custom_input_children_inner2 custom_input_children_inner2_tele"
               style={{ marginTop: '20px' }}
-              type="number"
+              type="text"
               placeholder="Téléphone"
               name="phone"
               value={store.phone}
