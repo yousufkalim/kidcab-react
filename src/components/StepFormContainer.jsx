@@ -31,10 +31,10 @@ export default function HorizontalLinearStepper() {
   const [apiData, setApiData] = useState({
     you_are: '',
     first_name: '', // First name
-    company_name: '', //company_name/company name optional
+    last_name: '', //last_name/company name optional
     email: '', //E-mail
     phone: '', // phone
-    message: '', //company_name/company name optional optional
+    message: '', //last_name/company name optional optional
     agree: '',
     captchaToken: '',
     journey_type: [],
@@ -87,7 +87,7 @@ export default function HorizontalLinearStepper() {
           ...prev,
           first_name: store?.first_name,
           email: store?.email,
-          company_name: store?.company_name,
+          last_name: store?.last_name,
           phone: store?.phone,
           message: store?.message,
           captchaToken: store?.captchaToken,
@@ -178,7 +178,7 @@ export default function HorizontalLinearStepper() {
     }
 
     if (activeStep === 3) {
-      if (store?.first_name && store?.email && store?.phone) {
+      if (store?.first_name && store?.email && store?.phone && store?.last_name) {
         if (!form4.agree) {
           return toast.error("Veuillez marquer l'accord");
         }
@@ -229,10 +229,10 @@ export default function HorizontalLinearStepper() {
               city: '',
             },
             first_name: '', // First name
-            company_name: '', //company_name/company name optional
+            last_name: '', //last_name/company name optional
             email: '', //E-mail
             phone: '', // phone
-            message: '', //company_name/company name optional optional
+            message: '', //last_name/company name optional optional
             captchaToken: '',
           });
         });
@@ -290,16 +290,18 @@ export default function HorizontalLinearStepper() {
             {activeStep + 1 === 3 ? <StepThree passData3={passData3} /> : null}
             {activeStep + 1 === 4 ? <StepFour passData4={passData4} /> : null}
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }} className="boxStepers_btn">
-              <button
-                color="inherit"
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                sx={{ mr: 1 }}
-                className="btn_caneel"
-                type="button"
-              >
-                {activeStep === 0 ? 'Annuler' : 'Précédente'}
-              </button>
+              {activeStep > 0 && (
+                <button
+                  color="inherit"
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  sx={{ mr: 1 }}
+                  className="btn_caneel"
+                  type="button"
+                >
+                  Précédente'
+                </button>
+              )}
               <Box sx={{ flex: '0 1 auto' }} />
 
               <button onClick={handleNext} className="btn-next" type="button">
