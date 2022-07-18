@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import Button from "@mui/material/Button";
-import KidcabChauffeu from "../../assets/Kidcab_chauffeu.png";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { Store, UpdateStore } from "../../StoreContext";
+import React, { useState, useEffect } from 'react';
+import Box from '@mui/material/Box';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import KidcabChauffeu from '../../assets/Kidcab_chauffeu.png';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { Store, UpdateStore } from '../../StoreContext';
 const StepOne = (props) => {
   const updateStore = UpdateStore();
   const store = Store();
   const [item, setItem] = useState({
     step1: {
-      your_are: "",
+      your_are: '',
       journey_type: [], // E
       journey_typef: [], // F
-      journey_frequency: "",
+      journey_frequency: '',
       days: [],
       daysf: [], // F
     },
@@ -22,46 +22,44 @@ const StepOne = (props) => {
 
   console.log(item);
 
-  const [alignment, setAlignment] = React.useState("left");
-  const [alignmentvous, setAlignmentvous] = React.useState("Un particulier");
+  const [alignment, setAlignment] = React.useState('left');
+  const [alignmentvous, setAlignmentvous] = React.useState('Un particulier');
 
   const your_are = [
-    { "Un particulier": "A Particular" },
-    { "Une mairie": "A town hall" },
-    { "Une Collectivite": "A Community" },
-    { "Une ecole": "School" },
-    { "Un club de sport": "A sports club" },
-    { "Une entrprise": "A company" },
-    { "Un comite": "A committee" },
+    { 'Un particulier': 'A Particular' },
+    { 'Une mairie': 'A town hall' },
+    { 'Une collectivité': 'A Community' },
+    { 'Une école': 'School' },
+    { 'Un club de sport': 'A sports club' },
+    { 'Une entreprise': 'A company' },
+    { 'Un comité d’entrprise': 'A committee' },
   ];
 
   const journey_type = [
-    { "Aller-Simple": "One Way ticket" },
-    { "Aller-Retour": "Round trip" },
-    { "Trajet-avec-etape(s)": "Journey with stage(s)" },
+    { 'Aller Simple': 'One Way ticket' },
+    { 'Aller - Retour': 'Round trip' },
+    { 'Trajet avec étape(s)': 'Journey with stage(s)' },
   ];
 
-  const journey_frequency = [
-    { Reguliere: "Regular" },
-    { Occasionnelle: "Occasional" },
-  ];
+  const journey_frequency = [{ Régulière: 'Regular' }, { Occasionnelle: 'Occasional' }];
 
   const days = [
-    { Lundi: "Monday" },
-    { Mardi: "Tuesday" },
-    { Mercredi: "Wednesday" },
-    { Jeudi: "Thursday" },
-    { Vendredi: "Friday" },
-    { Samedi: "Saturday" },
+    { Lundi: 'Monday' },
+    { Mardi: 'Tuesday' },
+    { Mercredi: 'Wednesday' },
+    { Jeudi: 'Thursday' },
+    { Vendredi: 'Friday' },
+    { Samedi: 'Saturday' },
+    { Dimanche: 'Sunday' },
   ];
 
   const style1 = {
-    color: "white",
-    backgroundColor: "#4db9b4",
+    color: 'white',
+    backgroundColor: '#4db9b4',
   };
   const style2 = {
-    background: "#F8FCFB",
-    border: "1px solid #DFEEEB",
+    background: '#F8FCFB',
+    border: '1px solid #DFEEEB',
   };
 
   let init_journey_type;
@@ -73,10 +71,7 @@ const StepOne = (props) => {
     init_journey_type = e.target.name; // E
     init_journey_typef = e.target.value; // F
 
-    if (
-      item.step1.journey_type.includes(init_journey_type) &&
-      item.step1.journey_typef.includes(init_journey_typef)
-    ) {
+    if (item.step1.journey_type.includes(init_journey_type) && item.step1.journey_typef.includes(init_journey_typef)) {
       let index = item.step1.journey_type.indexOf(init_journey_type);
       let index2 = item.step1.journey_typef.indexOf(init_journey_typef);
 
@@ -116,7 +111,7 @@ const StepOne = (props) => {
 
   let init_your_are;
   const handleAlignmentvous = (event, newAlignment) => {
-    console.log(event.target.name, "-jkdhdsj");
+    console.log(event.target.name, '-jkdhdsj');
     updateStore({
       your_are: newAlignment,
       your_areE: event.target.name,
@@ -137,10 +132,7 @@ const StepOne = (props) => {
     init_days = e.target.name; // e
     init_daysf = e.target.value; // f
 
-    if (
-      item.step1.days.includes(init_days) &&
-      item.step1.daysf.includes(init_daysf)
-    ) {
+    if (item.step1.days.includes(init_days) && item.step1.daysf.includes(init_daysf)) {
       let index = item.step1.days.indexOf(init_days);
       let index2 = item.step1.daysf.indexOf(init_daysf);
 
@@ -164,24 +156,13 @@ const StepOne = (props) => {
   };
 
   return (
-
-
-    
     <div className="stepOne_main">
-      <h5 className="section_headers">
-        *Choisissez-en un days chaque question !
-      </h5>
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
-        <h5 className="section_headers_2 hange-Fonts-Size">your_are êtes ?</h5>
+      <h5 className="section_headers">Remplissez le formulaire !</h5>
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+        <h5 className="section_headers_2 hange-Fonts-Size">Vous êtes?</h5>
 
         <div className="section_headers_button_group">
           <ToggleButtonGroup
-     
             value={store.your_are}
             className="ButtonGroup-root"
             exclusive
@@ -190,11 +171,8 @@ const StepOne = (props) => {
           >
             {your_are.map((obj, i) => {
               return (
-                <ToggleButton     
-                
-         
-                
-                 className="boxStepers_btn_custom"
+                <ToggleButton
+                  className="boxStepers_btn_custom"
                   // className="btnStepers"
                   value={JSON.stringify(Object.keys(obj))}
                   name={Object.values(obj)}
@@ -209,15 +187,8 @@ const StepOne = (props) => {
 
       {/* second  */}
 
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
-        <h5 className="section_headers_2 hange-Fonts-Size">
-          journey_type de trajet?
-        </h5>
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+        <h5 className="section_headers_2 hange-Fonts-Size">Type de trajet</h5>
 
         <div className="section_headers_button_group">
           {journey_type.map((obj, i) => {
@@ -245,28 +216,15 @@ const StepOne = (props) => {
 
       {/* third  */}
 
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
-        <h5 className="section_headers_2 hange-Fonts-Size">
-          journey_frequency des trajets
-        </h5>
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+        <h5 className="section_headers_2 hange-Fonts-Size">Fréquence des trajets</h5>
 
         <div className="section_headers_button_group">
-          <ToggleButtonGroup
-            className="ButtonGroup-root"
-            value={store.journey_frequency}
-            exclusive
-            onChange={handleAlignment}
-          >
+          <ToggleButtonGroup className="ButtonGroup-root" value={store.journey_frequency} exclusive onChange={handleAlignment}>
             {journey_frequency.map((obj, i) => {
               return (
                 <ToggleButton
-                className="boxStepers_btn_custom "
-         
+                  className="boxStepers_btn_custom "
                   value={JSON.stringify(Object.keys(obj))}
                   name={Object.values(obj)}
                 >
@@ -278,15 +236,8 @@ const StepOne = (props) => {
         </div>
       </Box>
 
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
-        <h5 className="section_headers_2 hange-Fonts-Size">
-          days un besoin réguliers, jours des trajets
-        </h5>
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+        <h5 className="section_headers_2 hange-Fonts-Size">Pour un besoin régulier, jours des trajets</h5>
 
         <div className="section_headers_button_group">
           {days.map((obj, index) => {

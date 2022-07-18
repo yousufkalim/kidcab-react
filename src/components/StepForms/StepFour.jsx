@@ -27,10 +27,10 @@ const StepFour = (props) => {
 
   const [item, setItem] = useState({
     firstName: '', // First name
-    companyName: '', //company_name/company name optional
+    last_name: '', //last_name/company name optional
     email: '', //E-mail
     phone: '', // phone
-    message: '', //company_name/company name optional optional
+    message: '', //last_name/company name optional optional
     agree: '',
     captchaToken: '',
   });
@@ -39,28 +39,35 @@ const StepFour = (props) => {
       updateStore({
         first_name: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
-    if (e.target.name === 'companyName') {
+    if (e.target.name === 'last_name') {
       updateStore({
-        company_name: e.target.value,
+        last_name: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
     if (e.target.name === 'phone') {
-      updateStore({
-        phone: e.target.value,
-      });
+      const re = /^[0-9\b]+$/;
+      if (e.target.value === '' || re.test(e.target.value)) {
+        updateStore({
+          phone: e.target.value,
+        });
+        setItem({ ...item, [e.target.name]: e.target.value });
+      }
     }
     if (e.target.name === 'message') {
       updateStore({
         message: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
     if (e.target.name === 'email') {
       updateStore({
         email: e.target.value,
       });
+      setItem({ ...item, [e.target.name]: e.target.value });
     }
-    setItem({ ...item, [e.target.name]: e.target.value });
   };
 
   const onChangeformcheck = async () => {
@@ -70,13 +77,6 @@ const StepFour = (props) => {
   useEffect(() => {
     props.passData4(item);
   }, [item]);
-  // const onChange = async (value) => {
-  //   setItem({ ...item, captchaToken: value });
-  //   updateStore({
-  //     captchaToken: value,
-  //   });
-  //   props.passData4(item);
-  // };
 
   return (
     <div className="stepOne_main">
@@ -102,14 +102,14 @@ const StepFour = (props) => {
           </div>
           <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
             <h5 style={{ marginTop: '20px' }} className="section_headers_2 hange-Fonts-Size text-align-text">
-              Nom de l'organisme/entreprise <span className="optonal_span">optional</span>{' '}
+              Nom
             </h5>
             <TextField
               className="custom_input_children_inner2_cam"
               style={{ marginTop: '20px' }}
-              placeholder="  Nom de l'organisme/entreprise"
-              name="companyName"
-              value={store.company_name}
+              placeholder="  Nom"
+              name="last_name"
+              value={store.last_name}
               onChange={onChangeform}
             />
           </div>
@@ -142,7 +142,7 @@ const StepFour = (props) => {
             <TextField
               className="custom_input_children_inner2 custom_input_children_inner2_tele"
               style={{ marginTop: '20px' }}
-              type="number"
+              type="text"
               placeholder="Téléphone"
               name="phone"
               value={store.phone}

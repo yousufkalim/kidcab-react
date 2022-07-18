@@ -1,27 +1,27 @@
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import ButtonGroup from "@mui/material/ButtonGroup";
-import Button from "@mui/material/Button";
-import Demanderpng from "../../assets/Demanderpng.png";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import TextField from "@mui/material/TextField";
-import { Store, UpdateStore } from "../../StoreContext";
+import React, { useState } from 'react';
+import Box from '@mui/material/Box';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import Demanderpng from '../../assets/Demanderpng.png';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import TextField from '@mui/material/TextField';
+import { Store, UpdateStore } from '../../StoreContext';
 const StepTwo = (props) => {
   const updateStore = UpdateStore();
   const store = Store();
   const [item, setItem] = useState({
     step2: {
-      door_support: "",
+      door_support: '',
       total_children: 0,
       total_adults: 0,
       baby: 0,
     },
   });
-  const [alignment, setAlignment] = React.useState("left");
-  const [alignmentNombre, setAlignmentNombre] = React.useState("left");
-  const [alignmentNombred, setAlignmentNombred] = React.useState("left");
-  const [alignmentBébé, setAlignmentBébé] = React.useState("left");
+  const [alignment, setAlignment] = React.useState('left');
+  const [alignmentNombre, setAlignmentNombre] = React.useState('left');
+  const [alignmentNombred, setAlignmentNombred] = React.useState('left');
+  const [alignmentBébé, setAlignmentBébé] = React.useState('left');
 
   const Besoin = [{ Oui: true }, { Non: false }];
   const Nombre = [1, 2, 3];
@@ -31,7 +31,7 @@ const StepTwo = (props) => {
   // Need door-to-door support?
   let init_door_support;
   const handleAlignment = (event, newAlignment) => {
-    console.log(event.target.name, "event.target.name dOOR sUPPORT");
+    console.log(event.target.name, 'event.target.name dOOR sUPPORT');
     init_door_support = event.target.name;
     setAlignment(newAlignment);
     setItem((prev) => {
@@ -44,7 +44,7 @@ const StepTwo = (props) => {
     });
     props.passData2(item);
   };
-  console.log(store.door_support, "door_supportstore");
+  console.log(store.door_support, 'door_supportstore');
   // Number of childres
   const handleAlignmentNombre = (event, newAlignment) => {
     setAlignmentNombre(newAlignment);
@@ -113,7 +113,7 @@ const StepTwo = (props) => {
   };
 
   const BébéFun = (e) => {
-    console.log(e.target.value, "e.target.value Bbay");
+    console.log(e.target.value, 'e.target.value Bbay');
     setItem((prev) => {
       prev.step2.baby = e.target.value;
       return { ...prev };
@@ -123,37 +123,23 @@ const StepTwo = (props) => {
     });
     props.passData2(item);
   };
-  console.log(item.step2.door_support, "item.step2.door_support");
-  console.log(item.step2.total_children, "item.step2.total_children");
-  console.log(item.step2.total_adults, "item.step2.adults");
-  console.log(item.step2.baby, "item.step2.baby");
+  console.log(item.step2.door_support, 'item.step2.door_support');
+  console.log(item.step2.total_children, 'item.step2.total_children');
+  console.log(item.step2.total_adults, 'item.step2.adults');
+  console.log(item.step2.baby, 'item.step2.baby');
 
   return (
     <div className="stepOne_main">
-      <h5 className="section_headers">
-        *Choisissez-en un pour chaque question !
-      </h5>
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
-        <h5 className="section_headers_2 hange-Fonts-Size">
-          Besoin d'accompagnement porte à porte ?
-        </h5>
+      <h5 className="section_headers">Remplissez le formulaire !</h5>
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+        <h5 className="section_headers_2 hange-Fonts-Size">Besoin d'accompagnement porte à porte ?</h5>
 
         <div className="section_headers_button_group">
-          <ToggleButtonGroup
-          className="ButtonGroup-root"
-            value={store.door_supportS}
-            exclusive
-            onChange={handleAlignment}
-          >
+          <ToggleButtonGroup className="ButtonGroup-root" value={store.door_supportS} exclusive onChange={handleAlignment}>
             {Besoin.map((obj, i) => {
               return (
                 <ToggleButton
-                className="boxStepers_btn_custom boxStepers_btn_customform2"
+                  className="boxStepers_btn_custom boxStepers_btn_customform2"
                   value={JSON.stringify(Object.values(obj))}
                   name={Object.keys(obj)}
                 >
@@ -165,28 +151,24 @@ const StepTwo = (props) => {
         </div>
       </Box>
 
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
-        <h5 className="section_headers_2 hange-Fonts-Size ">
-          Nombre d'enfant(s)
-        </h5>
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+        <h5 className="section_headers_2 hange-Fonts-Size ">Nombre d'enfant(s)</h5>
 
         <div className="section_headers_button_group ">
-          {store.total_children_tb === "" && (
+          {store.total_children_tb === '' && (
             <ToggleButtonGroup
-            className="ButtonGroup-root"
-       
+              className="ButtonGroup-root"
               value={store.total_children}
               exclusive
               onChange={handleAlignmentNombre}
             >
               {Nombre.map((obj, i) => {
                 return (
-                  <ToggleButton  className="boxStepers_btn_custom boxStepers_btn_custom2 boxStepers_btn_customform2" value={obj} name={obj}>
+                  <ToggleButton
+                    className="boxStepers_btn_custom boxStepers_btn_custom2 boxStepers_btn_customform2"
+                    value={obj}
+                    name={obj}
+                  >
                     {obj}
                   </ToggleButton>
                 );
@@ -195,9 +177,9 @@ const StepTwo = (props) => {
           )}
           {!store.total_children && (
             <div className="custom_input_children">
-              <TextField 
-              className="custom_input_children_inner"
-                placeholder="Number of child(ren)  "
+              <TextField
+                className="custom_input_children_inner"
+                placeholder="autre valeur "
                 type="number"
                 value={store.total_children_tb}
                 onChange={(e) => ChildFun(e)}
@@ -209,21 +191,15 @@ const StepTwo = (props) => {
 
       {/* third  */}
 
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
         <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile">
-          Nombre d'adulte(s) <span className="optonal_span">optional</span>
+          Nombre d'adulte(s) <span className="optonal_span">facultatif</span>
         </h5>
 
         <div className="section_headers_button_group">
-          {store.total_adults_tb === "" && (
+          {store.total_adults_tb === '' && (
             <ToggleButtonGroup
-            className="ButtonGroup-root"
-
+              className="ButtonGroup-root"
               value={store.total_adults}
               exclusive
               onChange={handleAlignmentNombred}
@@ -240,8 +216,8 @@ const StepTwo = (props) => {
           {!store.total_adults && (
             <div className="custom_input_children">
               <TextField
-               className="custom_input_children_inner"
-                placeholder="Nombre d'adulte "
+                className="custom_input_children_inner"
+                placeholder="autre valeur "
                 type="number"
                 value={store.total_adults_tb}
                 onChange={(e) => AdultFun(e)}
@@ -251,30 +227,19 @@ const StepTwo = (props) => {
         </div>
       </Box>
 
-      <Box
-        lg={{ width: "100%" }}
-        md={{ width: "100%" }}
-        sm={{ width: "100%" }}
-        className="boxStepers"
-      >
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
         <h5 className="section_headers_2 hange-Fonts-Size custom-css-mobile3">
-          Bébé(s) 3-4 ans <span className="optonal_span">optional</span>
+          Bébé(s) 3-4 ans <span className="optonal_span">facultatif</span>
         </h5>
 
         <div className="section_headers_button_group ">
-          {store.babyTb == "" && (
-            <ToggleButtonGroup
-            className="ButtonGroup-root"
-              value={store.baby}
-              exclusive
-              onChange={handleAlignmentBébé}
-            >
+          {store.babyTb == '' && (
+            <ToggleButtonGroup className="ButtonGroup-root" value={store.baby} exclusive onChange={handleAlignmentBébé}>
               {Bébé.map((obj, i) => {
                 return (
                   <ToggleButton
-
                     // className="btnStepers btnStepers-s "
-                    className="boxStepers_btn_custom boxStepers_btn_custom2  boxStepers_btn_customform2" 
+                    className="boxStepers_btn_custom boxStepers_btn_custom2  boxStepers_btn_customform2"
                     value={obj}
                   >
                     {obj}
@@ -286,8 +251,8 @@ const StepTwo = (props) => {
           {!store.baby && (
             <div className="custom_input_children">
               <TextField
-               className="custom_input_children_inner"
-                placeholder="Nombre of 'Bébé "
+                className="custom_input_children_inner"
+                placeholder="autre valeur"
                 onChange={(e) => BébéFun(e)}
                 value={store.babyTb}
                 type="number"
