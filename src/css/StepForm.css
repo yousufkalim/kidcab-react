@@ -367,7 +367,7 @@ height: 54px; */
     color: #CCCCCC;
     font-style: italic;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 16px !important;
 }
 
 .change_color {
@@ -630,7 +630,7 @@ height: 54px; */
 
 .custom_input_children_inner2_message
 {
-    width: 790px !important;   
+    width: 670px !important;   
     margin-left: -02px !important;
     padding: 20px;
     font-size: 20px;
@@ -1055,9 +1055,7 @@ color: white;
 
     }
 
-    .optonal_span {
-        font-size: 12px !important;
-    }
+   
 
     .btnstpers_3 {
         width: 280px !important;
@@ -1356,6 +1354,8 @@ color: white;
     font-weight: 500 !important;
     font-size: 18px !important;
     font-family: 'Inter';
+    color: #18374E !important;
+
   }
   /* production */
   .css-q5cu77{
@@ -1363,5 +1363,6 @@ color: white;
     font-weight: 500 !important;
     font-size: 18px !important;
     font-family: 'Inter';
-   
+    color: #18374E !important;
+
   }

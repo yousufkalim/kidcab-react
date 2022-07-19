@@ -30,7 +30,7 @@ const StepFour = (props) => {
     last_name: '', //last_name/company name optional
     email: '', //E-mail
     phone: '', // phone
-    message: '', //last_name/company name optional optional
+    company_name: '', //last_name/company name optional optional
     agree: '',
     captchaToken: '',
   });
@@ -56,9 +56,9 @@ const StepFour = (props) => {
         setItem({ ...item, [e.target.name]: e.target.value });
       }
     }
-    if (e.target.name === 'message') {
+    if (e.target.name === 'company_name') {
       updateStore({
-        message: e.target.value,
+        company_name: e.target.value,
       });
       setItem({ ...item, [e.target.name]: e.target.value });
     }
@@ -107,7 +107,7 @@ const StepFour = (props) => {
             <TextField
               className="custom_input_children_inner2_cam"
               style={{ marginTop: '20px' }}
-              placeholder="  Nom"
+              placeholder="Nom"
               name="last_name"
               value={store.last_name}
               onChange={onChangeform}
@@ -158,17 +158,15 @@ const StepFour = (props) => {
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group">
             <h5 style={{ marginTop: '50px' }} className="section_headers_2 hange-Fonts-Size ">
-              Nom de l'organisme/entreprise optional <span className="optonal_span">optional</span>
+              Nom de l'organisme/entreprise <span className="optonal_span">facultatif</span>
             </h5>
-            <TextareaAutosize
-              // aria-label="Tapez votre massage "
-              placeholder="Tapez votre massage"
+            <TextField
+              placeholder="Nom de l’organisme"
               className="custom_input_children_inner2_message"
-              name="message"
+              name="company_name"
               onChange={onChangeform}
               style={{ marginTop: '20px', marginLeft: '40px' }}
-              value={store.message}
-              minRows={3}
+              value={store.company_name}
             />
           </div>
         </div>

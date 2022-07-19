@@ -123,11 +123,6 @@ const StepTwo = (props) => {
     });
     props.passData2(item);
   };
-  console.log(item.step2.door_support, 'item.step2.door_support');
-  console.log(item.step2.total_children, 'item.step2.total_children');
-  console.log(item.step2.total_adults, 'item.step2.adults');
-  console.log(item.step2.baby, 'item.step2.baby');
-
   return (
     <div className="stepOne_main">
       <h5 className="section_headers">Remplissez le formulaire !</h5>

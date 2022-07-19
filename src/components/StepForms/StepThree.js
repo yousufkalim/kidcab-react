@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+//
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
@@ -132,7 +132,7 @@ const StepThree = (props) => {
       <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group">
-            <h5 className="section_headers_2 hange-Fonts-Siz ">Aller le ?</h5>
+            <h5 className="section_headers_2 hange-Fonts-Siz ">Aller le </h5>
 
             <TextField
               className="custom_input_children_inner2 custom_input_children_inner2_mobile"
@@ -196,7 +196,7 @@ const StepThree = (props) => {
           <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
             <h5 className="section_headers_2 hange-Fonts-Size">
               Adresse de destination
-              <span className="optonal_span">facultatif</span>
+              <span className="optonal_span"> facultatif</span>
             </h5>
             <Box sx={{ minWidth: 120 }} className="box-leftmove input_add_custom2  ">
               <FormControl fullWidth className="custom_input_children_inner2_input custom_input_children_inner2_input22 ">
