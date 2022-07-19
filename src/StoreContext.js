@@ -68,7 +68,7 @@ export function StoreProvider({ children }) {
     last_name: '', //last_name/company name optional
     email: '', //E-mail
     phone: '', // phone
-    message: '', //last_name/company name optional optional
+    company_name: '', //last_name/company name optional optional
     captchaToken: '',
   });
 

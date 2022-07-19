@@ -34,7 +34,7 @@ export default function HorizontalLinearStepper() {
     last_name: '', //last_name/company name optional
     email: '', //E-mail
     phone: '', // phone
-    message: '', //last_name/company name optional optional
+    company_name: '', //last_name/company name optional optional
     agree: '',
     captchaToken: '',
     journey_type: [],
@@ -79,7 +79,7 @@ export default function HorizontalLinearStepper() {
   const passData4 = (data) => {
     setform4(data);
   };
-  console.log(form4, 'f4');
+
   useEffect(() => {
     if (form4) {
       setApiData((prev) => {
@@ -89,7 +89,7 @@ export default function HorizontalLinearStepper() {
           email: store?.email,
           last_name: store?.last_name,
           phone: store?.phone,
-          message: store?.message,
+          company_name: store?.company_name,
           captchaToken: store?.captchaToken,
           door_support: store?.door_support,
         };
@@ -157,9 +157,6 @@ export default function HorizontalLinearStepper() {
     if (activeStep === 1) {
       if (store?.door_support) {
         if (store?.total_children || store?.total_children_tb !== '') {
-          if (Number(store?.babyTb) > 4) {
-            return toast.error('Le nombre total de bébés devrait être inférieur à 4');
-          }
           setActiveStep(2);
         } else {
           return toast.error('remplir tous les champs obligatoires');
@@ -232,7 +229,7 @@ export default function HorizontalLinearStepper() {
             last_name: '', //last_name/company name optional
             email: '', //E-mail
             phone: '', // phone
-            message: '', //last_name/company name optional optional
+            company_name: '', //last_name/company name optional optional
             captchaToken: '',
           });
         });
@@ -299,13 +296,13 @@ export default function HorizontalLinearStepper() {
                   className="btn_caneel"
                   type="button"
                 >
-                  Précédente'
+                  Précédent
                 </button>
               )}
               <Box sx={{ flex: '0 1 auto' }} />
 
               <button onClick={handleNext} className="btn-next" type="button">
-                {activeStep === steps.length - 1 ? 'Terminer' : 'Suivante'}
+                {activeStep === steps.length - 1 ? 'Envoyer ma demande' : 'Suivante'}
               </button>
             </Box>
           </>

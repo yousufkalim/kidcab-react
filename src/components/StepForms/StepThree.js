@@ -132,7 +132,7 @@ const StepThree = (props) => {
       <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group">
-            <h5 className="section_headers_2 hange-Fonts-Siz ">Aller le ?</h5>
+            <h5 className="section_headers_2 hange-Fonts-Siz ">Aller le </h5>
 
             <TextField
               className="custom_input_children_inner2 custom_input_children_inner2_mobile"

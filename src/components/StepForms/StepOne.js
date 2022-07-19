@@ -159,7 +159,7 @@ const StepOne = (props) => {
     <div className="stepOne_main">
       <h5 className="section_headers">Remplissez le formulaire !</h5>
       <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
-        <h5 className="section_headers_2 hange-Fonts-Size">Vous êtes?</h5>
+        <h5 className="section_headers_2 hange-Fonts-Size">Vous êtes ?</h5>
 
         <div className="section_headers_button_group">
           <ToggleButtonGroup
