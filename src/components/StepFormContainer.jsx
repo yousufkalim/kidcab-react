@@ -141,7 +141,7 @@ export default function HorizontalLinearStepper() {
       });
     }
   }, [form1]);
-  console.log(apiData, 'apiData');
+  console.log(store?.pickUp_address, 'store?.pickUp_address');
   // const isStepOptional = (step) => {
   //   return step === 1;
   // };
@@ -167,7 +167,7 @@ export default function HorizontalLinearStepper() {
     }
 
     if (activeStep === 2) {
-      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address && store?.destination_address) {
+      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address.lat && store?.pickUp_address.lng) {
         setActiveStep(3);
       } else {
         return toast.error('remplir tous les champs obligatoires');
