@@ -120,7 +120,9 @@ export default function HorizontalLinearStepper() {
         return {
           ...prev,
           door_support: store?.door_support,
-          total_children: store?.total_children ? store?.total_children : Number(store.total_children_tb),
+          total_children: store?.total_children
+            ? store?.total_children
+            : Number(store.total_children_tb),
           total_adults: store?.total_adults ? store.total_adults : Number(store.total_adults_tb),
           baby: store?.baby ? store.baby : Number(store?.babyTb),
         };
@@ -148,7 +150,12 @@ export default function HorizontalLinearStepper() {
 
   const handleNext = () => {
     if (activeStep === 0) {
-      if (store.your_are && store?.journey_frequency && store.journey_type.length > 0 && store?.days.length > 0) {
+      if (
+        store.your_are &&
+        store?.journey_frequency &&
+        store.journey_type.length > 0 &&
+        store?.days.length > 0
+      ) {
         setActiveStep(1);
       } else {
         return toast.error('remplir tous les champs obligatoires');
@@ -167,7 +174,12 @@ export default function HorizontalLinearStepper() {
     }
 
     if (activeStep === 2) {
-      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address.lat && store?.pickUp_address.lng) {
+      if (
+        store?.pickUp_date &&
+        store?.pickUp_time &&
+        store?.pickUp_address.lat &&
+        store?.pickUp_address.lng
+      ) {
         setActiveStep(3);
       } else {
         return toast.error('remplir tous les champs obligatoires');
@@ -259,7 +271,12 @@ export default function HorizontalLinearStepper() {
 
   return (
     <Container maxWidth="lg">
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className="boxStepers"
+      >
         <Container maxWidth="sm">
           <Stepper className="boxStepers_main" activeStep={activeStep}>
             {steps.map((label) => {

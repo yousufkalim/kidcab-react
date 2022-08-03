@@ -129,10 +129,10 @@ const StepThree = (props) => {
       <h5 className="section_headers">Remplissez le formulaire !</h5>
 
       {/* one  */}
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }}>
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group">
-            <h5 className="section_headers_2 hange-Fonts-Siz ">Aller le </h5>
+            <h5 className="section_headers_2 hange-Fonts-Size ">Aller le </h5>
 
             <TextField
               className="custom_input_children_inner2 custom_input_children_inner2_mobile"
@@ -144,10 +144,15 @@ const StepThree = (props) => {
               value={store?.pickUp_date?.split('T')[0]}
               name="pickUp_date"
               onChange={handelBtn}
+              sx={{
+                '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                  padding: '9px 14px !important',
+                },
+              }}
               // className="btnStepers btnsteper_special"
             />
           </div>
-          <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
+          <div className="btn-flex-grop cm-view-btn-group">
             <h5 className="section_headers_2 hange-Fonts-Size">Heure de ramassage </h5>
             <Box sx={{ minWidth: 120 }}>
               <FormControl fullWidth>
@@ -175,7 +180,12 @@ const StepThree = (props) => {
 
       {/* second  */}
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers box-top3">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className="box-top3"
+      >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop btn-flex-grop cm-view-btn-group">
             <h5 className="section_headers_2 hange-Fonts-Size">Adresse de prise en charge</h5>
@@ -187,7 +197,9 @@ const StepThree = (props) => {
                   style={{ maxWidth: '100%' }}
                   id="boxStepers_input_sm"
                   label="adresse de ramassage"
-                  address={Object.values(startAddress).length > 1 ? startAddress : store.pickUp_address}
+                  address={
+                    Object.values(startAddress).length > 1 ? startAddress : store.pickUp_address
+                  }
                   setAddress={setStartAddress}
                 />
               </FormControl>
@@ -199,11 +211,16 @@ const StepThree = (props) => {
               <span className="optonal_span"> facultatif</span>
             </h5>
             <Box sx={{ minWidth: 120 }} className="box-leftmove input_add_custom2  ">
-              <FormControl fullWidth className="custom_input_children_inner2_input custom_input_children_inner2_input22 ">
+              <FormControl
+                fullWidth
+                className="custom_input_children_inner2_input custom_input_children_inner2_input22 "
+              >
                 <InputLabel id="demo-simple-select-label"></InputLabel>
                 <AddressInput
                   label="adresse de destination"
-                  address={Object.values(endAddress).length > 1 ? endAddress : store.destination_address}
+                  address={
+                    Object.values(endAddress).length > 1 ? endAddress : store.destination_address
+                  }
                   setAddress={setEndAddress}
                 />
               </FormControl>
@@ -214,7 +231,12 @@ const StepThree = (props) => {
 
       {/* third  */}
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers box-top3">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className=" box-top3"
+      >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group">
             <h5 className="section_headers_2 hange-Fonts-Size">
@@ -231,6 +253,11 @@ const StepThree = (props) => {
               value={store?.return_date?.split('T')[0]}
               name="return_date"
               onChange={handelBtn}
+              sx={{
+                '& .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input': {
+                  padding: '9px 14px !important',
+                },
+              }}
               // className="btnStepers btnsteper_special"
             />
           </div>
@@ -262,7 +289,12 @@ const StepThree = (props) => {
       </Box>
 
       {/* four */}
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers box-top3">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className="box-top3"
+      >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group">
             <h5 className="section_headers_2 hange-Fonts-Size">
@@ -275,7 +307,9 @@ const StepThree = (props) => {
                   style={{ maxWidth: '100%' }}
                   id="boxStepers_input_sm"
                   label="adresse de retour"
-                  address={Object.values(returnAddress).length > 1 ? returnAddress : store.return_address}
+                  address={
+                    Object.values(returnAddress).length > 1 ? returnAddress : store.return_address
+                  }
                   setAddress={setReturnAddress}
                 />
               </FormControl>

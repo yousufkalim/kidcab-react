@@ -71,7 +71,10 @@ const StepOne = (props) => {
     init_journey_type = e.target.name; // E
     init_journey_typef = e.target.value; // F
 
-    if (item.step1.journey_type.includes(init_journey_type) && item.step1.journey_typef.includes(init_journey_typef)) {
+    if (
+      item.step1.journey_type.includes(init_journey_type) &&
+      item.step1.journey_typef.includes(init_journey_typef)
+    ) {
       let index = item.step1.journey_type.indexOf(init_journey_type);
       let index2 = item.step1.journey_typef.indexOf(init_journey_typef);
 
@@ -158,7 +161,7 @@ const StepOne = (props) => {
   return (
     <div className="stepOne_main">
       <h5 className="section_headers">Remplissez le formulaire !</h5>
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }}>
         <h5 className="section_headers_2 hange-Fonts-Size">Vous êtes ?</h5>
 
         <div className="section_headers_button_group">
@@ -187,7 +190,7 @@ const StepOne = (props) => {
 
       {/* second  */}
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }}>
         <h5 className="section_headers_2 hange-Fonts-Size">Type de trajet</h5>
 
         <div className="section_headers_button_group">
@@ -216,11 +219,16 @@ const StepOne = (props) => {
 
       {/* third  */}
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }}>
         <h5 className="section_headers_2 hange-Fonts-Size">Fréquence des trajets</h5>
 
         <div className="section_headers_button_group">
-          <ToggleButtonGroup className="ButtonGroup-root" value={store.journey_frequency} exclusive onChange={handleAlignment}>
+          <ToggleButtonGroup
+            className="ButtonGroup-root"
+            value={store.journey_frequency}
+            exclusive
+            onChange={handleAlignment}
+          >
             {journey_frequency.map((obj, i) => {
               return (
                 <ToggleButton
@@ -236,8 +244,10 @@ const StepOne = (props) => {
         </div>
       </Box>
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers">
-        <h5 className="section_headers_2 hange-Fonts-Size">Pour un besoin régulier, jours des trajets</h5>
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }}>
+        <h5 className="section_headers_2 hange-Fonts-Size">
+          Pour un besoin régulier, jours des trajets
+        </h5>
 
         <div className="section_headers_button_group">
           {days.map((obj, index) => {

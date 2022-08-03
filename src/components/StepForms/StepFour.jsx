@@ -82,16 +82,13 @@ const StepFour = (props) => {
     <div className="stepOne_main">
       {/* one  */}
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers ">
+      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className=" ">
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2  ">
-            <h5 style={{ marginTop: '20px' }} className="section_headers_2 hange-Fonts-Size text-align-text">
-              Prénom?
-            </h5>
+            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">Prénom?</h5>
 
             <TextField
-              className="custom_input_children_inner2 custom_input_children_inner2_name"
-              style={{ marginTop: '20px' }}
+              className="custom_input_children_inner3 custom_input_children_inner2_email"
               placeholder="Prénom"
               onChange={onChangeform}
               name="firstName"
@@ -101,12 +98,9 @@ const StepFour = (props) => {
             {/* <button className="btnStepers btnstpers_3">Write here </button> */}
           </div>
           <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
-            <h5 style={{ marginTop: '20px' }} className="section_headers_2 hange-Fonts-Size text-align-text">
-              Nom
-            </h5>
+            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">Nom</h5>
             <TextField
-              className="custom_input_children_inner2_cam"
-              style={{ marginTop: '20px' }}
+              className="custom_input_children_inner3 custom_input_children_inner2_tele"
               placeholder="Nom"
               name="last_name"
               value={store.last_name}
@@ -118,16 +112,18 @@ const StepFour = (props) => {
 
       {/* second  */}
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers box-top3">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className=" box-top3"
+      >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop  cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
-            <h5 style={{ marginTop: '20px' }} className="section_headers_2 hange-Fonts-Size text-align-text">
-              email
-            </h5>
+            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">email</h5>
 
             <TextField
-              className="custom_input_children_inner2 custom_input_children_inner2_email"
-              style={{ marginTop: '20px' }}
+              className="custom_input_children_inner3 custom_input_children_inner2_email"
               type="email"
               placeholder="email"
               onChange={onChangeform}
@@ -136,12 +132,9 @@ const StepFour = (props) => {
             />
           </div>
           <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
-            <h5 style={{ marginTop: '20px' }} className="section_headers_2 hange-Fonts-Size text-align-text">
-              Téléphone{' '}
-            </h5>
+            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">Téléphone </h5>
             <TextField
-              className="custom_input_children_inner2 custom_input_children_inner2_tele"
-              style={{ marginTop: '20px' }}
+              className="custom_input_children_inner3 custom_input_children_inner2_tele"
               type="text"
               placeholder="Téléphone"
               name="phone"
@@ -154,10 +147,15 @@ const StepFour = (props) => {
 
       {/* third  */}
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers box-top3">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className=" box-top3"
+      >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group">
-            <h5 style={{ marginTop: '50px' }} className="section_headers_2 hange-Fonts-Size ">
+            <h5 className="section_headers_2 hange-Fonts-Size ">
               Nom de l'organisme/entreprise <span className="optonal_span">facultatif</span>
             </h5>
             <TextField
@@ -165,28 +163,39 @@ const StepFour = (props) => {
               className="custom_input_children_inner2_message"
               name="company_name"
               onChange={onChangeform}
-              style={{ marginTop: '20px', marginLeft: '40px' }}
+              style={{ marginLeft: '40px' }}
               value={store.company_name}
             />
           </div>
         </div>
       </Box>
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers box-top3">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className=" box-top3"
+      >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group4">
             {/* < className="section_headers_2 hange-Fonts-Size text-align-text"> */}{' '}
-            <Checkbox {...label} onChange={(e) => onChangeformcheck(e)} name="agree" /> {/* </h5> */}
+            <Checkbox {...label} onChange={(e) => onChangeformcheck(e)} name="agree" />{' '}
+            {/* </h5> */}
             <p className="form4_agree-text">
-              En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées dans le cadre <br /> de la
-              demande d'une estimation et de la relation commerciale qui peut en découler. J'accepte la politique de
-              confidentialité.
+              En soumettant ce formulaire, j'accepte que les informations saisies soient exploitées
+              dans le cadre <br /> de la demande d'une estimation et de la relation commerciale qui
+              peut en découler. J'accepte la politique de confidentialité.
             </p>
           </div>
         </div>
       </Box>
 
-      <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className="boxStepers box-top3">
+      <Box
+        lg={{ width: '100%' }}
+        md={{ width: '100%' }}
+        sm={{ width: '100%' }}
+        className=" box-top3"
+      >
         {/* <div className="section_headers_button_group spte_3_btn-grroup check_flex">
           <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group5">
             <ReCAPTCHA
