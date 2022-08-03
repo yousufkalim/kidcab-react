@@ -7,6 +7,15 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import TextField from '@mui/material/TextField';
 import { Store, UpdateStore } from '../../StoreContext';
+
+const style = {
+  ['@media (max-width: 800px)']: {
+    // eslint-disable-line no-useless-computed-key
+    '& .MuiToggleButtonGroup-grouped': {
+      width: '65px !important',
+    },
+  },
+};
 const StepTwo = (props) => {
   const updateStore = UpdateStore();
   const store = Store();
@@ -137,6 +146,7 @@ const StepTwo = (props) => {
             value={store.door_supportS}
             exclusive
             onChange={handleAlignment}
+            sx={style}
           >
             {Besoin.map((obj, i) => {
               return (
@@ -163,6 +173,7 @@ const StepTwo = (props) => {
               value={store.total_children}
               exclusive
               onChange={handleAlignmentNombre}
+              sx={style}
             >
               {Nombre.map((obj, i) => {
                 return (
@@ -205,6 +216,7 @@ const StepTwo = (props) => {
               value={store.total_adults}
               exclusive
               onChange={handleAlignmentNombred}
+              sx={style}
             >
               {Nombred.map((obj, i) => {
                 return (
@@ -244,6 +256,7 @@ const StepTwo = (props) => {
               value={store.baby}
               exclusive
               onChange={handleAlignmentBébé}
+              sx={style}
             >
               {Bébé.map((obj, i) => {
                 return (

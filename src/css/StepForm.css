@@ -612,7 +612,8 @@ height: 54px; */
   border-radius: 10px !important;
   border: 1px solid #dfeeeb !important;
   background: #f8fcfb !important;
-  height: 40px;
+  height: 34px;
+  white-space: nowrap;
 }
 .boxStepers_btn_customform2 {
   width: 65px !important;
@@ -834,7 +835,7 @@ color: white;
   margin-left: 30px !important;
 }
 .custom_input_children_inner2_input22 input {
-  margin-left: 20px !important;
+  margin-left: 14px !important;
   font-size: 18px !important;
   width: 328px !important;
 }
@@ -899,7 +900,7 @@ color: white;
   .btnStepers {
     padding: 8px 12px;
     font-size: 12px;
-    margin-top: 20px;
+    margin-top: 6px;
 
     margin-right: 7px;
     margin-left: 13px;
@@ -924,7 +925,6 @@ color: white;
     width: 100%;
     /* justify-content: space-between; */
     justify-content: center;
-    margin-top: -18px;
     flex-wrap: wrap;
   }
 
@@ -958,12 +958,10 @@ color: white;
 
   .custom-css-mobile {
     display: block;
-    margin-top: 85px !important;
   }
 
   .custom-css-mobile3 {
     display: block;
-    margin-top: 70px !important;
   }
 
   .custom-css-mobile_b {
@@ -1012,13 +1010,11 @@ color: white;
 
   .cm-view-btn-group {
     border: 0px solid red !important;
-    height: 112px !important;
+    margin-bottom: 28px !important;
     width: 80% !important;
-    margin-top: 15px !important;
   }
 
   .cm-view-btn-group2 {
-    margin-left: -30px !important;
     margin-left: -30px !important;
   }
 
@@ -1035,7 +1031,7 @@ color: white;
   }
 
   .box-top3 {
-    margin-top: -10px !important;
+    margin-top: -30px !important;
   }
 
   .messages {
@@ -1052,7 +1048,7 @@ color: white;
   }
 
   .cm-view-btn-group4 {
-    margin-top: 166px !important;
+    margin-bottom: 85px !important;
   }
 
   .form4_agree-text {
@@ -1071,9 +1067,8 @@ color: white;
 
   .text-align-text {
     position: relative;
-    text-align: start !important;
-    left: 30px;
-    top: 20px !important;
+    text-align: center !important;
+    top: 30px !important;
   }
 
   .cm-view-btn-group22 {
@@ -1087,26 +1082,22 @@ color: white;
   .sep1PictureBox img {
     position: fixed;
     width: 215px;
-    left: 7px;
-    top: 123%;
+    left: 0;
+    bottom: 0;
     z-index: -1;
   }
 
   .sep1PictureBox2 {
-    height: 150px;
-    width: 300px;
     position: fixed;
-    left: 90px;
-    top: 1069px;
+    /* height: 572px; */
+    right: 0;
+    bottom: 0;
+    /* border: 2px solid red; */
+    z-index: -1;
   }
 
   .sep1PictureBox2 img {
-    height: 100%;
-    width: 100%;
-
-    position: fixed;
-
-    z-index: -1;
+    width: 250px;
   }
 
   .custom_input_children {
@@ -1123,12 +1114,12 @@ color: white;
   }
 
   .sep4PictureBox4 img {
-    position: absolute;
+    position: fixed;
     width: 360px;
     height: 225px;
     opacity: 0.3;
-    left: 20px;
-    top: 1375px;
+    left: 0;
+    bottom: 0;
     z-index: -1;
   }
 
@@ -1139,6 +1130,7 @@ color: white;
     width: 308px !important;
   }
   .boxStepers_btn_custom {
+    margin-top: 6px !important;
     margin-left: 13px !important;
   }
   .boxStepers_btn_custom2 {
@@ -1146,32 +1138,23 @@ color: white;
     width: 33px !important;
   }
   .custom_input_children_inner {
+    margin-top: 6px !important;
     margin-left: 10px !important;
   }
   .custom_input_children_inner input {
-    height: 8px !important;
-    margin-left: 30px;
+    height: 2px !important;
   }
   .custom_input_children_inner2_mobile {
     border: 0px solid red !important;
-    width: 85% !important;
-    height: 63px;
-
-    margin-left: 25px !important;
+    width: 100% !important;
   }
   .TimePicker-ss {
-    width: 279px !important;
+    width: 290px !important;
     margin-top: 9px !important;
   }
   .custom_input_children_inner2_input {
-    margin-left: 29px !important;
-
+    margin-left: 14px !important;
     margin-top: 0px !important;
-    width: 280px !important;
-  }
-  .custom_input_children_inner2_input22 {
-    margin-left: 62px !important;
-    width: 280px !important;
   }
 
   .custom_input_children_inner2_input input {
@@ -1179,9 +1162,7 @@ color: white;
     border: 1px solid #dfeeeb !important;
     border-radius: 10px !important;
     color: black !important;
-    margin-left: -15px !important;
-    margin-top: 15px !important;
-    width: 100% !important;
+    width: 95% !important;
     height: 41px;
     font-size: 12px !important;
     padding-left: 20px;
@@ -1221,7 +1202,6 @@ color: white;
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
-    margin-top: 30px;
     padding-left: 0px !important;
     padding-right: 0px !important;
   }

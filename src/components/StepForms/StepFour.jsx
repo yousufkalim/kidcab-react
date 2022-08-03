@@ -190,22 +190,6 @@ const StepFour = (props) => {
         </div>
       </Box>
 
-      <Box
-        lg={{ width: '100%' }}
-        md={{ width: '100%' }}
-        sm={{ width: '100%' }}
-        className=" box-top3"
-      >
-        {/* <div className="section_headers_button_group spte_3_btn-grroup check_flex">
-          <div className="btn-flex-grop4 cm-view-btn-group cm-view-btn-group5">
-            <ReCAPTCHA
-              sitekey="6LdQNMAgAAAAAEM7_lQp7AffR2NiAPq_ZUVtVA6x"
-              onChange={onChange}
-            />
-          </div>
-        </div> */}
-      </Box>
-
       <div className="sep4PictureBox4">
         <img src={kidcabService} alt="kidCab" />
       </div>

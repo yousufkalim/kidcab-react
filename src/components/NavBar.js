@@ -19,7 +19,7 @@ const NavBar = () => {
     <div style={{ height: 75 }}>
       <AppBar
         position="static"
-        sx={{ backgroundColor: 'white', boxShadow: 'none', position: 'fixed', top: 0 }}
+        sx={{ backgroundColor: 'white', boxShadow: 'none', position: 'fixed', top: 0, zIndex: 999 }}
         className="conatainer-Navbar"
       >
         <Container maxWidth="xl">
