@@ -220,7 +220,7 @@ height: 54px; */
 
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 500 !important;
+  font-weight: 900;
   font-size: 15px;
 
   display: flex;
@@ -553,7 +553,7 @@ height: 54px; */
   align-items: flex-start !important;
   padding: 10px 32px !important;
   gap: 10px !important;
-  border-radius: 10px;
+  border-radius: 2px;
   margin-right: -1px;
   margin-left: 28px;
 }
@@ -612,7 +612,7 @@ height: 54px; */
   border-radius: 10px !important;
   border: 1px solid #dfeeeb !important;
   background: #f8fcfb !important;
-  height: 34px;
+  height: 40px;
   white-space: nowrap;
 }
 .boxStepers_btn_customform2 {
@@ -788,6 +788,7 @@ color: white;
   height: 8px !important;
   background: #f8fcfb !important;
 }
+
 .custom_input_children_inner3 {
   background: #f8fcfb !important;
   border: none !important;
@@ -817,7 +818,7 @@ color: white;
 .custom_input_children_inner2_input input {
   background: #f8fcfb !important;
   border: 1px solid #dfeeeb !important;
-  border-radius: 10px !important;
+  border-radius: 2px !important;
   color: black !important;
   margin-left: -15px !important;
   width: 325px !important;
@@ -901,6 +902,7 @@ color: white;
     padding: 8px 12px;
     font-size: 12px;
     margin-top: 6px;
+    font-weight: 900;
 
     margin-right: 7px;
     margin-left: 13px;
@@ -1220,5 +1222,9 @@ color: white;
   font-weight: 500 !important;
   font-size: 18px !important;
   font-family: 'Inter';
-  color: #18374e !important;
+}
+
+.css-1x5jdmq {
+  height: 8px !important;
+  background: #f8fcfb !important;
 }
