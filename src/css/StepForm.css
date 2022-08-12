@@ -222,6 +222,7 @@ height: 54px; */
   font-style: normal;
   font-weight: 900;
   font-size: 15px;
+  color: #18374e;
 
   display: flex;
   align-items: center;
@@ -787,6 +788,7 @@ color: white;
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
   height: 8px !important;
   background: #f8fcfb !important;
+  text-align: center;
 }
 
 .custom_input_children_inner3 {
@@ -825,6 +827,7 @@ color: white;
   height: 45px;
   padding-left: 20px;
   font-size: 18px !important;
+  text-align: center;
 }
 .custom_input_children_inner2_name {
   margin-left: 12px !important;
@@ -1214,7 +1217,14 @@ color: white;
   text-transform: none !important;
   font-weight: 500 !important;
   font-size: 15px !important;
-  font-family: 'Inter';
+  font-family: 'Inter' !important;
+  font-weight: 900 !important;
+}
+.css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped {
+  color: #18374e;
+}
+.css-wgx97u-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped {
+  color: #18374e;
 }
 /* production */
 .css-q5cu77 {
