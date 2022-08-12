@@ -85,7 +85,7 @@ const StepFour = (props) => {
       <Box lg={{ width: '100%' }} md={{ width: '100%' }} sm={{ width: '100%' }} className=" ">
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop cm-view-btn-group cm-view-btn-group2  ">
-            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">Prénom?</h5>
+            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">Prénom</h5>
 
             <TextField
               className="custom_input_children_inner3 custom_input_children_inner2_email"
