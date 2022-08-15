@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import api from '../api/index';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-
 import Container from '@mui/material/Container';
 // import components
 import StepOne from './StepForms/StepOne';
@@ -20,6 +19,7 @@ import { Store, UpdateStore } from '../StoreContext';
 const steps = ['', '', '', ''];
 
 export default function HorizontalLinearStepper() {
+  const recaptchaRef = useRef(null);
   const [activeStep, setActiveStep] = React.useState(0);
   // const [skipped, setSkipped] = React.useState(new Set());
   const updateStore = UpdateStore();
@@ -52,6 +52,11 @@ export default function HorizontalLinearStepper() {
     destination_address: '',
     return_address: '',
   });
+  const [captchaFlag, setCaptchaFlag] = useState(false);
+
+  const handleCaptcha = async () => {
+    setCaptchaFlag(true);
+  };
 
   const passData = (data) => {
     setform(data);
@@ -98,7 +103,7 @@ export default function HorizontalLinearStepper() {
   }, [form4]);
 
   useEffect(() => {
-    if (form3) {
+    if (form3 || store.pickUp_address || store?.destination_address || store?.return_address) {
       setApiData((prev) => {
         return {
           ...prev,
@@ -112,7 +117,7 @@ export default function HorizontalLinearStepper() {
         };
       });
     }
-  }, [form3]);
+  }, [form3, store.pickUp_address, store?.destination_address, store?.return_address]);
 
   useEffect(() => {
     if (form2) {
@@ -174,12 +179,8 @@ export default function HorizontalLinearStepper() {
     }
 
     if (activeStep === 2) {
-      if (
-        store?.pickUp_date &&
-        store?.pickUp_time &&
-        store?.pickUp_address.lat &&
-        store?.pickUp_address.lng
-      ) {
+      console.log(store, 'storeee');
+      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address.label) {
         setActiveStep(3);
       } else {
         return toast.error('remplir tous les champs obligatoires');
@@ -244,6 +245,7 @@ export default function HorizontalLinearStepper() {
             company_name: '', //last_name/company name optional optional
             captchaToken: '',
           });
+          setActiveStep(0);
         });
         return toast.success('Demande de trajet envoyée avec succès ');
       } else {
@@ -302,7 +304,13 @@ export default function HorizontalLinearStepper() {
             {activeStep + 1 === 1 ? <StepOne passData={passData} /> : null}
             {activeStep + 1 === 2 ? <StepTwo passData2={passData2} /> : null}
             {activeStep + 1 === 3 ? <StepThree passData3={passData3} /> : null}
-            {activeStep + 1 === 4 ? <StepFour passData4={passData4} /> : null}
+            {activeStep + 1 === 4 ? (
+              <StepFour
+                passData4={passData4}
+                handleCaptcha={handleCaptcha}
+                recaptchaRef={recaptchaRef}
+              />
+            ) : null}
             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }} className="boxStepers_btn">
               {activeStep > 0 && (
                 <button
@@ -318,7 +326,12 @@ export default function HorizontalLinearStepper() {
               )}
               <Box sx={{ flex: '0 1 auto' }} />
 
-              <button onClick={handleNext} className="btn-next" type="button">
+              <button
+                onClick={handleNext}
+                className="btn-next"
+                type="button"
+                disabled={activeStep === steps.length - 1 && !captchaFlag}
+              >
                 {activeStep === steps.length - 1 ? 'Envoyer ma demande' : 'Suivante'}
               </button>
             </Box>
