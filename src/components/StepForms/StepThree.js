@@ -21,8 +21,7 @@ const StepThree = (props) => {
   let [endAddress, setEndAddress] = useState({});
   let [returnAddress, setReturnAddress] = useState({});
 
-  console.log(startAddress, 'startAddress');
-  console.log(value);
+  console.log('first', startAddress);
   const [item, setItem] = useState({
     step3: {
       pickUp_date: '',
@@ -116,13 +115,6 @@ const StepThree = (props) => {
     props.passData3(item);
   };
   //return_time
-  console.log(store.pickUp_address, 'store.pickUp_address');
-  console.log(store.pickUp_time, 'store.pickUp_time');
-  console.log(store.return_time, 'store.return_time');
-  console.log(store.destination_address, 'store.destination_address');
-  console.log(store.return_address, 'store.return_address');
-  console.log(store.pickUp_date, 'store.pickUp_date');
-  console.log(store.return_date, 'store.return_date');
 
   return (
     <div className="stepOne_main">

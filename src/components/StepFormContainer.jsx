@@ -103,7 +103,7 @@ export default function HorizontalLinearStepper() {
   }, [form4]);
 
   useEffect(() => {
-    if (form3) {
+    if (form3 || store.pickUp_address || store?.destination_address || store?.return_address) {
       setApiData((prev) => {
         return {
           ...prev,
@@ -117,7 +117,7 @@ export default function HorizontalLinearStepper() {
         };
       });
     }
-  }, [form3]);
+  }, [form3, store.pickUp_address, store?.destination_address, store?.return_address]);
 
   useEffect(() => {
     if (form2) {
@@ -179,12 +179,8 @@ export default function HorizontalLinearStepper() {
     }
 
     if (activeStep === 2) {
-      if (
-        store?.pickUp_date &&
-        store?.pickUp_time &&
-        store?.pickUp_address.lat &&
-        store?.pickUp_address.lng
-      ) {
+      console.log(store, 'storeee');
+      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address.label) {
         setActiveStep(3);
       } else {
         return toast.error('remplir tous les champs obligatoires');
@@ -249,6 +245,7 @@ export default function HorizontalLinearStepper() {
             company_name: '', //last_name/company name optional optional
             captchaToken: '',
           });
+          setActiveStep(0);
         });
         return toast.success('Demande de trajet envoyée avec succès ');
       } else {

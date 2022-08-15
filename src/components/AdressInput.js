@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import Autocomplete from "react-autocomplete";
-import { Store, UpdateStore } from "../StoreContext";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Autocomplete from 'react-autocomplete';
+import { Store, UpdateStore } from '../StoreContext';
 
 // import { SetAuthToken } from "variables/auth";
 
@@ -18,18 +18,17 @@ function AddressInput({ label, address, setAddress, optional }) {
   //   }
   // }, [address]);
   const pickAdrress = (AddressObj) => {
-    console.log("fun address", AddressObj);
-    if (label == "adresse de ramassage") {
+    if (label == 'adresse de ramassage') {
       updateStore({
         pickUp_address: AddressObj,
       });
     }
-    if (label == "adresse de destination") {
+    if (label == 'adresse de destination') {
       updateStore({
         destination_address: AddressObj,
       });
     }
-    if (label == "adresse de retour") {
+    if (label == 'adresse de retour') {
       updateStore({
         return_address: AddressObj,
       });
@@ -38,14 +37,29 @@ function AddressInput({ label, address, setAddress, optional }) {
 
   // Get All Address in drop down List from API
   const getAllAddress = async (e) => {
+    if (label == 'adresse de ramassage') {
+      updateStore({
+        pickUp_address: { ...address, label: e.target.value },
+      });
+    }
+    if (label == 'adresse de destination') {
+      updateStore({
+        destination_address: { ...address, label: e.target.value },
+      });
+    }
+    if (label == 'adresse de retour') {
+      updateStore({
+        return_address: { ...address, label: e.target.value },
+      });
+    }
     setAddress({ ...address, label: e.target.value });
 
     // delete axios.defaults.headers.common["Authorization"];
 
     let res = await axios.get(
-      "https://api-adresse.data.gouv.fr/search/?q=" +
+      'https://api-adresse.data.gouv.fr/search/?q=' +
         e.target.value +
-        "&type=housenumber&autocomplete=1"
+        '&type=housenumber&autocomplete=1'
     );
 
     // if (localStorage.Authorization) {
@@ -58,9 +72,7 @@ function AddressInput({ label, address, setAddress, optional }) {
         id: i,
         label: res?.data?.features[i].properties.label,
         label2: `${
-          res?.data?.features[i].properties.label +
-          "," +
-          res?.data?.features[i].properties.context
+          res?.data?.features[i].properties.label + ',' + res?.data?.features[i].properties.context
         }`,
         city: res?.data?.features[i].properties.city,
         PostalCode: res?.data?.features[i].properties.postcode,
@@ -122,11 +134,11 @@ function AddressInput({ label, address, setAddress, optional }) {
     } else {
       setAddress({
         ...address,
-        address: "",
-        zip_code: "",
-        lat: "",
-        long: "",
-        city: "",
+        address: '',
+        zip_code: '',
+        lat: '',
+        long: '',
+        city: '',
       });
       // updateStore({
       //   ...store.pickUp_address,
@@ -141,13 +153,8 @@ function AddressInput({ label, address, setAddress, optional }) {
 
   return (
     <>
-      <label
-        className="form-control-label"
-        htmlFor={`input-address-${label.split(" ").join("")}`}
-      >
-        {!optional && (
-          <span style={{ color: "red" }}>{address?.label ? "" : "*"}</span>
-        )}
+      <label className="form-control-label" htmlFor={`input-address-${label.split(' ').join('')}`}>
+        {!optional && <span style={{ color: 'red' }}>{address?.label ? '' : '*'}</span>}
         {label}
       </label>
 
@@ -159,12 +166,12 @@ function AddressInput({ label, address, setAddress, optional }) {
         onChange={getAllAddress}
         onSelect={handleAddressSelect}
         // Custom styling
-        wrapperStyle={{ display: "block" }}
+        wrapperStyle={{ display: 'block' }}
         renderInput={(props) => {
           return (
             <input
               className="form-control form-control-alternative"
-              id={`input-address-${label.split(" ").join("")}`}
+              id={`input-address-${label.split(' ').join('')}`}
               placeholder={label}
               {...props}
             />
@@ -177,7 +184,7 @@ function AddressInput({ label, address, setAddress, optional }) {
                 ...style,
                 ...this.menuStyle,
                 zIndex: 1,
-                marginTop: "5px",
+                marginTop: '5px',
               }}
               children={items}
             />
@@ -186,8 +193,8 @@ function AddressInput({ label, address, setAddress, optional }) {
         renderItem={(item, isHighlighted) => (
           <div
             style={{
-              background: isHighlighted ? "lightgray" : "white",
-              padding: "10px",
+              background: isHighlighted ? 'lightgray' : 'white',
+              padding: '10px',
             }}
           >
             {item.label}
