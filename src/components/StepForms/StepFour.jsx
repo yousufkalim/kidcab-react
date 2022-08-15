@@ -9,21 +9,15 @@ import TextField from '@mui/material/TextField';
 // import Select from '@mui/material/Select';
 import kidcabService from '../../assets/Kidcab_service.png';
 import Checkbox from '@mui/material/Checkbox';
-// import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import { Store, UpdateStore } from '../../StoreContext';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const StepFour = (props) => {
-  // const recaptchaRef = useRef(null);
   const updateStore = UpdateStore();
   const store = Store();
   const [checked, setChecked] = useState(false);
-  // const handleSubmit = async () => {
-  //   const captchaToken = await recaptchaRef.current.executeAsync();
-  //   recaptchaRef.current.reset();
-  //   console.log('captchaToken', captchaToken);
-  // };
 
   const [item, setItem] = useState({
     firstName: '', // First name
@@ -189,6 +183,14 @@ const StepFour = (props) => {
           </div>
         </div>
       </Box>
+
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
+        <ReCAPTCHA
+          ref={props.recaptchaRef}
+          sitekey="6LesgnghAAAAAK00eE-0lhsWda3ZHjiamidErl3O"
+          onChange={props.handleCaptcha}
+        />
+      </div>
 
       <div className="sep4PictureBox4">
         <img src={kidcabService} alt="kidCab" />
