@@ -10,7 +10,7 @@ const Success = () => {
       <div className="success-container2">
         <img src={Demander} className="success-img" />
         <div className="success-text-container">
-          <div className="success-text-primary">Merci pour la coopération</div>
+          <div className="success-text-primary">Merci pour votre collaboration</div>
           <div className="success-text-secondary">Kidcab vous contactera bientôt</div>
         </div>
         <div className="bottom-container">
@@ -20,10 +20,10 @@ const Success = () => {
             onClick={() => history.push('/')}
             style={{ fontSize: 20, padding: '15px 60px' }}
           >
-            De retour à la maison
+            Retourner à la page d’Accueil
           </button>
           <div className="success-text" onClick={() => history.push('/')}>
-            Vous souhaitez estimer un autre trajet ?
+            Vous souhaitez obtenir une estimation pour un autre trajet ?
           </div>
         </div>
       </div>

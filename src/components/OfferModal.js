@@ -22,14 +22,14 @@ const OfferModal = ({ rideRequest, updateStatus }) => {
           className="btn_caneel"
           type="button"
         >
-          Déclin
+          Refuser
         </button>
         <button
           onClick={() => updateStatus(rideRequest._id, 'accepted')}
           className="btn-next"
           type="button"
         >
-          J'accepte
+          Accepter
         </button>
       </Box>
     </div>
