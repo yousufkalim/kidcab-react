@@ -1,0 +1,71 @@
+.success-container {
+  width: 100vw;
+  height: calc(100vh - 75px);
+  display: grid;
+  place-items: center;
+  font-family: 'Libre Franklin';
+  overflow: hidden;
+}
+
+.success-container2 {
+  overflow: hidden;
+  height: 80%;
+  display: grid;
+  place-items: center;
+}
+.success-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.success-text-primary {
+  font-size: 64px;
+  color: #18374e;
+  margin-bottom: 2%;
+}
+.success-text-secondary {
+  font-size: 32px;
+  color: #4cb9b4;
+}
+
+.success-text {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1300px) {
+  .success-text-primary {
+    font-size: 54px;
+  }
+  .success-text-secondary {
+    font-size: 26px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .success-text-primary {
+    font-size: 44px;
+  }
+  .success-text-secondary {
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .success-text-primary {
+    font-size: 28px;
+  }
+  .success-text-secondary {
+    font-size: 18px;
+  }
+  .success-img {
+    width: 220%;
+  }
+}

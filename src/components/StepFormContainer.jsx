@@ -11,14 +11,18 @@ import StepTwo from './StepForms/StepTwo';
 import StepThree from './StepForms/StepThree';
 import StepFour from './StepForms/StepFour';
 import { toast } from 'react-toastify';
+import Modal from './Modal';
+import OfferModal from './OfferModal';
 import 'react-toastify/dist/ReactToastify.css';
 // import css
 import '../css/StepForm.css';
 import { Store, UpdateStore } from '../StoreContext';
+import { useHistory } from 'react-router-dom';
 
 const steps = ['', '', '', ''];
 
 export default function HorizontalLinearStepper() {
+  const history = useHistory();
   const recaptchaRef = useRef(null);
   const [activeStep, setActiveStep] = React.useState(0);
   // const [skipped, setSkipped] = React.useState(new Set());
@@ -53,6 +57,8 @@ export default function HorizontalLinearStepper() {
     return_address: '',
   });
   const [captchaFlag, setCaptchaFlag] = useState(false);
+  const [offerModal, setOfferModal] = useState(false);
+  const [rideRequest, setRideRequest] = useState({});
 
   const handleCaptcha = async () => {
     setCaptchaFlag(true);
@@ -192,7 +198,14 @@ export default function HorizontalLinearStepper() {
         if (!form4.agree) {
           return toast.error("Veuillez marquer l'accord");
         }
-        api('post', '/requests/', apiData).then(() => {
+        api('post', '/requests/', apiData).then((res) => {
+          if (!res.data.contact) {
+            setRideRequest(res.data.request);
+            setOfferModal(!offerModal);
+          } else {
+            history.push('/success');
+          }
+
           updateStore({
             your_are: '',
             your_areE: '',
@@ -245,9 +258,8 @@ export default function HorizontalLinearStepper() {
             company_name: '', //last_name/company name optional optional
             captchaToken: '',
           });
-          setActiveStep(0);
+          toast.success('Demande de trajet envoyée avec succès ');
         });
-        return toast.success('Demande de trajet envoyée avec succès ');
       } else {
         toast.error('remplir tous les champs obligatoires');
       }
@@ -271,8 +283,18 @@ export default function HorizontalLinearStepper() {
   //   });
   // };
 
+  const updateStatus = (id, status) => {
+    api('put', `/requests/${id}`, { status }).then((res) => {
+      history.push('/success');
+    });
+  };
+
   return (
     <Container maxWidth="lg">
+      <Modal
+        open={offerModal}
+        component={<OfferModal rideRequest={rideRequest} updateStatus={updateStatus} />}
+      />
       <Box
         lg={{ width: '100%' }}
         md={{ width: '100%' }}
