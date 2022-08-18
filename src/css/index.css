@@ -1,5 +1,7 @@
 /* Importing all CSS files */
-@import url("./Header.css");
+@import url('./Header.css');
+@import url('./Offer.css');
+@import url('./Success.css');
 
 /* Defaults */
 * {
@@ -10,5 +12,5 @@
 
 /* Primary Variables */
 :root {
-  --primary: "green";
+  --primary: 'green';
 }
