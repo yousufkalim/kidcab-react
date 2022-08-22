@@ -186,7 +186,7 @@ export default function HorizontalLinearStepper() {
 
     if (activeStep === 2) {
       console.log(store, 'storeee');
-      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address.label) {
+      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address) {
         setActiveStep(3);
       } else {
         return toast.error('remplir tous les champs obligatoires');

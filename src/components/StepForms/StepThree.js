@@ -188,7 +188,7 @@ const StepThree = (props) => {
                 <AddressInput
                   style={{ maxWidth: '100%' }}
                   id="boxStepers_input_sm"
-                  label="adresse de ramassage"
+                  label="Adresse"
                   address={
                     Object.values(startAddress).length > 1 ? startAddress : store.pickUp_address
                   }
@@ -209,7 +209,7 @@ const StepThree = (props) => {
               >
                 <InputLabel id="demo-simple-select-label"></InputLabel>
                 <AddressInput
-                  label="adresse de destination"
+                  label="Adresse"
                   address={
                     Object.values(endAddress).length > 1 ? endAddress : store.destination_address
                   }
@@ -298,7 +298,7 @@ const StepThree = (props) => {
                 <AddressInput
                   style={{ maxWidth: '100%' }}
                   id="boxStepers_input_sm"
-                  label="adresse de retour"
+                  label="Adresse"
                   address={
                     Object.values(returnAddress).length > 1 ? returnAddress : store.return_address
                   }
