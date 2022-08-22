@@ -114,12 +114,12 @@ const StepFour = (props) => {
       >
         <div className="section_headers_button_group spte_3_btn-grroup">
           <div className="btn-flex-grop  cm-view-btn-group cm-view-btn-group2 cm-view-btn-group22">
-            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">email</h5>
+            <h5 className="section_headers_2 hange-Fonts-Size text-align-text">Email</h5>
 
             <TextField
               className="custom_input_children_inner3 custom_input_children_inner2_email"
               type="email"
-              placeholder="email"
+              placeholder="Email"
               onChange={onChangeform}
               name="email"
               value={store.email}

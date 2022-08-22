@@ -22,9 +22,14 @@ const Success = () => {
           >
             Retourner à la page d’Accueil
           </button>
-          <div className="success-text" onClick={() => history.push('/')}>
+          <a
+            href="#"
+            className="success-text"
+            style={{ color: 'black' }}
+            onClick={() => history.push('/')}
+          >
             Vous souhaitez obtenir une estimation pour un autre trajet ?
-          </div>
+          </a>
         </div>
       </div>
     </div>
