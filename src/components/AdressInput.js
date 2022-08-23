@@ -5,7 +5,7 @@ import { Store, UpdateStore } from '../StoreContext';
 
 // import { SetAuthToken } from "variables/auth";
 
-function AddressInput({ label, address, setAddress, optional }) {
+function AddressInput({ label, address, setAddress, optional,name }) {
   let [addresses, setAddresses] = useState([]);
   const updateStore = UpdateStore();
   const store = Store();
@@ -18,17 +18,17 @@ function AddressInput({ label, address, setAddress, optional }) {
   //   }
   // }, [address]);
   const pickAdrress = (AddressObj) => {
-    if (label == 'adresse de ramassage') {
+    if (name == 'adresse de ramassage') {
       updateStore({
         pickUp_address: AddressObj,
       });
     }
-    if (label == 'adresse de destination') {
+    if (name == 'adresse de destination') {
       updateStore({
         destination_address: AddressObj,
       });
     }
-    if (label == 'adresse de retour') {
+    if (name == 'adresse de retour') {
       updateStore({
         return_address: AddressObj,
       });
@@ -37,17 +37,17 @@ function AddressInput({ label, address, setAddress, optional }) {
 
   // Get All Address in drop down List from API
   const getAllAddress = async (e) => {
-    if (label == 'adresse de ramassage') {
+    if (name == 'adresse de ramassage') {
       updateStore({
         pickUp_address: { ...address, label: e.target.value },
       });
     }
-    if (label == 'adresse de destination') {
+    if (name == 'adresse de destination') {
       updateStore({
         destination_address: { ...address, label: e.target.value },
       });
     }
-    if (label == 'adresse de retour') {
+    if (name == 'adresse de retour') {
       updateStore({
         return_address: { ...address, label: e.target.value },
       });
