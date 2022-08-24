@@ -20,8 +20,6 @@ const StepThree = (props) => {
   let [startAddress, setStartAddress] = useState({});
   let [endAddress, setEndAddress] = useState({});
   let [returnAddress, setReturnAddress] = useState({});
-
-  console.log('first', startAddress);
   const [item, setItem] = useState({
     step3: {
       pickUp_date: '',
@@ -115,8 +113,9 @@ const StepThree = (props) => {
     props.passData3(item);
   };
   //return_time
-
+  
   return (
+    
     <div className="stepOne_main">
       <h5 className="section_headers">Remplissez le formulaire !</h5>
 
@@ -188,6 +187,7 @@ const StepThree = (props) => {
                 <AddressInput
                   style={{ maxWidth: '100%' }}
                   id="boxStepers_input_sm"
+                  name="adresse de ramassage"
                   label="Adresse"
                   address={
                     Object.values(startAddress).length > 1 ? startAddress : store.pickUp_address
@@ -210,6 +210,7 @@ const StepThree = (props) => {
                 <InputLabel id="demo-simple-select-label"></InputLabel>
                 <AddressInput
                   label="Adresse"
+                  name="adresse de destination"
                   address={
                     Object.values(endAddress).length > 1 ? endAddress : store.destination_address
                   }
@@ -298,6 +299,7 @@ const StepThree = (props) => {
                 <AddressInput
                   style={{ maxWidth: '100%' }}
                   id="boxStepers_input_sm"
+                  name="adresse de retour"
                   label="Adresse"
                   address={
                     Object.values(returnAddress).length > 1 ? returnAddress : store.return_address

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 const api = async (method = "get", uri, body) => {
   // API Call
   const url = process.env.REACT_APP_SERVER_URL + uri;
+  //const url = "http://localhost:5000/api"+ uri;
 
   return new Promise((resolve, reject) => {
     axios[method](url, body)

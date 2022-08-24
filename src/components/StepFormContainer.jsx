@@ -186,7 +186,7 @@ export default function HorizontalLinearStepper() {
 
     if (activeStep === 2) {
       console.log(store, 'storeee');
-      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address) {
+      if (store?.pickUp_date && store?.pickUp_time && store?.pickUp_address.label) {
         setActiveStep(3);
       } else {
         return toast.error('remplir tous les champs obligatoires');
@@ -198,6 +198,7 @@ export default function HorizontalLinearStepper() {
         if (!form4.agree) {
           return toast.error("Veuillez marquer l'accord");
         }
+        console.log(apiData,"apiData")
         api('post', '/requests/', apiData).then((res) => {
           if (!res.data.contact) {
             setRideRequest(res.data.request);
